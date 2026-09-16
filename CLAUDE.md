@@ -227,6 +227,7 @@ Contenu qui construit l'autorité et alimente le SEO. Voir [SEO.md](./SEO.md) "C
 
 **Phase 3 — Au long cours**
 Contenu maintenu dans la durée.
+- `/zh/` Page unique en chinois (sobre, factuelle, traduite humainement). **BUT : crédibilité** (salon/négociation), pas SEO. Voir [aubigny-strategie.txt](../aubigny-strategie.txt) "Le cas de l'Asie"
 - Une charte d'archives par mois
 - Carnet de vigne (4 entrées/an minimum)
 - QR codes → fiche millésime + charte du lieu
