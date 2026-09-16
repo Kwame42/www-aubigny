@@ -1,0 +1,35 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  width: number;
+  height: number;
+  /** Passer true pour la première image de la page (pas de lazy-loading). */
+  eager?: boolean;
+  maxHeight?: string;
+}
+const { src, alt, caption, width, height, eager = false, maxHeight = "70vh" } = Astro.props;
+---
+
+<figure class="figure">
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={eager ? "eager" : "lazy"}
+    decoding="async"
+    style={{
+      aspectRatio: `${width} / ${height}`,
+      maxHeight: maxHeight,
+    }}
+  />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .figure { margin: clamp(24px, 6vw, 36px) 0 0; }
+  .figure img { width: 100%; height: auto; object-fit: cover; }
+  .figure figcaption { margin-top: 10px; font-family: var(--mono); font-size: 12px; line-height: 1.6; color: var(--muted); }
+</style>

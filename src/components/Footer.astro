@@ -1,0 +1,43 @@
+---
+import { site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__cols">
+      <div>
+        <h2>Où nous trouver</h2>
+        <p>
+          {site.address.line1}<br />
+          {site.address.zip} {site.address.city}<br />
+          {site.address.region}
+        </p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <a href="/contact/">Nous écrire</a>
+        <a href="/visiter/">Visiter le domaine</a>
+        <a href="/en/trade/">Espace professionnel</a>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <a href="/mentions-legales/">Mentions légales</a>
+        <a href="/cgv/">CGV</a>
+        <a href="/confidentialite/">Confidentialité</a>
+      </div>
+    </div>
+    <p class="site-footer__legal">{site.legal}</p>
+    <p class="site-footer__small">{site.legalSmall}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { margin-top: clamp(56px, 12vw, 96px); background: var(--green); color: var(--on-green); padding-block: clamp(32px, 8vw, 56px); }
+  .site-footer__cols { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+  .site-footer h2 { margin: 0 0 10px; font-size: 16px; font-style: italic; font-weight: 400; color: var(--green-pale); }
+  .site-footer p { margin: 0; font-size: 15px; line-height: 1.65; }
+  .site-footer div a { display: block; padding: 4px 0; font-size: 15px; color: var(--on-green); }
+  .site-footer div a:hover { color: var(--gold-bg); }
+  .site-footer__legal { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--green-soft); font-family: var(--mono); font-size: 12px; line-height: 1.7; }
+  .site-footer__small { margin-top: 10px; font-family: var(--mono); font-size: 11px; line-height: 1.7; color: var(--green-pale); }
+</style>

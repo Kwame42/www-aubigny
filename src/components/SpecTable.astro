@@ -1,0 +1,24 @@
+---
+interface Props {
+  title?: string;
+  rows: { label: string; value: string | null }[];
+}
+const { title = "Fiche technique", rows } = Astro.props;
+---
+
+<section style="margin-top: var(--gap-section)">
+  <h2 class="spec__title">{title}</h2>
+  <dl class="spec">
+    {rows.map((row) => (
+      <div class="spec__row">
+        <dt>{row.label}</dt>
+        <dd>{row.value ?? <span class="todo">à compléter</span>}</dd>
+      </div>
+    ))}
+  </dl>
+  <slot />
+</section>
+
+<style>
+  .spec__title { margin: 0 0 4px; font-size: clamp(17px, 4.4vw, 19px); font-style: italic; font-weight: 400; color: var(--muted); }
+</style>

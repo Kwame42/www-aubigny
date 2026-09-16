@@ -1,0 +1,18 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  back?: { href: string; label: string };
+}
+const { eyebrow, title, lead, back } = Astro.props;
+---
+
+{back && <a class="back" href={back.href}>← {back.label}</a>}
+{eyebrow && <p class="eyebrow">{eyebrow}</p>}
+<h1>{title}</h1>
+{lead ? <p class="lead">{lead}</p> : <slot name="lead" />}
+
+<style>
+  .back { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 6px; font-size: 14px; color: var(--muted); text-decoration: none; }
+</style>

@@ -1,0 +1,43 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Section from "../../components/Section.astro";
+import Figure from "../../components/Figure.astro";
+---
+
+<Base title="Le compost — Domaine d'Aubigny" description="TODO : description du compost du domaine.">
+  <article class="article">
+    <PageHeader
+      back={{ href: "/", label: "Accueil" }}
+      eyebrow="Le domaine"
+      title="Le compost"
+      lead="TODO : phrase d'introduction."
+    />
+
+    <!-- TODO : photo d'ouverture -->
+    <Figure
+      src="/images/compost-hero.webp"
+      alt="TODO : décrire la photo"
+      caption="TODO : légende"
+      width={1600}
+      height={902}
+      eager
+    />
+
+    <Section title="Ce qu'on y met">
+      <p>TODO : contenu.</p>
+    </Section>
+
+    <Section title="Les andains">
+      <p>TODO : contenu.</p>
+    </Section>
+
+    <Section title="L'épandage">
+      <p>TODO : contenu.</p>
+    </Section>
+
+    <Section title="Ce que ça change">
+      <p>TODO : contenu.</p>
+    </Section>
+  </article>
+</Base>

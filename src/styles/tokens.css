@@ -1,0 +1,30 @@
+:root {
+  /* couleurs — reprises de la maquette v5 */
+  --ink: #2A2318;
+  --body: #4C4436;
+  --muted: #6B6250;
+  --bg: #EFE9DC;
+  --card: #FAF7F0;
+  --card-hi: #FFFDF8;
+  --rule: #C9BFA8;
+  --rule-soft: #E4DBC8;
+  --green: #35462A;
+  --green-soft: #5C6B45;
+  --green-pale: #B9BC9A;
+  --gold: #6F5518;
+  --gold-bg: #C9A959;
+  --on-green: #F3EEE2;
+
+  /* typo */
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --mono: ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* rythme */
+  --pad-x: clamp(16px, 4vw, 32px);
+  --gap-section: clamp(32px, 8vw, 52px);
+  --w-text: 820px;
+  --w-wide: 1080px;
+  --r-card: 20px;
+  --r-tile: 16px;
+  --r-pill: 999px;
+}

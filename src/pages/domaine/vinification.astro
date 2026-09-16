@@ -1,0 +1,39 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Section from "../../components/Section.astro";
+import Figure from "../../components/Figure.astro";
+---
+
+<Base title="La vinification — Domaine d'Aubigny" description="TODO : description de la vinification.">
+  <article class="article">
+    <PageHeader
+      back={{ href: "/", label: "Accueil" }}
+      eyebrow="Le domaine"
+      title="La vinification"
+      lead="TODO : phrase d'introduction."
+    />
+
+    <!-- TODO : photo d'ouverture -->
+    <Figure
+      src="/images/cuverie-hero.webp"
+      alt="TODO : décrire la photo"
+      caption="TODO : légende"
+      width={1600}
+      height={902}
+      eager
+    />
+
+    <Section title="Les rouges">
+      <p>TODO : contenu.</p>
+    </Section>
+
+    <Section title="Les blancs">
+      <p>TODO : contenu.</p>
+    </Section>
+
+    <Section title="Ce que nous publions">
+      <p>TODO : contenu.</p>
+    </Section>
+  </article>
+</Base>

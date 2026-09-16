@@ -1,0 +1,31 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import WineCard from "../../components/WineCard.astro";
+import { wines, groups } from "../../data/wines";
+---
+
+<Base title="Les vins — Domaine d'Aubigny" description="TODO : description de la page catalogue.">
+  <article class="article">
+    <PageHeader title="Les vins" lead="TODO : une ou deux lignes de présentation du catalogue." />
+  </article>
+
+  <div class="wrap catalogue">
+    {groups.map((group) => (
+      <section class="catalogue__group">
+        <h2>{group}</h2>
+        <p class="catalogue__note">TODO : note d'appellation (optionnel).</p>
+        <div class="grid grid--cards">
+          {wines.filter((w) => w.group === group).map((wine) => <WineCard wine={wine} />)}
+        </div>
+      </section>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .catalogue { padding-top: clamp(28px, 7vw, 48px); }
+  .catalogue__group { margin-top: clamp(36px, 9vw, 64px); }
+  .catalogue__group h2 { margin: 0 0 2px; font-size: clamp(17px, 4.4vw, 19px); font-style: italic; font-weight: 400; color: var(--muted); }
+  .catalogue__note { margin: 0 0 10px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+</style>

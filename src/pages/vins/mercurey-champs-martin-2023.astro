@@ -1,0 +1,124 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Section from "../../components/Section.astro";
+import Figure from "../../components/Figure.astro";
+import SpecTable from "../../components/SpecTable.astro";
+import CalloutPro from "../../components/CalloutPro.astro";
+import { spec } from "../../data/champs-martin-2023";
+
+const price = "51 €";
+const inStock = true;
+---
+
+<Base
+  title="Mercurey 1er Cru Champs Martin 2023 — Domaine d'Aubigny"
+  description="TODO : description courte du millésime, indexable."
+>
+  <article class="article">
+    <PageHeader
+      back={{ href: "/vins/", label: "Les vins" }}
+      eyebrow="Mercurey 1er Cru · Rouge"
+      title="Champs Martin 2023 — Mercurey 1er Cru"
+    />
+
+    <div class="grid">
+      <img src="/images/champs-martin-bouteille.webp" alt="TODO" width="1000" height="1500" loading="eager" />
+      <img src="/images/champs-martin-parcelle.webp" alt="TODO" width="1600" height="940" loading="eager" />
+    </div>
+
+    <Section title="Le vin">
+      <p>TODO : dégustation, garde, accords.</p>
+    </Section>
+
+    <Section title="Le lieu">
+      <p>TODO : le climat, le sol, la parcelle.</p>
+      <p>TODO : origine de la matière organique. <a href="/domaine/compost/">Comment il est fait</a>.</p>
+    </Section>
+
+    <section class="buy">
+      <h2>Achat</h2>
+      <div class="buy__price">
+        <span class="buy__amount">{price}</span>
+        <span class="buy__unit">TTC la bouteille</span>
+      </div>
+      <p class="buy__meta">TODO : format, conditionnement, zones d'expédition.</p>
+
+      {inStock ? (
+        <form class="buy__form" method="post" action="/api/panier">
+          <div class="qty">
+            <button type="button" data-qty="-1" aria-label="Retirer une bouteille">−</button>
+            <output name="quantite" aria-live="polite">6</output>
+            <button type="button" data-qty="1" aria-label="Ajouter une bouteille">+</button>
+          </div>
+          <button class="btn" type="submit">Ajouter au panier</button>
+        </form>
+      ) : (
+        <p class="buy__out">Épuisé</p>
+      )}
+    </section>
+
+    <SpecTable rows={spec}>
+      <p class="spec__links">
+        <a href="/fiches/champs-martin-2023.pdf">Fiche technique en PDF</a>
+        <span class="todo">poids du fichier</span>
+      </p>
+    </SpecTable>
+
+    <div class="section vintages">
+      <div>
+        <h2>Autres millésimes</h2>
+        <!-- TODO : générer depuis les données quand les autres fiches existeront -->
+        <a href="#">Champs Martin 2022</a>
+        <a href="#">Champs Martin 2021</a>
+        <a href="#">Champs Martin 2020</a>
+      </div>
+      <div>
+        <h2>Le millésime 2023</h2>
+        <p>TODO : deux lignes sur l'année.</p>
+        <a href="#">Compte rendu du millésime</a>
+      </div>
+    </div>
+
+    <CalloutPro
+      title="Tarifs et disponibilité pro"
+      text="Cavistes, restaurants, importateurs."
+      cta={{ href: "/en/trade/", label: "Créer un compte" }}
+    />
+  </article>
+</Base>
+
+<style>
+  .grid img { width: 100%; height: 100%; min-height: 220px; object-fit: cover; }
+  .buy { margin-top: var(--gap-section); background: var(--card); border-top: 3px solid var(--green); border-radius: var(--r-card); padding: clamp(22px, 5vw, 30px); }
+  .buy h2 { margin: 0 0 14px; font-size: clamp(17px, 4.4vw, 19px); font-style: italic; font-weight: 400; color: var(--muted); }
+  .buy__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 16px; }
+  .buy__amount { font-size: clamp(32px, 9vw, 44px); line-height: 1; }
+  .buy__unit { font-size: 14px; color: var(--muted); }
+  .buy__meta { margin: 10px 0 20px; font-family: var(--mono); font-size: 13px; line-height: 1.6; color: var(--body); }
+  .buy__form { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+  .buy__form .btn { flex: 1 1 220px; }
+  .qty { display: flex; align-items: center; border: 1px solid var(--rule); background: var(--card-hi); border-radius: var(--r-pill); overflow: hidden; }
+  .qty button { width: 48px; min-height: 52px; background: none; border: 0; font-size: 20px; cursor: pointer; }
+  .qty output { min-width: 48px; text-align: center; font-family: var(--mono); font-size: 16px; }
+  .buy__out { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .spec__links { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; font-size: 15px; }
+  .vintages { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .vintages h2 { margin: 0 0 10px; font-size: clamp(17px, 4.4vw, 19px); font-style: italic; font-weight: 400; color: var(--muted); }
+  .vintages a { display: block; padding: 4px 0; font-size: 16px; }
+  .vintages p { margin: 0 0 10px; font-size: 15px; line-height: 1.6; color: var(--body); }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>(".buy__form");
+  const out = form?.querySelector("output");
+  const step = 6;
+  form?.querySelectorAll<HTMLButtonElement>("[data-qty]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (!out) return;
+      const delta = Number(btn.dataset.qty) * step;
+      const next = Math.min(96, Math.max(step, Number(out.textContent) + delta));
+      out.textContent = String(next);
+    });
+  });
+</script>

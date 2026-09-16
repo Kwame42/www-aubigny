@@ -1,0 +1,62 @@
+---
+import { site, nav } from "../data/site";
+---
+
+<header class="site-header">
+  <div class="site-header__bar wrap">
+    <a class="brand" href="/">
+      <span class="brand__mark">
+        <!-- TODO : remplacer par le blason vectoriel (public/blason.svg) -->
+        <img src="/blason.svg" alt="" width="26" height="26" />
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">{site.name}</span>
+        <span class="brand__tag">{site.tagline}</span>
+      </span>
+    </a>
+    <a class="btn btn--small" href="/vins/">Boutique</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav id="nav-principal" class="site-nav" aria-label="Navigation principale" hidden>
+    <div class="wrap site-nav__cols">
+      {nav.map((group) => (
+        <div class="site-nav__col">
+          <a class="site-nav__head" href={group.href}>{group.label}</a>
+          {group.children.map((item) => (
+            <a class="site-nav__item" href={item.href}>{item.label}</a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </nav>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--rule); }
+  .site-header__bar { display: flex; align-items: center; gap: 12px; padding-block: 12px; }
+  .brand { flex: 1; display: flex; align-items: center; gap: 9px; text-decoration: none; color: inherit; }
+  .brand__text { display: flex; flex-direction: column; gap: 3px; }
+  .brand__name { font-size: clamp(15px, 4.2vw, 19px); letter-spacing: 0.16em; text-transform: uppercase; line-height: 1; }
+  .brand__tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .btn--small { min-height: 44px; padding: 0 18px; font-size: 15px; }
+  .burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; min-height: 44px; padding: 0 11px; background: none; border: 1px solid var(--rule); border-radius: var(--r-pill); cursor: pointer; }
+  .burger span { display: block; height: 1px; background: var(--ink); }
+  .site-nav { border-top: 1px solid var(--rule); background: var(--bg); }
+  .site-nav__cols { display: grid; gap: 22px; padding: 8px 0 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+  .site-nav__col { display: flex; flex-direction: column; border-top: 1px solid var(--rule); padding-top: 12px; }
+  .site-nav__head { padding: 12px 0; font-size: 21px; text-decoration: none; color: inherit; }
+  .site-nav__item { padding: 8px 0; min-height: 44px; display: flex; align-items: center; font-size: 15px; color: var(--muted); text-decoration: none; }
+</style>
+
+<script>
+  const burger = document.querySelector<HTMLButtonElement>(".burger");
+  const menu = document.getElementById("nav-principal");
+  burger?.addEventListener("click", () => {
+    const open = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", String(!open));
+    if (menu) menu.hidden = open;
+  });
+</script>

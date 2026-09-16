@@ -1,0 +1,22 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Section from "../components/Section.astro";
+import Figure from "../components/Figure.astro";
+---
+
+<Base title="Visiter le domaine — Domaine d'Aubigny" description="TODO : description de la page visite.">
+  <article class="article">
+    <PageHeader back={{ href: "/", label: "Accueil" }} eyebrow="Visiter" title="Visiter le domaine" lead="TODO : phrase d'introduction." />
+
+    <Section title="Comment ça se passe"><p>TODO</p><p class="todo">jours, horaires, tarif, taille des groupes</p></Section>
+    <Section title="Où"><p>TODO : adresse et accès.</p></Section>
+
+    <div class="card" style="margin-top: var(--gap-section)">
+      <p style="margin: 0 0 14px; font-size: clamp(18px, 4.8vw, 21px)">Demander un rendez-vous</p>
+      <a class="btn" href="/contact/">Nous écrire</a>
+    </div>
+
+    <Figure src="/images/visiter-hero.webp" alt="TODO" caption="TODO : légende" width={1600} height={823} />
+  </article>
+</Base>

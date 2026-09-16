@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Section from "../components/Section.astro";
+---
+
+<Base title="Nous écrire — Domaine d'Aubigny" description="TODO : description de la page contact.">
+  <article class="article">
+    <PageHeader back={{ href: "/", label: "Accueil" }} eyebrow="Contact" title="Nous écrire" lead="TODO : phrase d'introduction." />
+
+    <!-- TODO : brancher l'action sur votre service de formulaire -->
+    <form class="card contact" method="post" action="/api/contact">
+      <label class="field">Nom<input type="text" name="nom" required /></label>
+      <label class="field">Courriel<input type="email" name="courriel" required /></label>
+      <label class="field">Message<textarea name="message" rows="5" required></textarea></label>
+      <button class="btn" type="submit">Envoyer</button>
+    </form>
+
+    <Section title="Adresse"><p>TODO</p><p class="todo">téléphone et courriel</p></Section>
+    <Section title="Expéditions"><p>TODO</p></Section>
+  </article>
+</Base>
+
+<style>
+  .contact { margin-top: var(--gap-section); display: grid; gap: 16px; }
+</style>

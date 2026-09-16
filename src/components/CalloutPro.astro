@@ -1,0 +1,19 @@
+---
+interface Props { title: string; text: string; cta: { href: string; label: string }; }
+const { title, text, cta } = Astro.props;
+---
+
+<aside class="card card--green pro">
+  <div>
+    <h2>{title}</h2>
+    <p>{text}</p>
+  </div>
+  <a class="btn btn--gold" href={cta.href}>{cta.label}</a>
+</aside>
+
+<style>
+  .pro { margin-top: var(--gap-section); display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+  .pro h2 { margin: 0 0 6px; font-size: clamp(18px, 4.8vw, 21px); font-weight: 400; }
+  .pro p { margin: 0; font-size: 14px; line-height: 1.55; }
+  .pro > div { flex: 1 1 240px; }
+</style>

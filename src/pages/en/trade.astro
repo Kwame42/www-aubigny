@@ -1,0 +1,21 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Section from "../../components/Section.astro";
+---
+
+<Base lang="en" title="Trade — Domaine d'Aubigny" description="TODO : English description for wine merchants and importers.">
+  <article class="article">
+    <PageHeader back={{ href: "/", label: "Home" }} eyebrow="Trade" title="Trade" lead="TODO : one-line introduction." />
+
+    <Section title="The estate"><p>TODO</p></Section>
+    <Section title="Current releases"><p>TODO</p><p class="todo">allocation and trade pricing</p></Section>
+    <Section title="Shipping"><p>TODO</p></Section>
+
+    <div class="card" style="margin-top: var(--gap-section)">
+      <p style="margin: 0 0 6px; font-size: clamp(18px, 4.8vw, 21px)">Open a trade account</p>
+      <p style="margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: var(--body)">TODO : what you need from them.</p>
+      <a class="btn" href="/contact/">Contact us</a>
+    </div>
+  </article>
+</Base>

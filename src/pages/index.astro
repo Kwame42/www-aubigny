@@ -1,0 +1,74 @@
+---
+import Base from "../layouts/Base.astro";
+import Figure from "../components/Figure.astro";
+import WineCard from "../components/WineCard.astro";
+import { wines } from "../data/wines";
+
+const featured = ["mercurey-champs-martin-2023", "ouche-maison-rouge", "grand-pres-aubigny", "rully-blanc"]
+  .map((slug) => wines.find((w) => w.slug === slug)!)
+  .filter(Boolean);
+---
+
+<Base
+  title="Domaine d'Aubigny — Aluze, Côte Chalonnaise"
+  description="Vingt hectares de vigne en agriculture biologique à Aluze, en Côte Chalonnaise. Vente directe des cuvées du domaine."
+>
+  <!-- TODO : photo d'ouverture pleine largeur -->
+  <Figure
+    src="/images/accueil-hero.webp"
+    alt="TODO : décrire la photo"
+    width={1600}
+    height={902}
+    maxHeight="78vh"
+    eager
+  />
+
+  <section class="intro">
+    <h1>TODO : phrase d'accroche du domaine.</h1>
+    <p class="lead">TODO : deux lignes sur la vente directe et les cuvées.</p>
+    <div class="intro__actions">
+      <a class="btn" href="/vins/">Découvrir les vins</a>
+      <a class="btn btn--ghost" href="/domaine/">Le domaine</a>
+    </div>
+  </section>
+
+  <section class="wrap wines">
+    <h2 class="wines__title">TODO : titre de la sélection</h2>
+    <div class="grid grid--cards">
+      {featured.map((wine) => <WineCard wine={wine} />)}
+    </div>
+  </section>
+
+  <section class="wrap">
+    <Figure
+      src="/images/accueil-secondaire.webp"
+      alt="TODO : décrire la photo"
+      caption="TODO : légende"
+      width={1600}
+      height={1067}
+    />
+  </section>
+
+  <section class="wrap way">
+    <img class="way__img" src="/images/accueil-carre.webp" alt="TODO" width="1000" height="1000" loading="lazy" />
+    <div>
+      <h2>TODO : titre du bloc « notre façon de faire »</h2>
+      <p>TODO : paragraphe.</p>
+      <p>TODO : paragraphe.</p>
+      <a href="/domaine/compost/">Le compost du domaine, en détail</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro { max-width: 760px; margin: 0 auto; padding: clamp(28px, 8vw, 56px) var(--pad-x) 0; }
+  .intro h1 { font-size: clamp(27px, 7.4vw, 44px); line-height: 1.18; }
+  .intro__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .intro__actions .btn { flex: 1 1 220px; }
+  .wines { padding-top: clamp(44px, 10vw, 80px); }
+  .wines__title { margin: 0 0 10px; font-size: clamp(17px, 4.4vw, 19px); font-style: italic; font-weight: 400; color: var(--muted); }
+  .way { margin-top: clamp(44px, 10vw, 80px); display: grid; gap: clamp(20px, 5vw, 40px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); align-items: center; }
+  .way__img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+  .way h2 { margin: 0 0 14px; font-size: clamp(21px, 5.4vw, 28px); font-weight: 400; line-height: 1.25; }
+  .way p { margin: 0 0 12px; font-size: clamp(16px, 4.2vw, 17px); line-height: 1.62; color: var(--body); }
+</style>

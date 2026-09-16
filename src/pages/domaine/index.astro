@@ -1,0 +1,29 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import { nav } from "../../data/site";
+
+const pages = nav.find((n) => n.href === "/domaine/")?.children ?? [];
+---
+
+<Base title="Le domaine — Domaine d'Aubigny" description="TODO : description de la page sommaire du domaine.">
+  <article class="article">
+    <PageHeader back={{ href: "/", label: "Accueil" }} eyebrow="Le domaine" title="Le domaine" lead="TODO : une ou deux lignes d'introduction." />
+
+    <nav class="index">
+      {pages.map((p) => (
+        <a class="index__item" href={p.href}>
+          <span class="index__label">{p.label}</span>
+          <span class="todo">TODO : une ligne de résumé</span>
+        </a>
+      ))}
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .index { margin-top: var(--gap-section); display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  .index__item { display: flex; flex-direction: column; gap: 8px; padding: 22px 20px 26px; background: var(--card); border-radius: var(--r-tile); text-decoration: none; color: inherit; }
+  .index__item:hover { background: var(--card-hi); color: inherit; }
+  .index__label { font-size: clamp(19px, 5vw, 22px); line-height: 1.25; }
+</style>

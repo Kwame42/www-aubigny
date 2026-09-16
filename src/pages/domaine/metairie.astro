@@ -1,0 +1,43 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Section from "../../components/Section.astro";
+import Figure from "../../components/Figure.astro";
+---
+
+<Base title="La métairie et les animaux — Domaine d'Aubigny" description="TODO : description de la métairie.">
+  <article class="article">
+    <PageHeader
+      back={{ href: "/", label: "Accueil" }}
+      eyebrow="Le domaine"
+      title="La métairie et les animaux"
+      lead="TODO : phrase d'introduction."
+    />
+
+    <!-- TODO : photo d'ouverture -->
+    <Figure
+      src="/images/metairie-hero.webp"
+      alt="TODO : décrire la photo"
+      caption="TODO : légende"
+      width={1600}
+      height={902}
+      eager
+    />
+
+    <Section title="Les chevaux">
+      <p>TODO : contenu.</p>
+    </Section>
+
+    <Section title="Les vaches">
+      <p>TODO : contenu.</p>
+    </Section>
+
+    <Section title="Les ruches et la truffière">
+      <p>TODO : contenu.</p>
+    </Section>
+
+    <Section title="Prés et bois">
+      <p>TODO : contenu.</p>
+    </Section>
+  </article>
+</Base>
