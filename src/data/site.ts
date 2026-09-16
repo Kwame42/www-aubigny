@@ -1,7 +1,6 @@
 export const site = {
   name: "Maison d'Aubigny",
   tagline: "Grand Vin de Bourgogne",
-  motto: "Le Goût de la Vie",
   address: { line1: "Domaine d'Aubigny", zip: "71510", city: "Aluze", region: "Côte Chalonnaise, Bourgogne" },
   /** Point de collecte du formulaire de contact (Formspree, Netlify Forms, etc.).
    *  Laisser vide expose le formulaire sans envoi. Voir README. */
