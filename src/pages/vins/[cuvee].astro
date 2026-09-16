@@ -1,0 +1,249 @@
+---
+import Base from "../../layouts/Base.astro";
+import { cuvees, getCuveeBySlug } from "../../data/cuvees";
+import SchemaOrg from "../../components/SchemaOrg.astro";
+import { organization, getBreadcrumbSchema } from "../../data/schema";
+
+export function getStaticPaths() {
+  return cuvees.map((cuvee) => ({
+    params: { cuvee: cuvee.slug },
+    props: { cuvee },
+  }));
+}
+
+const { cuvee } = Astro.props;
+
+const breadcrumb = getBreadcrumbSchema([
+  { name: "Accueil", url: "https://aubigny.wine/" },
+  { name: "Les vins", url: "https://aubigny.wine/vins/" },
+  { name: cuvee.name, url: `https://aubigny.wine/vins/${cuvee.slug}/` },
+]);
+---
+
+<Base
+  title={`${cuvee.name} — ${cuvee.appellation} | Domaine d'Aubigny`}
+  description={cuvee.description}
+>
+  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+
+  <article class="cuvee">
+    <header class="cuvee__header">
+      <div class="cuvee__nav">
+        <a href="/vins/" class="link-back">← Les vins</a>
+      </div>
+      <div class="cuvee__intro">
+        <p class="eyebrow">{cuvee.appellation}</p>
+        <h1>{cuvee.name}</h1>
+        <p class="cuvee__tagline">{cuvee.type === "monopole" && "Monopole"}</p>
+      </div>
+    </header>
+
+    <section class="cuvee__body">
+      <div class="cuvee__main">
+        <p class="cuvee__description">{cuvee.description}</p>
+
+        {
+          cuvee.type === "monopole" && (
+            <div class="cuvee__badge">
+              <span>Monopole</span>
+            </div>
+          )
+        }
+
+        <div class="cuvee__specs">
+          <div class="spec">
+            <span class="spec__label">Appellation</span>
+            <span class="spec__value">{cuvee.appellation}</span>
+          </div>
+          <div class="spec">
+            <span class="spec__label">Couleur</span>
+            <span class="spec__value">
+              {cuvee.color === "rouge" && "Rouge"}
+              {cuvee.color === "blanc" && "Blanc"}
+              {cuvee.color === "rose" && "Rosé"}
+            </span>
+          </div>
+          <div class="spec">
+            <span class="spec__label">Région</span>
+            <span class="spec__value">
+              {cuvee.region === "aluze" && "Aluze"}
+              {cuvee.region === "rully" && "Rully"}
+              {cuvee.region === "mercurey" && "Mercurey"}
+            </span>
+          </div>
+        </div>
+
+        <div class="cuvee__cta">
+          <a href="/vins/" class="btn btn--sm">Voir tous les millésimes</a>
+        </div>
+      </div>
+
+      <aside class="cuvee__sidebar">
+        <nav class="cuvee__links">
+          <p class="eyebrow eyebrow--small">Autres cuvées</p>
+          <ul>
+            {
+              cuvees
+                .filter((c) => c.id !== cuvee.id)
+                .slice(0, 4)
+                .map((c) => (
+                  <li>
+                    <a href={`/vins/${c.slug}/`}>{c.name}</a>
+                  </li>
+                ))
+            }
+          </ul>
+        </nav>
+      </aside>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .cuvee {
+    background: var(--bg);
+  }
+
+  .cuvee__header {
+    background: var(--navy);
+    color: var(--cream);
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  .cuvee__nav {
+    margin-bottom: 30px;
+  }
+
+  .link-back {
+    font-size: 14px;
+    color: var(--gold);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .link-back:hover {
+    text-decoration: underline;
+  }
+
+  .cuvee__intro p {
+    margin: 0 0 12px;
+  }
+
+  .cuvee__intro h1 {
+    margin: 0 0 8px;
+    font-size: clamp(32px, 8vw, 52px);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .cuvee__tagline {
+    font-size: 14px;
+    color: var(--gold-pale);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .cuvee__body {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: clamp(30px, 6vw, 60px);
+    max-width: var(--w-wide);
+    margin: 0 auto;
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  @media (max-width: 768px) {
+    .cuvee__body {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cuvee__main {
+    max-width: 720px;
+  }
+
+  .cuvee__description {
+    font-size: clamp(17px, 4.2vw, 19px);
+    line-height: 1.8;
+    margin: 0 0 30px;
+    color: var(--body);
+  }
+
+  .cuvee__badge {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: var(--navy);
+    padding: 8px 16px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  .cuvee__specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 30px;
+    padding: 30px 0;
+    border-top: 1px solid var(--navy-line);
+    border-bottom: 1px solid var(--navy-line);
+    margin: 30px 0;
+  }
+
+  .spec {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spec__label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .spec__value {
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .cuvee__cta {
+    margin-top: 40px;
+  }
+
+  .cuvee__sidebar {
+    padding-top: clamp(20px, 3vw, 40px);
+  }
+
+  .cuvee__links {
+    background: var(--navy-bg);
+    padding: clamp(20px, 4vw, 30px);
+    border-radius: 2px;
+  }
+
+  .cuvee__links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cuvee__links li {
+    margin: 12px 0;
+  }
+
+  .cuvee__links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .cuvee__links a:hover {
+    color: var(--gold);
+  }
+</style>

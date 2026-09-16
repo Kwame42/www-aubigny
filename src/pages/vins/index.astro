@@ -1,69 +1,218 @@
 ---
 import Base from "../../layouts/Base.astro";
-import WineCard from "../../components/WineCard.astro";
-import { groups, catalogue } from "../../data/wines";
+import { cuvees } from "../../data/cuvees";
+import SchemaOrg from "../../components/SchemaOrg.astro";
+import { organization, getBreadcrumbSchema } from "../../data/schema";
+
+const breadcrumb = getBreadcrumbSchema([
+  { name: "Accueil", url: "https://aubigny.wine/" },
+  { name: "Les vins", url: "https://aubigny.wine/vins/" },
+]);
+
+// Grouper par région
+const aluzeCuvees = cuvees.filter((c) => c.region === "aluze");
+const rullyCuvees = cuvees.filter((c) => c.region === "rully");
+const mercureyCuvees = cuvees.filter((c) => c.region === "mercurey");
 ---
 
 <Base
-  title="Les vins — Maison d'Aubigny"
-  description="Commander directement les cinq cuvées du domaine : Bourgogne, Rully, Mercurey 1er Cru et les deux monopoles d'Aluze. Livraison France et Europe."
+  title="Les Vins — Domaine d'Aubigny"
+  description="Nos cuvées de Bourgogne, Rully et Mercurey. Vente directe à la propriété et par expédition."
 >
-  <div class="shop-head">
-    <p class="eyebrow eyebrow--center">Boutique en ligne</p>
-    <h1>Commander <em>directement</em></h1>
-    <p class="shop-head__sub">Livraison en France et en Europe · Paiement sécurisé · Expédié depuis le domaine</p>
-  </div>
+  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
 
-  {groups.map((group) => (
-    <section class="shop-group">
-      <p class="eyebrow">{group.title}</p>
-      <p class="shop-group__note">{group.note}</p>
-      <div class="shop-group__grid">
-        {group.wines.map((wine) => <WineCard wine={wine} />)}
-      </div>
-    </section>
-  ))}
+  <article class="catalog">
+    <header class="catalog__header">
+      <h1>Nos Vins</h1>
+      <p>Cinq cuvées, dont deux monopoles. Tous les millésimes en vente.</p>
+    </header>
 
-  <section class="wrap" id="panier">
-    <div class="panier">
-      <div class="panier__top">
-        <p class="eyebrow eyebrow--light">Votre panier</p>
-        <button type="button" data-cart-clear>Vider le panier</button>
-      </div>
-      <p class="panier__empty" data-cart-empty>Votre panier est vide.</p>
-      <div data-cart-lines></div>
-      <div class="panier__foot">
-        <div>
-          <p class="panier__label">Total TTC</p>
-          <p class="panier__ship">Livraison offerte dès 6 bouteilles</p>
+    <section class="catalog__body">
+      <!-- Aluze & Monopoles -->
+      <div class="region">
+        <h2 class="region__title">Aluze & Monopoles</h2>
+        <div class="wines">
+          {
+            aluzeCuvees.map((wine) => (
+              <a href={`/vins/${wine.slug}/`} class="wine-card">
+                <div class="wine-card__head">
+                  <span class="wine-card__tag">{wine.appellation}</span>
+                  {wine.type === "monopole" && (
+                    <span class="wine-card__badge">Monopole</span>
+                  )}
+                </div>
+                <h3 class="wine-card__name">{wine.name}</h3>
+                <p class="wine-card__desc">{wine.description}</p>
+                <span class="wine-card__cta">Voir la cuvée →</span>
+              </a>
+            ))
+          }
         </div>
-        <p class="panier__total" data-cart-total>0 €</p>
       </div>
-      <a class="btn panier__go" href="/contact/">Finaliser la commande →</a>
-      <p class="panier__fine">Paiement sécurisé · Livraison 3–5 jours ouvrés · France et Europe</p>
-    </div>
-  </section>
 
-  <script type="application/json" id="panier-catalogue" set:html={JSON.stringify(catalogue)}></script>
+      <!-- Rully -->
+      {
+        rullyCuvees.length > 0 && (
+          <div class="region">
+            <h2 class="region__title">Rully</h2>
+            <div class="wines">
+              {rullyCuvees.map((wine) => (
+                <a href={`/vins/${wine.slug}/`} class="wine-card">
+                  <div class="wine-card__head">
+                    <span class="wine-card__tag">{wine.appellation}</span>
+                    {wine.type === "monopole" && (
+                      <span class="wine-card__badge">Monopole</span>
+                    )}
+                  </div>
+                  <h3 class="wine-card__name">{wine.name}</h3>
+                  <p class="wine-card__desc">{wine.description}</p>
+                  <span class="wine-card__cta">Voir la cuvée →</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+      <!-- Mercurey -->
+      {
+        mercureyCuvees.length > 0 && (
+          <div class="region">
+            <h2 class="region__title">Mercurey</h2>
+            <div class="wines">
+              {mercureyCuvees.map((wine) => (
+                <a href={`/vins/${wine.slug}/`} class="wine-card">
+                  <div class="wine-card__head">
+                    <span class="wine-card__tag">{wine.appellation}</span>
+                    {wine.type === "monopole" && (
+                      <span class="wine-card__badge">Monopole</span>
+                    )}
+                  </div>
+                  <h3 class="wine-card__name">{wine.name}</h3>
+                  <p class="wine-card__desc">{wine.description}</p>
+                  <span class="wine-card__cta">Voir la cuvée →</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </section>
+  </article>
 </Base>
 
 <style>
-  .shop-head { max-width: var(--w-wide); margin: 0 auto; padding: clamp(40px, 9vw, 80px) var(--pad-x) clamp(28px, 6vw, 44px); text-align: center; }
-  .shop-head__sub { margin: 0; font-size: clamp(14px, 3.8vw, 16px); font-style: italic; line-height: 1.8; color: var(--muted); }
-  .shop-group { max-width: var(--w-wide); margin: 0 auto clamp(36px, 8vw, 60px); padding: 0 var(--pad-x); }
-  .shop-group .eyebrow { margin-bottom: 6px; }
-  .shop-group__note { margin: 0 0 20px; padding-left: 58px; font-size: 14px; font-style: italic; line-height: 1.6; color: var(--muted); }
-  .shop-group__grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .catalog {
+    background: var(--bg);
+  }
 
-  .panier { background: var(--navy); color: var(--cream); padding: clamp(26px, 6vw, 40px); }
-  .panier__top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 14px; border-bottom: 1px solid var(--navy-line); padding-bottom: 18px; }
-  .panier__top .eyebrow { margin: 0; }
-  .panier__top button { background: none; border: 0; padding: 8px 0; min-height: 40px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-navy-muted); cursor: pointer; }
-  .panier__empty { margin: 20px 0 0; font-size: 15px; font-style: italic; line-height: 1.7; color: var(--on-navy-muted); }
-  .panier__foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; margin-top: 24px; }
-  .panier__label { margin: 0; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-navy-muted); }
-  .panier__ship { margin: 7px 0 0; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6B7684; }
-  .panier__total { margin: 0; font-size: clamp(30px, 8vw, 44px); line-height: 1; }
-  .panier__go { width: 100%; min-height: 54px; margin-top: 24px; }
-  .panier__fine { margin: 16px 0 0; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6B7684; line-height: 1.9; }
+  .catalog__header {
+    background: var(--navy);
+    color: var(--cream);
+    padding: clamp(60px, 13vw, 100px) var(--pad-x);
+    text-align: center;
+  }
+
+  .catalog__header h1 {
+    margin: 0 0 16px;
+    font-size: clamp(36px, 10vw, 56px);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .catalog__header p {
+    margin: 0;
+    font-size: clamp(16px, 4vw, 18px);
+    font-style: italic;
+    color: var(--on-navy);
+  }
+
+  .catalog__body {
+    max-width: var(--w-wide);
+    margin: 0 auto;
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  .region {
+    margin-bottom: clamp(50px, 10vw, 80px);
+  }
+
+  .region:last-child {
+    margin-bottom: 0;
+  }
+
+  .region__title {
+    font-size: clamp(24px, 6vw, 32px);
+    font-weight: 400;
+    margin: 0 0 30px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--navy-line);
+  }
+
+  .wines {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  }
+
+  .wine-card {
+    background: var(--navy-bg);
+    padding: clamp(24px, 5vw, 32px);
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .wine-card:hover {
+    background: var(--navy-bg-hover);
+    transform: translateY(-2px);
+  }
+
+  .wine-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .wine-card__tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .wine-card__badge {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--gold-pale);
+    color: var(--navy);
+    padding: 4px 8px;
+    display: inline-block;
+  }
+
+  .wine-card__name {
+    margin: 0 0 12px;
+    font-size: clamp(18px, 5vw, 22px);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .wine-card__desc {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--body);
+  }
+
+  .wine-card__cta {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
 </style>

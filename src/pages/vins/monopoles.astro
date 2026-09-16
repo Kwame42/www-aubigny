@@ -1,0 +1,205 @@
+---
+import Base from "../../layouts/Base.astro";
+import { monopoles } from "../../data/cuvees";
+import SchemaOrg from "../../components/SchemaOrg.astro";
+import { organization, getBreadcrumbSchema } from "../../data/schema";
+
+const breadcrumb = getBreadcrumbSchema([
+  { name: "Accueil", url: "https://aubigny.wine/" },
+  { name: "Les vins", url: "https://aubigny.wine/vins/" },
+  { name: "Les monopoles", url: "https://aubigny.wine/vins/monopoles/" },
+]);
+---
+
+<Base
+  title="Monopoles — Domaine d'Aubigny"
+  description="Les deux monopoles du domaine : Ouche de la Maison Rouge et Grand Prés d'Aubigny Blanc. Nos vins d'exception."
+>
+  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+
+  <article class="monopoles">
+    <header class="monopoles__header">
+      <div class="monopoles__breadcrumb">
+        <a href="/vins/" class="link-back">← Les vins</a>
+      </div>
+      <h1>Les Monopoles</h1>
+      <p>Deux parcelles qui n'appartiennent qu'au Domaine d'Aubigny. L'expression unique de deux terroirs.</p>
+    </header>
+
+    <section class="monopoles__body">
+      <div class="wines">
+        {
+          monopoles.map((wine) => (
+            <a href={`/vins/${wine.slug}/`} class="wine-card wine-card--large">
+              <div class="wine-card__head">
+                <span class="wine-card__tag">{wine.appellation}</span>
+                <span class="wine-card__badge">Monopole</span>
+              </div>
+              <h3 class="wine-card__name">{wine.name}</h3>
+              <p class="wine-card__desc">{wine.description}</p>
+              <span class="wine-card__cta">Découvrir →</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="monopoles__info">
+      <div class="info-block">
+        <h2>Qu'est-ce qu'un monopole ?</h2>
+        <p>
+          Un monopole est une parcelle de vigne qui n'appartient qu'à un seul producteur. Elle ne peut pas être vendue ou produite par un autre vigneron. C'est le droit du sol : celui qui possède le terrain fabrique le vin. Cette exclusivité garantit une identité incopiable et une maîtrise complète du terroir et de la vinification.
+        </p>
+        <p>
+          Aux monopoles d'Aluze, chaque cuvée raconte l'histoire singulière de son terroir et la vision du Domaine d'Aubigny.
+        </p>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .monopoles {
+    background: var(--bg);
+  }
+
+  .monopoles__header {
+    background: var(--navy);
+    color: var(--cream);
+    padding: clamp(60px, 13vw, 100px) var(--pad-x);
+    text-align: center;
+  }
+
+  .monopoles__breadcrumb {
+    margin-bottom: 30px;
+  }
+
+  .link-back {
+    font-size: 14px;
+    color: var(--gold);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .link-back:hover {
+    text-decoration: underline;
+  }
+
+  .monopoles__header h1 {
+    margin: 0 0 16px;
+    font-size: clamp(36px, 10vw, 56px);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .monopoles__header p {
+    margin: 0;
+    font-size: clamp(16px, 4vw, 18px);
+    font-style: italic;
+    color: var(--on-navy);
+  }
+
+  .monopoles__body {
+    max-width: var(--w-wide);
+    margin: 0 auto;
+    padding: clamp(50px, 10vw, 88px) var(--pad-x);
+  }
+
+  .wines {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  }
+
+  .wine-card {
+    background: var(--navy-bg);
+    padding: clamp(30px, 6vw, 40px);
+    text-decoration: none;
+    color: var(--text);
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .wine-card:hover {
+    background: var(--navy-bg-hover);
+    transform: translateY(-2px);
+  }
+
+  .wine-card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .wine-card__tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .wine-card__badge {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--gold-pale);
+    color: var(--navy);
+    padding: 4px 8px;
+    display: inline-block;
+  }
+
+  .wine-card__name {
+    margin: 0 0 14px;
+    font-size: clamp(20px, 5.2vw, 26px);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .wine-card__desc {
+    margin: 0 0 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--body);
+  }
+
+  .wine-card__cta {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .monopoles__info {
+    background: var(--navy);
+    color: var(--cream);
+    padding: clamp(50px, 10vw, 88px) var(--pad-x);
+  }
+
+  .info-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .info-block h2 {
+    font-size: clamp(28px, 7vw, 40px);
+    font-weight: 400;
+    margin: 0 0 24px;
+    line-height: 1.3;
+  }
+
+  .info-block p {
+    margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--on-navy);
+  }
+
+  .info-block p:last-child {
+    margin-bottom: 0;
+  }
+</style>
