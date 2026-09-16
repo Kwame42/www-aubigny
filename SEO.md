@@ -94,6 +94,11 @@ cannibalisent : Google en choisit une et dilue l'autre.
 | `/visiter/` | local | dégustation, caveau Aluze | trafic caveau |
 | `/en/pro/` | commercial | trade, importer | contact B2B |
 
+**Carnet de Vigne** (Phase 3, pas au lancement)
+Journal de cave/vigne publié régulièrement (4 entrées/an min). Notes au fil des saisons : floraison, vendanges, fermentation. **Objectif : autorité + transparence, PAS de vente.**
+Chaque entrée = Article (schema.org avec `datePublished`). Attire liens éditoriaux + assistants IA.
+Exemple : "Septembre 2025 - Vendanges commencées. Rully en premier. Degrés Brix 11.5-12. Fermentation en cuves inox."
+
 **Règle de cannibalisation** : la page cuvée parle du *lieu* (intemporel),
 la fiche millésime parle du *vin de l'année* (transactionnel). Si les deux
 disent la même chose, fusionner ou différencier. La fiche millésime porte
