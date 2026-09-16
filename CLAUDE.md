@@ -231,6 +231,30 @@ Contenu maintenu dans la durée.
 - Carnet de vigne (4 entrées/an minimum)
 - QR codes → fiche millésime + charte du lieu
 
+## Images du Domaine
+
+**Répertoire : `../webp/`** — 87 images WebP du domaine, déjà optimisées.
+
+Catégories disponibles :
+- **27 nature** : paysages, environnement, saisons
+- **24 cuverie** : tonneaux, amphores, foudres, caves
+- **11 vin** : bouteilles, verres, dégustations
+- **11 chevaux** + 6 vaches + 2 chèvres (animaux)
+- **ferme, vignes, cuve**
+
+**À faire :**
+1. Copier les meilleures dans `public/images/` avec noms SEO descriptifs
+   - Exemple : `nature-104.webp` → `aluze-paysage-automnale.webp`
+2. **Diversifier les images** par page (ne pas réutiliser la même partout)
+3. Ajouter des `alt` factuels et descriptifs (pour SEO + accessibilité)
+4. Utiliser systématiquement pour :
+   - `/le-domaine/vignoble/` ← paysages + vignes
+   - `/le-domaine/vinification/` ← cuverie (foudres, amphores)
+   - `/le-domaine/metairie/animaux/` ← chevaux, vaches
+   - Accueil, histoire, carnet ← nature variée
+
+**Ne pas hésiter à diversifier** : il y a 87 images, l'occasion d'avoir du contenu visuel riche et non répétitif.
+
 ## Premier jalon technique
 
 Exposer le catalogue via l'API Odoo et générer les 9 fiches cuvée en Astro.
