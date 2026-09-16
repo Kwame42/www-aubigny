@@ -203,6 +203,34 @@ son pied de page. Nomenclature existante dans `../qrcode` :
 
 **Voir [SEO.md](./SEO.md) section "Ordre d'exécution"** pour le plan détaillé par phase (immédiat, lancement, 3-6 mois, continu) et les KPI réels.
 
+## Phasage des pages
+
+**Phase 1 — Lancement (2-3 semaines)**
+Pages critiques pour la conversion. Voir [SEO.md](./SEO.md) "Ordre d'exécution".
+- `/` Accueil
+- `/vins/` Catalogue + filtre
+- `/vins/<cuvee>/` Page cuvée (autorité)
+- `/vins/<cuvee>/<millesime>/` Fiche millésime **→ Odoo** ⭐
+- `/vins/monopoles/` Différenciation
+- `/visiter/` Caveau + dégustations (local)
+- `/contact/`, `/ou-nous-trouver/`
+- `/en/pro/` Trade (anglais, pro)
+- Mentions légales, CGV, confidentialité
+
+**Phase 2 — 3-6 mois**
+Contenu qui construit l'autorité et alimente le SEO. Voir [SEO.md](./SEO.md) "Cercle 2".
+- `/histoire/` Portail + occupation romaine + cisterciens 1132
+- `/histoire/archives/<slug>/` Une page par charte (transcription + traduction)
+- `/millesimes/<annee>/` Comptes-rendus annuels (météo + décisions)
+- `/le-domaine/` Portail ressemblant vignoble + vinification
+- `/le-domaine/metairie/compost/` Page clé — "aimant à liens"
+
+**Phase 3 — Au long cours**
+Contenu maintenu dans la durée.
+- Une charte d'archives par mois
+- Carnet de vigne (4 entrées/an minimum)
+- QR codes → fiche millésime + charte du lieu
+
 ## Premier jalon technique
 
 Exposer le catalogue via l'API Odoo et générer les 9 fiches cuvée en Astro.
