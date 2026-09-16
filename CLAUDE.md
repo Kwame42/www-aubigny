@@ -101,12 +101,13 @@ puis Mercurey), pas par prix.
 /ou-nous-trouver/                  Cavistes, restaurants, importateurs
 /visiter/                          Caveau, dégustations, accès
 /contact/
-/boutique/                         → checkout Odoo
 
 /pro/                              EN prioritaire — "Trade"
 /pro/inscription/                  Validation manuelle
 /pro/espace/                       Login — noindex
 ```
+
+**Achat & Boutique** : La fiche millésime (`/vins/<cuvee>/<millesime>/`) contient un bouton "Ajouter au panier" qui renvoie vers `shop.aubigny.wine` (Odoo). Pas de page `/boutique/` en Astro.
 
 Miroir EN sous `/en/`. Pages de service : mentions-legales, cgv,
 confidentialite, plan-du-site.
@@ -124,7 +125,7 @@ Les vins   |   Le domaine   |   Histoire   |   Visiter   |   Boutique
 - `Le domaine` → Vignoble, Vinification, La métairie (prés et bois, animaux,
   compost, biodiversité), L'équipe
 - `Histoire` → Époque romaine, Cisterciens, Archives
-- `Boutique` → bouton distinct visuellement (seul CTA de la barre)
+- `Boutique` → lien externe vers `shop.aubigny.wine` (Odoo), bouton distinct visuellement (seul CTA de la barre)
 
 **Pied de page**
 Où nous trouver · Contact · Espace pro (EN: Trade) · Millésimes · Carnet ·
@@ -144,7 +145,7 @@ Ordre imposé, du sensible au technique :
 2. Visuel bouteille + parcelle
 3. **Le vin** — 2 à 3 phrases : caractère, apogée, accords. Langage clair.
 4. **Le lieu** — extrait + lien vers `/vins/<cuvee>/`
-5. **Achat** — prix TTC, conditionnement, panier ou « épuisé »
+5. **Achat** — prix TTC, conditionnement, bouton "Ajouter au panier" → `shop.aubigny.wine` (Odoo) ou « épuisé »
 6. **Bloc technique** — tableau, visible, JAMAIS replié en accordéon :
    appellation, cépage, surface, âge des vignes, sol, exposition, altitude,
    bio (n° certification), rendement hl/ha, date de vendange, vinification,
@@ -214,9 +215,5 @@ dans le reste.
   de fiches : 9 cuvées × N millésimes × 2 langues)
 - Pays UE ouverts au checkout
 - Transporteur agréé et grille de frais de port
-- Frontière exacte Astro/Odoo sur les fiches millésime (page Astro avec
-  bouton vers Odoo, ou page produit Odoo directement) — décision
-  structurante restant à trancher
-- Menu de navigation (proposition ci-dessus à valider)
 - Cuvée d'hommage Nathan : accord explicite de la famille, de préférence
   écrit, et leur mot à dire sur le texte de l'étiquette
