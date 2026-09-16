@@ -1,4 +1,22 @@
+# robots.txt — aubigny.wine
+# Public content indexable, private/transactional blocked
+
 User-agent: *
 Allow: /
+Allow: /en/
 
-Sitemap: https://domaine-daubigny.fr/sitemap-index.xml
+# Block transactional & authenticated areas
+Disallow: /pro/espace/
+Disallow: /pro/inscription/
+Disallow: /checkout
+Disallow: /cart
+Disallow: /account
+Disallow: /search
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+# QR code regulatory pages (no marketing)
+Allow: /qr/
+
+# Sitemaps
+Sitemap: https://aubigny.wine/sitemap-index.xml

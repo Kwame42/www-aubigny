@@ -11,6 +11,11 @@ interface Props {
 }
 const { title, description = "", lang = "fr", image = "/images/q-nature-1.webp" } = Astro.props;
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
+
+// hreflang links for FR/EN mirrors
+const pathWithoutLang = Astro.url.pathname.replace(/^\/(en\/)?/, '/');
+const frUrl = Astro.site ? new URL(pathWithoutLang, Astro.site).href : pathWithoutLang;
+const enUrl = Astro.site ? new URL(`/en${pathWithoutLang}`, Astro.site).href : `/en${pathWithoutLang}`;
 ---
 
 <!doctype html>
@@ -21,6 +26,9 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : As
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
+    {lang === 'fr' && <link rel="alternate" hreflang="en" href={enUrl} />}
+    {lang === 'en' && <link rel="alternate" hreflang="fr" href={frUrl} />}
+    <link rel="alternate" hreflang="x-default" href={frUrl} />
     <link rel="icon" href="/images/blason.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
