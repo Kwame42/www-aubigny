@@ -59,6 +59,22 @@ Voir [CLAUDE.md](./CLAUDE.md) et [SEO.md](./SEO.md) pour le détail de chaque é
 - [ ] Vérification d'âge (overlay client, pas page intermédiaire)
 - [ ] Images WebP optimisées + descripteurs (alt, nom fichier)
 
+### Performance & Lighthouse (PRIORITAIRE)
+
+- [ ] Lighthouse 90+ vitesse (mobile)
+- [ ] Lighthouse 95+ accessibilité
+- [ ] Lighthouse 95+ best practices
+- [ ] Lighthouse 100% SEO
+- [ ] Core Web Vitals (mobile 4G) :
+  - [ ] LCP < 2,5s
+  - [ ] CLS < 0,1
+  - [ ] INP < 200ms
+- [ ] Pas de polices externes (serif système)
+- [ ] Pas de vidéos lourdes à l'accueil
+- [ ] Images avec dimensions explicites (évite CLS)
+- [ ] CSS inliné
+- [ ] PageSpeed Insights : 90+ en vitesse
+
 ---
 
 ## PHASE 2 — 3-6 mois

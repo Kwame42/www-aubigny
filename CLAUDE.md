@@ -203,6 +203,30 @@ son pied de page. Nomenclature existante dans `../qrcode` :
 
 **Voir [SEO.md](./SEO.md) section "Ordre d'exécution"** pour le plan détaillé par phase (immédiat, lancement, 3-6 mois, continu) et les KPI réels.
 
+## Performance & Lighthouse
+
+**Cibles obligatoires (Phase 1 & au-delà) :**
+- **Lighthouse** : 90+ en vitesse, 95+ en accessibilité, 95+ en best practices, 100% en SEO
+- **Core Web Vitals** (mobile 4G) :
+  - LCP < 2,5s (Largest Contentful Paint)
+  - CLS < 0,1 (Cumulative Layout Shift)
+  - INP < 200ms (Interaction to Next Paint)
+
+**Contraintes** :
+- ❌ Pas de polices externes (serif système uniquement)
+- ❌ Pas de vidéos lourdes à l'accueil
+- ✅ Images WebP optimisées avec Sharp
+- ✅ Astro statique (rapide par défaut)
+- ✅ CSS inliné (build: inlineStylesheets)
+- ✅ Dimensions explicites sur images (évite CLS)
+
+**À vérifier avant chaque release :**
+```bash
+npm run build && npm run preview
+# Lighthouse: DevTools → Lighthouse tab
+# Core Web Vitals: PageSpeed Insights sur https://aubigny.wine
+```
+
 ## Phasage — Pages & Éléments Techniques
 
 **Voir [SEO.md](./SEO.md) section "Ordre d'exécution"** pour le plan détaillé complet (technique + contenu).
