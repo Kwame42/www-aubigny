@@ -2,14 +2,21 @@
 import Base from "../layouts/Base.astro";
 import StatList from "../components/StatList.astro";
 import UniversGrid from "../components/UniversGrid.astro";
+import SchemaOrg from "../components/SchemaOrg.astro";
 import { domainStats, terroirStats, vessels } from "../data/pages";
 import { featured, euro } from "../data/wines";
+import { organization, getBreadcrumbSchema } from "../data/schema";
+
+const breadcrumb = getBreadcrumbSchema([
+  { name: "Accueil", url: "https://aubigny.wine/" }
+]);
 ---
 
 <Base
   title="Maison d'Aubigny — Grand Vin de Bourgogne, Aluze"
   description="Vingt hectares de vigne en agriculture biologique à Aluze, en Côte Chalonnaise, sur des terres cultivées depuis 1132. Vente directe des cuvées du domaine."
 >
+  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
   <section class="hero">
     <img src="/images/q-nature-1.webp" alt="Le vallon d'Aluze en automne, vignes rousses et bois de chênes" width="1600" height="1000" loading="eager" decoding="async" fetchpriority="high" />
     <div class="hero__veil"></div>

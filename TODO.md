@@ -8,6 +8,12 @@ Voir [CLAUDE.md](./CLAUDE.md) et [SEO.md](./SEO.md) pour le détail de chaque é
 
 ## IMMÉDIAT — Avant le lancement du site
 
+### Infos à fournir
+- [x] **Organization** : Domaine d'Aubigny, Aubigny 71510 Aluze, 0385447676, contact@aubigny.wine, lun-ven 09:00-17:00
+- [ ] Numéro de certification bio (pour Organization sameAs)
+- [ ] Instagram URL (pour Organization sameAs)
+
+### À faire
 - [ ] Google Business Profile complet (photos, horaires, avis)
 - [ ] Cohérence NAP stricte (nom/adresse/téléphone identique partout)
 - [ ] Inscription annuaires métier :
