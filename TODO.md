@@ -42,8 +42,15 @@ Voir [CLAUDE.md](./CLAUDE.md) et [SEO.md](./SEO.md) pour le détail de chaque é
 
 ### Technique & Infrastructure
 
-- [ ] `Product` + `Offer` (schema.org) sur chaque fiche millésime
-- [ ] `Organization` + `LocalBusiness` sur accueil
+**Rich Results / Enriched Results (Structured Data)**
+- [ ] `Organization` + `LocalBusiness` sur `/` (accueil) — Knowledge panel Google
+- [ ] `Product` + `Offer` sur chaque fiche millésime — Prix, dispo, notation
+- [ ] `BreadcrumbList` sur toutes les pages — Navigation SERP
+- [ ] `Article` sur `/millesimes/<annee>/` + Carnet — Rich snippet date
+- [ ] `FAQPage` si section questions (Phase 2+)
+- [ ] Valider avec Google Rich Results Test (https://search.google.com/test/rich-results)
+
+**Autre technique**
 - [ ] `hreflang` réciproques FR ↔ EN + `x-default`
 - [ ] Sitemaps (5 fichiers séparés) :
   - [ ] pages.xml

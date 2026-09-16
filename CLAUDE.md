@@ -269,9 +269,17 @@ Contenu maintenu dans la durée.
 - Annuaires métier (BIVB, Wine-Searcher, Vivino, CellarTracker)
 
 **PHASE 1 — Lancement (avec les pages)**
-- `Product` + `Offer` (schema.org) sur chaque fiche millésime
+
+*Rich Results / Enriched Results (Structured Data)*
+- `Organization` + `LocalBusiness` sur accueil (Knowledge panel Google)
+- `Product` + `Offer` sur chaque fiche millésime (prix, dispo, notation)
+- `BreadcrumbList` partout (navigation SERP)
+- `Article` sur millésimes (rich snippet avec date)
+- Valider avec Google Rich Results Test
+
+*Technique SEO*
 - `hreflang` réciproques FR ↔ EN
-- Sitemaps (5 sitemaps séparés : pages, vins, histoire, millesimes, images)
+- Sitemaps (5 fichiers : pages, vins, histoire, millesimes, images)
 - Search Console (FR + EN)
 - Plan de redirections 301 (si ancien site)
 - QR codes bouteilles → fiches millésime
