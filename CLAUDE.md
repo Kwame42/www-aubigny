@@ -2,6 +2,8 @@
 
 Contexte de travail pour toute session sur ce dépôt.
 
+> **Pour la stratégie commerciale, SEO et ordre d'exécution détaillés**, voir **[SEO.md](./SEO.md)** et **[../aubigny-strategie.txt](../aubigny-strategie.txt)**. Ce fichier couvre la structure technique et le modèle de contenu. La stratégie est l'autorité.
+
 ## Objectif
 
 **Nom de domaine : `aubigny.wine`** (confirmé).
@@ -14,33 +16,7 @@ Sous-domaines :
 Vendre le vin du domaine en direct (France + quelques pays UE) et servir de
 point d'entrée aux importateurs et professionnels étrangers.
 
-Le domaine : **une métairie cistercienne fondée en 1132**, toujours en
-fonctionnement. 20 ha de vigne en bio à Aluze (Côte Chalonnaise), au sein de
-**186 ha de prés et de bois exploités en propre**. Chevaux, vaches et autres
-animaux (une partie en pension), ruches, truffière. Le domaine **fabrique son
-propre compost sur place** et le remet dans ses vignes : la boucle
-cistercienne — prés, bêtes, fumier, compost, vigne — est encore fermée.
-
-Terres d'occupation gallo-romaine (stèle funéraire retrouvée sur place),
-implantation cistercienne en 1132. Fonds d'archives d'environ 100 pages en
-possession du domaine.
-
-**Le vin est central, la métairie est la révélation.** Le visiteur vient pour
-le vin — c'est ce qu'il cherche, c'est ce qu'il achète, et le site ne doit
-jamais l'en éloigner. Mais en creusant, il découvre ce qu'il y a derrière :
-une métairie cistercienne en fonctionnement, 186 ha de prés et de bois
-exploités en propre, des animaux, un compost fabriqué sur place et remis
-dans les vignes. La boucle prés → bêtes → fumier → compost → vigne est encore
-fermée, sur les mêmes terres depuis 1132.
-
-La métairie n'est donc pas un sujet parallèle : **c'est l'explication de la
-qualité du vin.** On ne la met pas en avant, on la fait découvrir — et le
-visiteur repart en comprenant *pourquoi* ces vins sont ce qu'ils sont.
-
-Conséquence pratique : jamais de page métairie en entrée de parcours. Elle
-se rejoint depuis les fiches cuvée, la page vinification, la page vignoble.
-Chaque fiche vin peut porter un lien du type « d'où vient la matière
-organique de cette parcelle ».
+*Pour le contexte complet du domaine (métairie, archives, positionnement), voir **[SEO.md](./SEO.md)** sections 2-4.*
 
 ## Stack
 
@@ -202,38 +178,9 @@ son pied de page. Nomenclature existante dans `../qrcode` :
 - Ton grand public en FR. EN **rédigé** pour un lecteur pro, pas traduit.
 - Ne jamais s'excuser d'un millésime. Décrire, pas justifier.
 
-## Référencement
+## Référencement et SEO
 
-**Ce qu'on vise** : le nom du domaine, les deux monopoles (concurrence nulle),
-les couples cuvée × millésime, les comptes-rendus de millésime, l'histoire
-(cisterciens, charte 1132, stèle), et le vocabulaire trade en anglais sur la
-Côte Chalonnaise — espace quasi vide.
-
-**Ce qu'on ne vise pas** : « acheter Mercurey en ligne » et assimilé. Terrain
-des marchands (Millesima, Vinatis, Twil, cavistes). Perdu d'avance.
-
-**Le seul avantage durable** : les données de première main. Un marchand
-recopie une fiche fournisseur ; seul le producteur publie dates de vendange,
-rendements réels, production en cols, comptes-rendus, archives. C'est aussi
-ce que les assistants IA extraient — ils se nourrissent mal d'évocation.
-
-**Technique**
-- `Organization` / `LocalBusiness` sur l'accueil
-- `Product` + `Offer` sur chaque fiche millésime (millésime, contenance,
-  prix, devise, disponibilité) — quasi aucun domaine ne le fait
-- `Article` sur les millésimes et le carnet, `BreadcrumbList` partout
-- `hreflang` réciproques + `x-default`, URLs `/en/` distinctes
-- **Ne jamais supprimer une page.** Millésime épuisé = page conservée,
-  marquée épuisée, liée au millésime courant.
-
-**Hors site** : Google Business Profile, cohérence nom/adresse/téléphone,
-Wine-Searcher, Vivino, CellarTracker, annuaire BIVB, pages exposants
-Wine Paris et Millésime Bio, Wikidata (factuel, sourcé, sans autopromotion).
-Backlinks : presse vin FR/EN, presse patrimoine, milieu universitaire —
-générés par le fonds d'archives, pas par l'optimisation on-page.
-
-**À proscrire** : pages doorway, texte caché, achat de liens, contenu généré
-en masse. Site vendant de l'alcool = catégorie surveillée.
+**Voir [SEO.md](./SEO.md)** pour la stratégie SEO complète, les trois cercles de rentabilité, le mapping page→intention, le maillage interne, les règles techniques, et l'ordre d'exécution.
 
 ## Contraintes légales
 
@@ -251,32 +198,9 @@ en masse. Site vendant de l'alcool = catégorie surveillée.
 - **Stèle gallo-romaine** : patrimoine archéologique, DRAC informée.
   Traitement respectueux, jamais un argument de vente.
 
-## Phasage
+## Phasage et Ordre d'Exécution
 
-**Phase 0 — hors site, indépendant**
-DRAC (statut de la stèle, lecture épigraphique) · Archives départementales 71
-(transcription des chartes) · numérisation HD du fonds, copie de conservation
-à part · Google Business Profile · cohérence des annuaires.
-
-**Phase 1 — le socle marchand**
-Catalogue structuré dans Odoo · 9 fiches cuvée + 1 page millésime +
-9 paragraphes de croisement, FR et EN · checkout Odoo France + UE, thémé ·
-espace pro et validation de compte · schema.org, hreflang, sitemaps.
-
-**Phase 2 — le contenu qui différencie**
-Pages histoire (romain, cisterciens, portail d'archives) · 3 à 5 chartes
-publiées, transcrites et traduites · premier compte-rendu de millésime ·
-page Trade EN · « Où nous trouver ».
-
-**Phase 3 — au long cours**
-Une charte publiée par mois · carnet de vigne (4 entrées/an suffisent,
-tenues dans la durée) · QR codes → fiche millésime et charte du lieu ·
-DE/JA selon les marchés · dossier presse anglais bâti sur les archives.
-
-**Priorité commerciale réelle**, dans l'ordre : fiches millésime > tunnel de
-commande et frais de port clairs > liste d'emails (2-3 envois par an, le
-canal qui vend le plus en direct) > carnet. Le carnet construit l'autorité,
-il ne vend pas directement.
+**Voir [SEO.md](./SEO.md) section "Ordre d'exécution"** pour le plan détaillé par phase (immédiat, lancement, 3-6 mois, continu) et les KPI réels.
 
 ## Premier jalon technique
 
