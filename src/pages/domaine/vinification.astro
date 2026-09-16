@@ -1,39 +1,11 @@
 ---
-import Base from "../../layouts/Base.astro";
-import PageHeader from "../../components/PageHeader.astro";
-import Section from "../../components/Section.astro";
-import Figure from "../../components/Figure.astro";
+import EditorialPage from "../../components/EditorialPage.astro";
+import { pages } from "../../data/pages";
 ---
 
-<Base title="La vinification — Domaine d'Aubigny" description="TODO : description de la vinification.">
-  <article class="article">
-    <PageHeader
-      back={{ href: "/", label: "Accueil" }}
-      eyebrow="Le domaine"
-      title="La vinification"
-      lead="TODO : phrase d'introduction."
-    />
-
-    <!-- TODO : photo d'ouverture -->
-    <Figure
-      src="/images/cuverie-hero.webp"
-      alt="TODO : décrire la photo"
-      caption="TODO : légende"
-      width={1600}
-      height={902}
-      eager
-    />
-
-    <Section title="Les rouges">
-      <p>TODO : contenu.</p>
-    </Section>
-
-    <Section title="Les blancs">
-      <p>TODO : contenu.</p>
-    </Section>
-
-    <Section title="Ce que nous publions">
-      <p>TODO : contenu.</p>
-    </Section>
-  </article>
-</Base>
+<EditorialPage
+  page={pages.vinification}
+  title="La vinification — Maison d'Aubigny"
+  description="Amphores, foudres et cuves inox : chaque cuvée est vinifiée séparément, et les choix sont publiés sur sa fiche."
+  lang="fr"
+/>

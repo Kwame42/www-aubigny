@@ -1,0 +1,13 @@
+---
+interface Props { stats: { v: string; u: string; k: string }[]; light?: boolean; }
+const { stats, light = false } = Astro.props;
+---
+
+<dl class={light ? "stats stats--light" : "stats"}>
+  {stats.map((s) => (
+    <div>
+      <dd>{s.v}{s.u && <span>{s.u}</span>}</dd>
+      <dt>{s.k}</dt>
+    </div>
+  ))}
+</dl>

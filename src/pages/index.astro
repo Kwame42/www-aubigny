@@ -1,74 +1,166 @@
 ---
 import Base from "../layouts/Base.astro";
-import Figure from "../components/Figure.astro";
-import WineCard from "../components/WineCard.astro";
-import { wines } from "../data/wines";
-
-const featured = ["mercurey-champs-martin-2023", "ouche-maison-rouge", "grand-pres-aubigny", "rully-blanc"]
-  .map((slug) => wines.find((w) => w.slug === slug)!)
-  .filter(Boolean);
+import StatList from "../components/StatList.astro";
+import UniversGrid from "../components/UniversGrid.astro";
+import { domainStats, terroirStats, vessels } from "../data/pages";
+import { featured, euro } from "../data/wines";
 ---
 
 <Base
-  title="Domaine d'Aubigny — Aluze, Côte Chalonnaise"
-  description="Vingt hectares de vigne en agriculture biologique à Aluze, en Côte Chalonnaise. Vente directe des cuvées du domaine."
+  title="Maison d'Aubigny — Grand Vin de Bourgogne, Aluze"
+  description="Vingt hectares de vigne en agriculture biologique à Aluze, en Côte Chalonnaise, sur des terres cultivées depuis 1132. Vente directe des cuvées du domaine."
 >
-  <!-- TODO : photo d'ouverture pleine largeur -->
-  <Figure
-    src="/images/accueil-hero.webp"
-    alt="TODO : décrire la photo"
-    width={1600}
-    height={902}
-    maxHeight="78vh"
-    eager
-  />
-
-  <section class="intro">
-    <h1>TODO : phrase d'accroche du domaine.</h1>
-    <p class="lead">TODO : deux lignes sur la vente directe et les cuvées.</p>
-    <div class="intro__actions">
-      <a class="btn" href="/vins/">Découvrir les vins</a>
-      <a class="btn btn--ghost" href="/domaine/">Le domaine</a>
+  <section class="hero">
+    <img src="/images/q-nature-1.webp" alt="Le vallon d'Aluze en automne, vignes rousses et bois de chênes" width="1600" height="1000" loading="eager" decoding="async" fetchpriority="high" />
+    <div class="hero__veil"></div>
+    <div class="hero__in">
+      <img class="hero__blason" src="/images/blason.png" width="268" height="264" alt="" />
+      <p class="eyebrow eyebrow--center eyebrow--light hero__kicker">Grand Vin de Bourgogne</p>
+      <h1 class="hero__title"><span>Maison</span><span class="hero__italic">d'Aubigny</span></h1>
+      <p class="hero__motto">Le Goût de la Vie</p>
+      <p class="hero__meta">Côte Chalonnaise · Rully · Mercurey · Agriculture Biologique</p>
+      <div class="hero__actions">
+        <a class="btn" href="/vins/">Découvrir nos vins</a>
+        <a class="btn btn--outline-light" href="/domaine/">Le domaine</a>
+      </div>
     </div>
   </section>
 
-  <section class="wrap wines">
-    <h2 class="wines__title">TODO : titre de la sélection</h2>
-    <div class="grid grid--cards">
-      {featured.map((wine) => <WineCard wine={wine} />)}
+  <section class="split">
+    <div class="split__text split__text--navy">
+      <p class="eyebrow eyebrow--light">Le Domaine</p>
+      <h2>Un territoire où la nature est <em>sublimée</em></h2>
+      <p>Vingt hectares de vigne en agriculture biologique à Aluze, en Côte Chalonnaise, sur des terres cultivées depuis 1132.</p>
+      <p>Le domaine vend ses vins en direct, à la propriété et par expédition. Cinq cuvées, dont deux monopoles : Bourgogne, Rully, Mercurey.</p>
+      <StatList stats={domainStats} light />
+    </div>
+    <img class="split__img" src="/images/p-vignes.webp" alt="Vignes et hameau d'Aluze au petit matin, coteaux boisés à l'arrière-plan" width="1400" height="1000" loading="lazy" decoding="async" />
+  </section>
+
+  <section class="cuvees">
+    <div class="cuvees__head">
+      <p class="eyebrow eyebrow--center eyebrow--light">Nos Cuvées</p>
+      <h2>La <em>quintessence</em> de Bourgogne</h2>
+      <p class="cuvees__sub">Récoltés à la main, élevés dans les caves voûtées du domaine</p>
+      <a class="btn btn--sm" href="/vins/">Notre sélection</a>
+    </div>
+    <div class="cuvees__grid">
+      {featured.map((wine) => (
+        <a class="tile" href={wine.href || "/vins/"}>
+          <span class="tile__tag">{wine.tag}</span>
+          <span class="tile__name">{wine.name}</span>
+          <span class="tile__sub">{wine.sub}</span>
+          <span class="tile__rule"></span>
+          <span class="tile__note">{wine.note}</span>
+          <span class="tile__price">{euro(wine.price)}<span>ttc</span></span>
+          <span class="tile__cta">Commander</span>
+        </a>
+      ))}
     </div>
   </section>
 
-  <section class="wrap">
-    <Figure
-      src="/images/accueil-secondaire.webp"
-      alt="TODO : décrire la photo"
-      caption="TODO : légende"
-      width={1600}
-      height={1067}
-    />
+  <section class="split split--reverse">
+    <img class="split__img" src="/images/p-cuverie-amphores.webp" alt="Amphores en terre cuite et foudres de chêne sous les voûtes de pierre" width="1400" height="1000" loading="lazy" decoding="async" />
+    <div class="split__text split__text--navy">
+      <p class="eyebrow eyebrow--light">La Cave</p>
+      <h2>L'art de <em>l'élevage</em></h2>
+      <p>Sous les voûtes de pierre, trois vaisseaux de vinification dialoguent pour exprimer le meilleur de chaque terroir et de chaque millésime.</p>
+      <p>Amphores en terre cuite pour la minéralité, foudres de chêne pour la complexité, cuves inox thermo-régulées pour la fraîcheur aromatique.</p>
+      <div class="vessels">
+        {vessels.map((v) => (
+          <div>
+            <p class="vessels__name">{v.name}</p>
+            <p class="vessels__detail">{v.detail}</p>
+          </div>
+        ))}
+      </div>
+      <p class="split__cta"><a class="btn btn--gold-dim btn--sm" href="/domaine/vinification/">Visiter le chai</a></p>
+    </div>
   </section>
 
-  <section class="wrap way">
-    <img class="way__img" src="/images/accueil-carre.webp" alt="TODO" width="1000" height="1000" loading="lazy" />
-    <div>
-      <h2>TODO : titre du bloc « notre façon de faire »</h2>
-      <p>TODO : paragraphe.</p>
-      <p>TODO : paragraphe.</p>
-      <a href="/domaine/compost/">Le compost du domaine, en détail</a>
+  <section class="split split--light">
+    <img class="split__img" src="/images/q-nature-104.webp" alt="Chemin bordé de vignes descendant vers le village, lumière du matin" width="1400" height="1000" loading="lazy" decoding="async" />
+    <div class="split__text">
+      <p class="eyebrow">Le Terroir</p>
+      <h2>Une terre qui sourit à la <em>vie</em></h2>
+      <p>Les sols sont argilo-calcaires sur l'ensemble du vignoble, entre 250 et 330 mètres d'altitude. Les 20 hectares sont certifiés en agriculture biologique, et la fertilisation vient du compost fabriqué sur le domaine.</p>
+      <StatList stats={terroirStats} />
     </div>
+  </section>
+
+  <section class="quote">
+    <blockquote>
+      <p>« Ici, dans un cadre enchanteur au cœur de la Bourgogne, nous façonnons un lieu unique où se mêlent tourisme, agriculture et gastronomie. »</p>
+      <footer>— Maison d'Aubigny · Le Goût de la Vie</footer>
+    </blockquote>
+  </section>
+
+  <section>
+    <div class="univers__head">
+      <p class="eyebrow eyebrow--center">Le Domaine</p>
+      <h2>Six <em>univers</em> à découvrir</h2>
+      <p>Un lieu de vie complet au cœur de la Côte Chalonnaise</p>
+    </div>
+    <UniversGrid />
   </section>
 </Base>
 
 <style>
-  .intro { max-width: 760px; margin: 0 auto; padding: clamp(28px, 8vw, 56px) var(--pad-x) 0; }
-  .intro h1 { font-size: clamp(27px, 7.4vw, 44px); line-height: 1.18; }
-  .intro__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-  .intro__actions .btn { flex: 1 1 220px; }
-  .wines { padding-top: clamp(44px, 10vw, 80px); }
-  .wines__title { margin: 0 0 10px; font-size: clamp(17px, 4.4vw, 19px); font-style: italic; font-weight: 400; color: var(--muted); }
-  .way { margin-top: clamp(44px, 10vw, 80px); display: grid; gap: clamp(20px, 5vw, 40px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); align-items: center; }
-  .way__img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
-  .way h2 { margin: 0 0 14px; font-size: clamp(21px, 5.4vw, 28px); font-weight: 400; line-height: 1.25; }
-  .way p { margin: 0 0 12px; font-size: clamp(16px, 4.2vw, 17px); line-height: 1.62; color: var(--body); }
+  .hero { position: relative; min-height: 88vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy); }
+  .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero__veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,47,0.52) 0%, rgba(20,32,47,0.18) 45%, rgba(20,32,47,0.66) 100%); }
+  .hero__in { position: relative; width: 100%; max-width: 900px; padding: clamp(56px, 12vw, 96px) var(--pad-x); text-align: center; color: #FFFFFF; }
+  .hero__blason { width: clamp(72px, 16vw, 104px); height: auto; margin: 0 auto 26px; }
+  .hero__kicker { justify-content: center; color: var(--gold-pale); margin-bottom: 22px; }
+  .hero__kicker::before, .hero__kicker::after { background: rgba(228,216,184,0.6); }
+  .hero__title { font-size: clamp(42px, 13vw, 104px); line-height: 0.96; letter-spacing: -0.01em; }
+  .hero__title span { display: block; }
+  .hero__italic { font-style: italic; color: var(--cream-hi); }
+  .hero__motto { margin: 18px 0 0; font-size: clamp(17px, 4.6vw, 24px); font-style: italic; color: var(--cream); }
+  .hero__meta { margin: 20px 0 0; font-size: clamp(10px, 2.6vw, 12px); letter-spacing: 0.2em; text-transform: uppercase; color: #D6CFC2; line-height: 2.1; }
+  .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
+  .hero__actions .btn { flex: 0 1 260px; min-height: 54px; }
+
+  .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); background: var(--navy); }
+  .split--reverse { direction: ltr; }
+  .split__text { padding: clamp(40px, 9vw, 88px) clamp(20px, 5vw, 64px); }
+  .split__text--navy { background: var(--navy); color: var(--cream); }
+  .split__text h2 { margin: 0 0 26px; font-size: clamp(30px, 8vw, 52px); font-weight: 400; line-height: 1.1; text-wrap: pretty; }
+  .split__text--navy h2 em { font-style: italic; color: var(--cream-hi); }
+  .split__text h2 em { font-style: italic; color: var(--gold-ink); }
+  .split__text p { margin: 0 0 18px; font-size: clamp(15px, 4vw, 17px); line-height: 1.85; color: var(--body); }
+  .split__text--navy p { color: var(--on-navy); }
+  .split__img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; }
+  .split--light { background: var(--bg); }
+  .split__cta { margin: 30px 0 0; }
+  .vessels { display: grid; gap: 22px 20px; grid-template-columns: repeat(auto-fit, minmax(min(50% - 10px, 140px), 1fr)); border-top: 1px solid var(--navy-line); padding-top: 28px; margin-top: 10px; }
+  .vessels__name { margin: 0; font-size: clamp(19px, 5vw, 23px); color: var(--cream); }
+  .vessels__detail { margin: 8px 0 0; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-navy-muted); }
+
+  .cuvees { background: var(--navy); color: var(--cream); padding: clamp(48px, 11vw, 96px) 0 0; }
+  .cuvees__head { max-width: var(--w-wide); margin: 0 auto; padding: 0 var(--pad-x); text-align: center; }
+  .cuvees__head h2 { margin: 0 0 18px; font-size: clamp(30px, 8.4vw, 56px); font-weight: 400; line-height: 1.08; }
+  .cuvees__head h2 em { font-style: italic; color: var(--cream-hi); }
+  .cuvees__sub { margin: 0 0 30px; font-size: clamp(15px, 4vw, 17px); font-style: italic; color: var(--nav-item); }
+  .cuvees__grid { max-width: var(--w-wide); margin: clamp(40px, 9vw, 72px) auto 0; padding: 0 var(--pad-x) clamp(48px, 11vw, 96px); display: grid; gap: 1px; background: var(--navy-line); grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .tile { background: var(--navy); padding: clamp(28px, 6vw, 44px) clamp(18px, 4vw, 30px); display: flex; flex-direction: column; align-items: center; text-align: center; color: var(--cream); text-decoration: none; }
+  .tile:hover { background: var(--navy-soft); color: var(--cream); }
+  .tile__tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #A18A52; }
+  .tile__name { margin-top: 14px; font-size: clamp(22px, 5.6vw, 27px); line-height: 1.2; }
+  .tile__sub { margin-top: 9px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .tile__rule { width: 34px; height: 1px; background: #3A475A; margin: 20px 0; }
+  .tile__note { font-size: 15px; line-height: 1.8; color: var(--nav-item); }
+  .tile__price { margin-top: 24px; font-size: clamp(24px, 6vw, 30px); line-height: 1; }
+  .tile__price span { margin-left: 6px; font-size: 0.34em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .tile__cta { margin-top: 22px; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; border: 1px solid var(--gold-dim); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+  .quote { background: var(--navy); color: var(--cream); padding: clamp(56px, 13vw, 120px) var(--pad-x); text-align: center; }
+  .quote blockquote { margin: 0 auto; max-width: 900px; }
+  .quote p { margin: 0; font-size: clamp(21px, 5.6vw, 38px); font-style: italic; line-height: 1.5; color: #FFFFFF; }
+  .quote footer { margin-top: 30px; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: #A18A52; }
+
+  .univers__head { max-width: var(--w-wide); margin: 0 auto; padding: clamp(48px, 11vw, 88px) var(--pad-x) clamp(30px, 7vw, 48px); text-align: center; }
+  .univers__head h2 { margin: 0 0 16px; font-size: clamp(30px, 8.4vw, 54px); font-weight: 400; line-height: 1.08; }
+  .univers__head h2 em { font-style: italic; color: var(--gold-ink); }
+  .univers__head p { margin: 0; font-size: clamp(15px, 4vw, 17px); font-style: italic; color: var(--muted); }
 </style>

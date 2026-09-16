@@ -1,31 +1,69 @@
 ---
 import Base from "../../layouts/Base.astro";
-import PageHeader from "../../components/PageHeader.astro";
 import WineCard from "../../components/WineCard.astro";
-import { wines, groups } from "../../data/wines";
+import { groups, catalogue } from "../../data/wines";
 ---
 
-<Base title="Les vins — Domaine d'Aubigny" description="TODO : description de la page catalogue.">
-  <article class="article">
-    <PageHeader title="Les vins" lead="TODO : une ou deux lignes de présentation du catalogue." />
-  </article>
-
-  <div class="wrap catalogue">
-    {groups.map((group) => (
-      <section class="catalogue__group">
-        <h2>{group}</h2>
-        <p class="catalogue__note">TODO : note d'appellation (optionnel).</p>
-        <div class="grid grid--cards">
-          {wines.filter((w) => w.group === group).map((wine) => <WineCard wine={wine} />)}
-        </div>
-      </section>
-    ))}
+<Base
+  title="Les vins — Maison d'Aubigny"
+  description="Commander directement les cinq cuvées du domaine : Bourgogne, Rully, Mercurey 1er Cru et les deux monopoles d'Aluze. Livraison France et Europe."
+>
+  <div class="shop-head">
+    <p class="eyebrow eyebrow--center">Boutique en ligne</p>
+    <h1>Commander <em>directement</em></h1>
+    <p class="shop-head__sub">Livraison en France et en Europe · Paiement sécurisé · Expédié depuis le domaine</p>
   </div>
+
+  {groups.map((group) => (
+    <section class="shop-group">
+      <p class="eyebrow">{group.title}</p>
+      <p class="shop-group__note">{group.note}</p>
+      <div class="shop-group__grid">
+        {group.wines.map((wine) => <WineCard wine={wine} />)}
+      </div>
+    </section>
+  ))}
+
+  <section class="wrap" id="panier">
+    <div class="panier">
+      <div class="panier__top">
+        <p class="eyebrow eyebrow--light">Votre panier</p>
+        <button type="button" data-cart-clear>Vider le panier</button>
+      </div>
+      <p class="panier__empty" data-cart-empty>Votre panier est vide.</p>
+      <div data-cart-lines></div>
+      <div class="panier__foot">
+        <div>
+          <p class="panier__label">Total TTC</p>
+          <p class="panier__ship">Livraison offerte dès 6 bouteilles</p>
+        </div>
+        <p class="panier__total" data-cart-total>0 €</p>
+      </div>
+      <a class="btn panier__go" href="/contact/">Finaliser la commande →</a>
+      <p class="panier__fine">Paiement sécurisé · Livraison 3–5 jours ouvrés · France et Europe</p>
+    </div>
+  </section>
+
+  <script type="application/json" id="panier-catalogue" set:html={JSON.stringify(catalogue)}></script>
 </Base>
 
 <style>
-  .catalogue { padding-top: clamp(28px, 7vw, 48px); }
-  .catalogue__group { margin-top: clamp(36px, 9vw, 64px); }
-  .catalogue__group h2 { margin: 0 0 2px; font-size: clamp(17px, 4.4vw, 19px); font-style: italic; font-weight: 400; color: var(--muted); }
-  .catalogue__note { margin: 0 0 10px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+  .shop-head { max-width: var(--w-wide); margin: 0 auto; padding: clamp(40px, 9vw, 80px) var(--pad-x) clamp(28px, 6vw, 44px); text-align: center; }
+  .shop-head__sub { margin: 0; font-size: clamp(14px, 3.8vw, 16px); font-style: italic; line-height: 1.8; color: var(--muted); }
+  .shop-group { max-width: var(--w-wide); margin: 0 auto clamp(36px, 8vw, 60px); padding: 0 var(--pad-x); }
+  .shop-group .eyebrow { margin-bottom: 6px; }
+  .shop-group__note { margin: 0 0 20px; padding-left: 58px; font-size: 14px; font-style: italic; line-height: 1.6; color: var(--muted); }
+  .shop-group__grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+
+  .panier { background: var(--navy); color: var(--cream); padding: clamp(26px, 6vw, 40px); }
+  .panier__top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 14px; border-bottom: 1px solid var(--navy-line); padding-bottom: 18px; }
+  .panier__top .eyebrow { margin: 0; }
+  .panier__top button { background: none; border: 0; padding: 8px 0; min-height: 40px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-navy-muted); cursor: pointer; }
+  .panier__empty { margin: 20px 0 0; font-size: 15px; font-style: italic; line-height: 1.7; color: var(--on-navy-muted); }
+  .panier__foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px; margin-top: 24px; }
+  .panier__label { margin: 0; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .panier__ship { margin: 7px 0 0; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6B7684; }
+  .panier__total { margin: 0; font-size: clamp(30px, 8vw, 44px); line-height: 1; }
+  .panier__go { width: 100%; min-height: 54px; margin-top: 24px; }
+  .panier__fine { margin: 16px 0 0; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #6B7684; line-height: 1.9; }
 </style>

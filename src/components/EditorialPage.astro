@@ -1,0 +1,46 @@
+---
+import Base from "../layouts/Base.astro";
+import Figure from "./Figure.astro";
+import type { EditorialPageData } from "../data/pages";
+
+interface Props { page: EditorialPageData; title: string; description?: string; lang?: string; }
+const { page, title, description, lang = "fr" } = Astro.props;
+---
+
+<Base title={title} description={description} lang={lang} image={page.figure ? page.figure.src : undefined}>
+  <section class="page-head">
+    <div class="page-head__in">
+      <p class="eyebrow eyebrow--center eyebrow--light">{page.eyebrow}</p>
+      <h1>{page.title} <em>{page.titleItalic}</em></h1>
+      <p class="page-head__lead">{page.lead}</p>
+    </div>
+  </section>
+
+  {page.figure && <Figure src={page.figure.src} alt={page.figure.alt} caption={page.figure.caption} eager />}
+
+  <article class="article">
+    <a class="back" href={page.backHref}>{page.back}</a>
+
+    {page.sections.map((s) => (
+      <section class="section">
+        <h2>{s.title}</h2>
+        {s.paras.map((p) => <p>{p}</p>)}
+        {s.todo && <p class="todo">{s.todo}</p>}
+      </section>
+    ))}
+
+    {page.pair && (
+      <div class="pair">
+        {page.pair.map((im) => <img src={im.src} alt={im.alt} width="1200" height="900" loading="lazy" decoding="async" />)}
+      </div>
+    )}
+
+    {page.card && (
+      <div class="card-navy">
+        <h2>{page.card.title}</h2>
+        <p>{page.card.text}</p>
+        <a class="btn" href={page.card.ctaHref}>{page.card.cta}</a>
+      </div>
+    )}
+  </article>
+</Base>

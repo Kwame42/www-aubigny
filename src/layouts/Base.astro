@@ -2,14 +2,15 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import LeafOverlay from "../components/LeafOverlay.astro";
 
 interface Props {
   title: string;
   description?: string;
   lang?: string;
+  image?: string;
 }
-const { title, description = "", lang = "fr" } = Astro.props;
+const { title, description = "", lang = "fr", image = "/images/q-nature-1.webp" } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -19,16 +20,26 @@ const { title, description = "", lang = "fr" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/images/blason.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    {Astro.site && <meta property="og:image" content={new URL(image, Astro.site).href} />}
     <slot name="head" />
   </head>
   <body>
-    <a class="skip" href="#contenu" style="position:absolute;left:-9999px">Aller au contenu</a>
-    <LeafOverlay />
+    <a class="skip" href="#contenu">Aller au contenu</a>
     <Header />
     <main id="contenu">
       <slot />
     </main>
     <Footer />
+    <script src="/panier.js" defer></script>
+    <style is:global>
+      .skip { position: absolute; left: -9999px; }
+      .skip:focus { left: 12px; top: 12px; z-index: 40; background: var(--gold); color: var(--navy); padding: 10px 16px; }
+    </style>
   </body>
 </html>

@@ -1,13 +1,20 @@
 ---
 import Base from "../layouts/Base.astro";
-import PageHeader from "../components/PageHeader.astro";
 import Section from "../components/Section.astro";
 ---
 
-<Base title="Conditions générales de vente — Domaine d'Aubigny" description="TODO">
-  <article class="article">
-    <PageHeader back={{ href: "/", label: "Accueil" }} title="Conditions générales de vente" />
+<Base title="Conditions générales de vente — Maison d'Aubigny" description="Conditions générales de vente du site de la Maison d'Aubigny.">
+  <section class="page-head">
+    <div class="page-head__in">
+      <p class="eyebrow eyebrow--center eyebrow--light">Informations légales</p>
+      <h1>Conditions générales de <em>vente</em></h1>
+    </div>
+  </section>
 
-    <Section title="TODO : intertitre"><p>TODO : texte fourni par votre juriste.</p></Section>
+  <article class="article">
+    <a class="back" href="/">← Accueil</a>
+    <Section title="Conditions générales de vente">
+      <p class="todo">texte à fournir par votre juriste</p>
+    </Section>
   </article>
 </Base>

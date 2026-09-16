@@ -1,11 +1,24 @@
 ---
 import Base from "../layouts/Base.astro";
-import PageHeader from "../components/PageHeader.astro";
 ---
 
-<Base title="Page introuvable — Domaine d'Aubigny">
+<Base title="Page introuvable — Maison d'Aubigny" description="Cette page n'existe pas ou a été déplacée.">
+  <section class="page-head">
+    <div class="page-head__in">
+      <p class="eyebrow eyebrow--center eyebrow--light">Erreur 404</p>
+      <h1>Page <em>introuvable</em></h1>
+      <p class="page-head__lead">Cette page n'existe pas, ou a été déplacée.</p>
+    </div>
+  </section>
+
   <article class="article">
-    <PageHeader title="Page introuvable" lead="La page demandée n'existe pas ou a été déplacée." />
-    <p style="margin-top: 28px"><a class="btn" href="/">Retour à l'accueil</a></p>
+    <div class="actions">
+      <a class="btn" href="/">Accueil</a>
+      <a class="btn btn--outline" href="/vins/">Les vins</a>
+    </div>
   </article>
 </Base>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+</style>

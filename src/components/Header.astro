@@ -1,32 +1,32 @@
 ---
 import { site, nav } from "../data/site";
+const path = Astro.url.pathname;
 ---
 
 <header class="site-header">
-  <div class="site-header__bar wrap">
+  <div class="site-header__bar">
     <a class="brand" href="/">
-      <span class="brand__mark">
-        <!-- TODO : remplacer par le blason vectoriel (public/blason.svg) -->
-        <img src="/blason.svg" alt="" width="26" height="26" />
-      </span>
+      <img src="/images/blason.png" width="268" height="264" alt="" />
       <span class="brand__text">
         <span class="brand__name">{site.name}</span>
         <span class="brand__tag">{site.tagline}</span>
       </span>
     </a>
-    <a class="btn btn--small" href="/vins/">Boutique</a>
+    <a class="btn btn--gold-dim btn--sm shop" href="/vins/">
+      Boutique<span class="shop__count" data-cart-count hidden></span>
+    </a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 
   <nav id="nav-principal" class="site-nav" aria-label="Navigation principale" hidden>
-    <div class="wrap site-nav__cols">
+    <div class="site-nav__cols">
       {nav.map((group) => (
         <div class="site-nav__col">
-          <a class="site-nav__head" href={group.href}>{group.label}</a>
+          <a class="site-nav__head" href={group.href} aria-current={path === group.href ? "page" : undefined}>{group.label}</a>
           {group.children.map((item) => (
-            <a class="site-nav__item" href={item.href}>{item.label}</a>
+            <a class="site-nav__item" href={item.href} aria-current={path === item.href ? "page" : undefined}>{item.label}</a>
           ))}
         </div>
       ))}
@@ -35,24 +35,29 @@ import { site, nav } from "../data/site";
 </header>
 
 <style>
-  .site-header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--rule); }
-  .site-header__bar { display: flex; align-items: center; gap: 12px; padding-block: 12px; }
-  .brand { flex: 1; display: flex; align-items: center; gap: 9px; text-decoration: none; color: inherit; }
-  .brand__text { display: flex; flex-direction: column; gap: 3px; }
-  .brand__name { font-size: clamp(15px, 4.2vw, 19px); letter-spacing: 0.16em; text-transform: uppercase; line-height: 1; }
-  .brand__tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-  .btn--small { min-height: 44px; padding: 0 18px; font-size: 15px; }
-  .burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; min-height: 44px; padding: 0 11px; background: none; border: 1px solid var(--rule); border-radius: var(--r-pill); cursor: pointer; }
-  .burger span { display: block; height: 1px; background: var(--ink); }
-  .site-nav { border-top: 1px solid var(--rule); background: var(--bg); }
-  .site-nav__cols { display: grid; gap: 22px; padding: 8px 0 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
-  .site-nav__col { display: flex; flex-direction: column; border-top: 1px solid var(--rule); padding-top: 12px; }
-  .site-nav__head { padding: 12px 0; font-size: 21px; text-decoration: none; color: inherit; }
-  .site-nav__item { padding: 8px 0; min-height: 44px; display: flex; align-items: center; font-size: 15px; color: var(--muted); text-decoration: none; }
+  .site-header { position: sticky; top: 0; z-index: 20; background: var(--navy); color: var(--cream); border-bottom: 1px solid var(--navy-line); }
+  .site-header__bar { max-width: var(--w-wide); margin: 0 auto; padding: 12px var(--pad-x); display: flex; align-items: center; gap: 12px; }
+  .brand { flex: 1; display: flex; align-items: center; gap: 11px; text-decoration: none; color: inherit; min-height: 44px; }
+  .brand:hover { color: inherit; }
+  .brand img { width: 30px; height: auto; }
+  .brand__text { display: flex; flex-direction: column; gap: 4px; }
+  .brand__name { font-size: clamp(13px, 3.8vw, 16px); letter-spacing: 0.24em; text-transform: uppercase; line-height: 1; }
+  .brand__tag { font-size: clamp(10px, 2.8vw, 12px); font-style: italic; color: var(--gold); }
+  .shop { gap: 8px; }
+  .shop__count { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 5px; background: var(--gold); color: var(--navy); font-size: 11px; letter-spacing: 0; }
+  .burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; min-height: 44px; padding: 0 11px; background: none; border: 1px solid var(--navy-line); cursor: pointer; }
+  .burger span { display: block; height: 1px; background: var(--cream); }
+  .site-nav { border-top: 1px solid var(--navy-line); background: var(--navy); }
+  .site-nav__cols { max-width: var(--w-wide); margin: 0 auto; padding: 8px var(--pad-x) 28px; display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+  .site-nav__col { display: flex; flex-direction: column; border-top: 1px solid var(--navy-line); padding-top: 12px; }
+  .site-nav__head { padding: 12px 0; min-height: 44px; display: flex; align-items: center; font-size: 21px; color: var(--cream); text-decoration: none; }
+  .site-nav__item { padding: 8px 0; min-height: 44px; display: flex; align-items: center; font-size: 15px; color: var(--nav-item); text-decoration: none; }
+  .site-nav__head:hover, .site-nav__item:hover { color: var(--gold); }
+  [aria-current="page"] { color: var(--gold); }
 </style>
 
 <script>
-  const burger = document.querySelector<HTMLButtonElement>(".burger");
+  const burger = document.querySelector(".burger");
   const menu = document.getElementById("nav-principal");
   burger?.addEventListener("click", () => {
     const open = burger.getAttribute("aria-expanded") === "true";

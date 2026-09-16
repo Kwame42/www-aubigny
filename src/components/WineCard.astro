@@ -1,22 +1,49 @@
 ---
 import type { Wine } from "../data/wines";
+import { euro } from "../data/wines";
 interface Props { wine: Wine; }
 const { wine } = Astro.props;
-const href = wine.page ?? `/vins/${wine.slug}/`;
 ---
 
-<a class="wine" href={href}>
-  <span class="wine__tag">{wine.tag}</span>
-  <span class="wine__name">{wine.name}</span>
-  <span class="wine__origin">{wine.origin} · {wine.colour}</span>
-  <span class="wine__price">{wine.price}</span>
-</a>
+<article class="wine">
+  <div class="wine__ground" style={"background: " + wine.ground + ";"}>
+    <img src="/images/blason.png" width="268" height="264" alt="" loading="lazy" decoding="async" />
+  </div>
+  <div class="wine__body">
+    <p class="wine__tag">{wine.tag}</p>
+    <h2 class="wine__name">{wine.name}</h2>
+    <p class="wine__sub">{wine.sub}</p>
+    <span class="wine__rule"></span>
+    <p class="wine__note">{wine.note}</p>
+    <p class="wine__price">{euro(wine.price)}<span>ttc</span></p>
+    <div class="wine__buy">
+      <div class="stepper" data-stepper={wine.id}>
+        <button type="button" data-step="-1" aria-label="Retirer une bouteille">−</button>
+        <span data-qty-out aria-live="polite">1</span>
+        <button type="button" data-step="1" aria-label="Ajouter une bouteille">+</button>
+      </div>
+      <button class="btn btn--outline wine__add" type="button" data-add={wine.id}>Ajouter au panier</button>
+    </div>
+    {wine.href && <a class="wine__more" href={wine.href}>Voir la fiche</a>}
+  </div>
+</article>
 
 <style>
-  .wine { display: flex; flex-direction: column; gap: 8px; padding: 22px 18px 26px 20px; background: var(--card); border-radius: var(--r-tile); text-decoration: none; color: inherit; }
-  .wine:hover { background: var(--card-hi); color: inherit; }
-  .wine__tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
-  .wine__name { font-size: clamp(19px, 5vw, 22px); line-height: 1.25; }
-  .wine__origin { font-size: 14px; color: var(--muted); line-height: 1.5; }
-  .wine__price { margin-top: 4px; font-family: var(--mono); font-size: 13px; }
+  .wine { background: var(--card); display: flex; flex-direction: column; }
+  .wine__ground { display: flex; align-items: center; justify-content: center; padding: clamp(28px, 6vw, 44px) 0; }
+  .wine__ground img { width: clamp(56px, 13vw, 78px); height: auto; opacity: 0.9; }
+  .wine__body { padding: clamp(22px, 5vw, 30px); display: flex; flex-direction: column; flex: 1; align-items: center; text-align: center; }
+  .wine__tag { margin: 0; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-ink); }
+  .wine__name { margin: 14px 0 0; font-size: clamp(21px, 5.4vw, 26px); font-weight: 400; line-height: 1.2; }
+  .wine__sub { margin: 9px 0 0; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .wine__rule { width: 34px; height: 1px; background: var(--rule); margin: 20px 0; }
+  .wine__note { margin: 0; flex: 1; font-size: 15px; line-height: 1.8; color: var(--body); }
+  .wine__price { margin: 22px 0 18px; font-size: clamp(24px, 6vw, 30px); line-height: 1; }
+  .wine__price span { margin-left: 6px; font-size: 0.34em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .wine__buy { display: flex; gap: 10px; align-items: stretch; width: 100%; }
+  .wine__add { flex: 1; min-height: 48px; padding: 0 14px; }
+  .stepper { display: flex; border: 1px solid var(--rule); background: #FFFFFF; }
+  .stepper button { width: 44px; min-height: 48px; background: none; border: 0; font-size: 18px; cursor: pointer; }
+  .stepper span { min-width: 36px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .wine__more { margin-top: 14px; padding: 8px 0; min-height: 40px; display: inline-flex; align-items: center; font-size: 13px; color: var(--muted); }
 </style>

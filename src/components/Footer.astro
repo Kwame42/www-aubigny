@@ -3,41 +3,71 @@ import { site } from "../data/site";
 ---
 
 <footer class="site-footer">
-  <div class="wrap">
+  <div class="site-footer__in">
     <div class="site-footer__cols">
       <div>
-        <h2>Où nous trouver</h2>
-        <p>
-          {site.address.line1}<br />
-          {site.address.zip} {site.address.city}<br />
-          {site.address.region}
-        </p>
+        <span class="fbrand">
+          <img src="/images/blason.png" width="268" height="264" alt="" />
+          <span class="fbrand__text">
+            <span class="fbrand__name">{site.name}</span>
+            <span class="fbrand__tag">{site.tagline}</span>
+          </span>
+        </span>
+        <p class="fbrand__motto">Un territoire où la nature est sublimée, un lieu où le temps est retrouvé, une terre qui sourit à la vie…</p>
       </div>
       <div>
-        <h2>Contact</h2>
-        <a href="/contact/">Nous écrire</a>
-        <a href="/visiter/">Visiter le domaine</a>
-        <a href="/en/trade/">Espace professionnel</a>
+        <p class="fcol__title">Le domaine</p>
+        <div class="fcol__links">
+          <a href="/domaine/vignoble/">Vignoble</a>
+          <a href="/domaine/vinification/">Vinification</a>
+          <a href="/domaine/metairie/">La métairie</a>
+          <a href="/domaine/compost/">Le compost</a>
+          <a href="/histoire/">Histoire et archives</a>
+        </div>
       </div>
       <div>
-        <h2>Informations</h2>
-        <a href="/mentions-legales/">Mentions légales</a>
-        <a href="/cgv/">CGV</a>
-        <a href="/confidentialite/">Confidentialité</a>
+        <p class="fcol__title">Activités</p>
+        <div class="fcol__links">
+          <a href="/domaine/equipe/">L'équipe</a>
+          <a href="/visiter/">Visiter le domaine</a>
+          <a href="/vins/">Boutique en ligne</a>
+          <a href="/en/trade/">Trade (English)</a>
+        </div>
+      </div>
+      <div>
+        <p class="fcol__title">Contact</p>
+        <div class="fcol__links">
+          <a href="/contact/">Nous écrire</a>
+          <a href="/mentions-legales/">Mentions légales</a>
+          <a href="/cgv/">CGV</a>
+          <a href="/confidentialite/">Confidentialité</a>
+        </div>
+        <p class="fcol__addr">Côte Chalonnaise<br />Bourgogne, France</p>
       </div>
     </div>
-    <p class="site-footer__legal">{site.legal}</p>
-    <p class="site-footer__small">{site.legalSmall}</p>
+    <div class="site-footer__legal">
+      <p>{site.legal}</p>
+      <p class="site-footer__small">{site.legalSmall}</p>
+    </div>
   </div>
 </footer>
 
 <style>
-  .site-footer { margin-top: clamp(56px, 12vw, 96px); background: var(--green); color: var(--on-green); padding-block: clamp(32px, 8vw, 56px); }
-  .site-footer__cols { display: grid; gap: 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
-  .site-footer h2 { margin: 0 0 10px; font-size: 16px; font-style: italic; font-weight: 400; color: var(--green-pale); }
-  .site-footer p { margin: 0; font-size: 15px; line-height: 1.65; }
-  .site-footer div a { display: block; padding: 4px 0; font-size: 15px; color: var(--on-green); }
-  .site-footer div a:hover { color: var(--gold-bg); }
-  .site-footer__legal { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--green-soft); font-family: var(--mono); font-size: 12px; line-height: 1.7; }
-  .site-footer__small { margin-top: 10px; font-family: var(--mono); font-size: 11px; line-height: 1.7; color: var(--green-pale); }
+  .site-footer { margin-top: clamp(56px, 12vw, 104px); background: var(--navy); color: var(--cream); }
+  .site-footer__in { max-width: var(--w-wide); margin: 0 auto; padding: clamp(40px, 9vw, 76px) var(--pad-x); }
+  .site-footer__cols { display: grid; gap: clamp(30px, 6vw, 52px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); }
+  .fbrand { display: flex; align-items: center; gap: 12px; }
+  .fbrand img { width: 44px; height: auto; }
+  .fbrand__text { display: flex; flex-direction: column; gap: 5px; }
+  .fbrand__name { font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; }
+  .fbrand__tag { font-size: 12px; font-style: italic; color: var(--gold); }
+  .fbrand__motto { margin: 22px 0 0; max-width: 34ch; font-size: 15px; font-style: italic; line-height: 1.85; color: var(--on-navy-muted); }
+  .fcol__title { margin: 0 0 16px; font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); }
+  .fcol__links { display: flex; flex-direction: column; align-items: flex-start; }
+  .fcol__links a { padding: 7px 0; min-height: 40px; display: flex; align-items: center; font-size: 15px; color: var(--cream); text-decoration: none; }
+  .fcol__links a:hover { color: var(--gold); }
+  .fcol__addr { margin: 18px 0 0; font-size: 14px; line-height: 1.9; color: var(--on-navy-muted); }
+  .site-footer__legal { margin-top: clamp(36px, 8vw, 60px); padding-top: 20px; border-top: 1px solid var(--navy-line); }
+  .site-footer__legal p { margin: 0; font-size: 12px; letter-spacing: 0.06em; line-height: 1.9; }
+  .site-footer__small { margin-top: 10px; font-size: 11px; color: var(--on-navy-muted); }
 </style>

@@ -1,26 +1,53 @@
 ---
 import Base from "../layouts/Base.astro";
-import PageHeader from "../components/PageHeader.astro";
-import Section from "../components/Section.astro";
+import { site } from "../data/site";
 ---
 
-<Base title="Nous écrire — Domaine d'Aubigny" description="TODO : description de la page contact.">
-  <article class="article">
-    <PageHeader back={{ href: "/", label: "Accueil" }} eyebrow="Contact" title="Nous écrire" lead="TODO : phrase d'introduction." />
+<Base
+  title="Nous écrire — Maison d'Aubigny"
+  description="Commande, visite, demande professionnelle ou question sur un millésime : écrivez au domaine d'Aubigny, à Aluze."
+>
+  <section class="page-head">
+    <div class="page-head__in">
+      <p class="eyebrow eyebrow--center eyebrow--light">Contact</p>
+      <h1>Nous <em>écrire</em></h1>
+      <p class="page-head__lead">Pour une commande, une visite, une demande professionnelle ou une question sur un millésime.</p>
+    </div>
+  </section>
 
-    <!-- TODO : brancher l'action sur votre service de formulaire -->
-    <form class="card contact" method="post" action="/api/contact">
-      <label class="field">Nom<input type="text" name="nom" required /></label>
-      <label class="field">Courriel<input type="email" name="courriel" required /></label>
-      <label class="field">Message<textarea name="message" rows="5" required></textarea></label>
-      <button class="btn" type="submit">Envoyer</button>
+  <article class="article">
+    <a class="back" href="/">← Accueil</a>
+
+    <form class="form" method="post" action={site.formEndpoint || undefined}>
+      <div class="form__grid">
+        <label class="field">Nom
+          <input type="text" name="nom" autocomplete="name" required />
+        </label>
+        <label class="field">Courriel
+          <input type="email" name="courriel" autocomplete="email" required />
+        </label>
+        <label class="field">Message
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn btn--navy" type="submit">Envoyer</button>
+      </div>
+      {!site.formEndpoint && <p class="todo form__todo">adresse de réception du formulaire à renseigner (site.formEndpoint)</p>}
     </form>
 
-    <Section title="Adresse"><p>TODO</p><p class="todo">téléphone et courriel</p></Section>
-    <Section title="Expéditions"><p>TODO</p></Section>
+    <section class="section">
+      <h2>Adresse</h2>
+      <p>Domaine d'Aubigny, 71510 Aluze, Côte Chalonnaise, Bourgogne.</p>
+      <p class="todo">téléphone et courriel à compléter</p>
+    </section>
+
+    <section class="section">
+      <h2>Expéditions</h2>
+      <p>France et Union européenne, en cartons de 6 ou 12 bouteilles.</p>
+      <p class="todo">frais de port et délais à compléter</p>
+    </section>
   </article>
 </Base>
 
 <style>
-  .contact { margin-top: var(--gap-section); display: grid; gap: 16px; }
+  .form__todo { margin: 16px 0 0; }
 </style>

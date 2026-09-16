@@ -1,30 +1,34 @@
 :root {
-  /* couleurs — reprises de la maquette v5 */
-  --ink: #2A2318;
-  --body: #4C4436;
-  --muted: #6B6250;
-  --bg: #EFE9DC;
-  --card: #FAF7F0;
-  --card-hi: #FFFDF8;
-  --rule: #C9BFA8;
-  --rule-soft: #E4DBC8;
-  --green: #35462A;
-  --green-soft: #5C6B45;
-  --green-pale: #B9BC9A;
-  --gold: #6F5518;
-  --gold-bg: #C9A959;
-  --on-green: #F3EEE2;
+  /* navy / ivoire / or — palette de la maquette v7 */
+  --navy: #14202F;
+  --navy-soft: #1B2A3C;
+  --navy-line: #2E3B4D;
+  --navy-line-2: #22303F;
 
-  /* typo */
+  --ink: #1B2636;
+  --body: #475260;
+  --muted: #6A7380;
+  --faint: #8E96A0;
+
+  --bg: #EFEAE3;
+  --card: #FAF8F4;
+  --rule: #D4CDC2;
+  --rule-soft: #E2DCD2;
+
+  --gold: #C9A961;
+  --gold-ink: #8A6A24;
+  --gold-dim: #6D6238;
+  --gold-pale: #E4D8B8;
+  --cream-hi: #E8DCB8;
+
+  --cream: #F2EFE8;
+  --on-navy: #C3CAD4;
+  --on-navy-muted: #8B96A5;
+  --nav-item: #A9B2C0;
+
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-  --mono: ui-monospace, Menlo, Consolas, "Liberation Mono", monospace;
 
-  /* rythme */
-  --pad-x: clamp(16px, 4vw, 32px);
-  --gap-section: clamp(32px, 8vw, 52px);
-  --w-text: 820px;
-  --w-wide: 1080px;
-  --r-card: 20px;
-  --r-tile: 16px;
-  --r-pill: 999px;
+  --pad-x: clamp(16px, 4vw, 40px);
+  --w-wide: 1240px;
+  --w-text: 860px;
 }
