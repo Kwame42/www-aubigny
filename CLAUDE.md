@@ -203,6 +203,10 @@ son pied de page. Nomenclature existante dans `../qrcode` :
 
 **Voir [SEO.md](./SEO.md) section "Ordre d'exécution"** pour le plan détaillé par phase (immédiat, lancement, 3-6 mois, continu) et les KPI réels.
 
+## Phasage — Pages & Éléments Techniques
+
+**Voir [SEO.md](./SEO.md) section "Ordre d'exécution"** pour le plan détaillé complet (technique + contenu).
+
 ## Phasage des pages
 
 **Phase 1 — Lancement (2-3 semaines)**
@@ -231,6 +235,31 @@ Contenu maintenu dans la durée.
 - Une charte d'archives par mois
 - Carnet de vigne (4 entrées/an minimum)
 - QR codes → fiche millésime + charte du lieu
+
+## Éléments techniques & infrastructure par phase
+
+**Voir [SEO.md](./SEO.md)** pour la liste complète. Résumé :
+
+**IMMÉDIAT (avant le lancement du site)**
+- Google Business Profile + cohérence NAP
+- Annuaires métier (BIVB, Wine-Searcher, Vivino, CellarTracker)
+
+**PHASE 1 — Lancement (avec les pages)**
+- `Product` + `Offer` (schema.org) sur chaque fiche millésime
+- `hreflang` réciproques FR ↔ EN
+- Sitemaps (5 sitemaps séparés : pages, vins, histoire, millesimes, images)
+- Search Console (FR + EN)
+- Plan de redirections 301 (si ancien site)
+- QR codes bouteilles → fiches millésime
+- `robots.txt` : bloquer `/pro/espace/`, panier, paramètres
+- Canoniques auto-référentes partout
+
+**PHASE 2 — 3-6 mois**
+- Wikidata (entité factuelle + sourcée, sans autopromotion)
+- Premiers contacts presse (fonds d'archives = angle)
+
+**PHASE 3 — Continu**
+- Newsletter (2-3 fois/an) — le canal le plus rentable en vente directe
 
 ## Images du Domaine
 
