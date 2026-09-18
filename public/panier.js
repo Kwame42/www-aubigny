@@ -70,11 +70,12 @@
       var id = add.getAttribute("data-add");
       var stepper = document.querySelector('[data-stepper="' + id + '"]');
       var n = stepper ? qtyOf(stepper) : 1;
-      var cart = read();
-      cart[id] = (cart[id] || 0) + n;
-      write(cart);
-      add.textContent = "Ajouté au panier";
-      window.setTimeout(function () { add.textContent = "Ajouter au panier"; }, 1600);
+      var product = catalogue[id];
+      if (product && product.sku) {
+        window.location.href = "https://shop.aubigny.wine/shop?product_sku=" + encodeURIComponent(product.sku) + "&quantity=" + n;
+      } else {
+        window.location.href = "https://shop.aubigny.wine";
+      }
       return;
     }
     if (e.target.closest("[data-cart-clear]")) { write({}); }

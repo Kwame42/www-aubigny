@@ -94,6 +94,15 @@ const breadcrumb = getBreadcrumbSchema([
     </div>
   </section>
 
+  <section class="home-carnet">
+    <div class="home-carnet__header">
+      <p class="eyebrow eyebrow--center eyebrow--light">Carnet de Vigne</p>
+      <h2>Suivre le <em>domaine</em> au fil des saisons</h2>
+      <p>Journal régulier des observations en vigne et en cave. Vendanges, fermentations, élevage — découvrez notre travail tel qu'il se fait.</p>
+      <a class="btn btn--sm" href="/carnet/">Lire le carnet</a>
+    </div>
+  </section>
+
   <section class="quote">
     <blockquote>
       <p>« Ici, dans un cadre enchanteur au cœur de la Bourgogne, nous façonnons un lieu unique où se mêlent tourisme, agriculture et gastronomie. »</p>
@@ -169,4 +178,10 @@ const breadcrumb = getBreadcrumbSchema([
   .univers__head h2 { margin: 0 0 16px; font-size: clamp(30px, 8.4vw, 54px); font-weight: 400; line-height: 1.08; }
   .univers__head h2 em { font-style: italic; color: var(--gold-ink); }
   .univers__head p { margin: 0; font-size: clamp(15px, 4vw, 17px); font-style: italic; color: var(--muted); }
+
+  .home-carnet { background: var(--navy); color: var(--cream); padding: clamp(48px, 11vw, 88px) var(--pad-x); }
+  .home-carnet__header { max-width: var(--w-wide); margin: 0 auto; text-align: center; }
+  .home-carnet__header h2 { margin: 0 0 16px; font-size: clamp(30px, 8.4vw, 54px); font-weight: 400; line-height: 1.08; }
+  .home-carnet__header h2 em { font-style: italic; color: var(--cream-hi); }
+  .home-carnet__header p { margin: 0 0 30px; font-size: clamp(15px, 4vw, 17px); font-style: italic; color: var(--nav-item); }
 </style>
