@@ -266,6 +266,9 @@ const mercureyCuvees = cuvees.filter((c) => c.region === "mercurey");
     background: var(--navy-bg);
     padding: clamp(24px, 5vw, 32px);
     border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
 
   .wine-group__header {
@@ -274,6 +277,7 @@ const mercureyCuvees = cuvees.filter((c) => c.region === "mercurey");
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 16px;
+    flex: none;
   }
 
   .wine-group__name {
@@ -307,12 +311,14 @@ const mercureyCuvees = cuvees.filter((c) => c.region === "mercurey");
     font-size: 14px;
     line-height: 1.6;
     color: var(--body);
+    flex: none;
   }
 
   .millesimes {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: auto;
   }
 
   .millesime-row {
@@ -321,6 +327,7 @@ const mercureyCuvees = cuvees.filter((c) => c.region === "mercurey");
     gap: 12px;
     align-items: center;
     padding: 12px;
+    min-height: 48px;
     background: rgba(255, 255, 255, 0.03);
     border-left: 2px solid var(--gold);
     font-size: 14px;
