@@ -50,11 +50,6 @@ const { price, stock, tech } = bourgogneBlanc2024;
       <p class="achat__fine">Bouteille 75 cl · carton de 6 ou 12 · expédition France et UE</p>
       {stock ? (
         <div class="achat__buy">
-          <div class="stepper" data-stepper="bourgogneblanc2024" data-step-size="6" data-start="6">
-            <button type="button" data-step="-1" aria-label="Retirer six bouteilles">−</button>
-            <span data-qty-out aria-live="polite">6</span>
-            <button type="button" data-step="1" aria-label="Ajouter six bouteilles">+</button>
-          </div>
           <button class="btn achat__add" type="button" data-add="bourgogneblanc2024">Ajouter au panier</button>
         </div>
       ) : (
