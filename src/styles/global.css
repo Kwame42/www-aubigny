@@ -100,7 +100,7 @@ p { text-wrap: pretty; }
 .btn--outline-light:hover { background: rgba(255,255,255,0.1); color: #FFFFFF; }
 .btn--gold-dim { background: none; border: 1px solid var(--gold-dim); color: var(--gold); }
 .btn--gold-dim:hover { background: var(--gold); color: var(--navy); }
-.btn--sm { min-height: 44px; padding: 0 30px; font-size: 11px; }
+.btn--sm { min-height: 44px; padding: 0 45px; font-size: 11px; }
 
 /* ---- chiffres clés ---- */
 .stats { margin: clamp(30px, 7vw, 48px) 0 0; display: grid; gap: 0 24px; grid-template-columns: repeat(auto-fit, minmax(min(50% - 12px, 140px), 1fr)); }
