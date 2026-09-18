@@ -6,9 +6,10 @@ export interface EditorialPageData {
   lead: string;
   back: string;
   backHref: string;
-  figure?: { src: string; alt: string; caption: string };
+  figure?: { src: string; alt: string; caption: string; fallback?: string };
   sections: PageSection[];
   pair?: { src: string; alt: string }[];
+  videos?: { src: string; title: string }[];
   card?: { title: string; text: string; cta: string; ctaHref: string };
 }
 
@@ -35,7 +36,7 @@ export const pages: Record<string, EditorialPageData> = {
   vinification: {
     eyebrow: "Le domaine", title: "La", titleItalic: "vinification", back: "← Le domaine", backHref: "/domaine/",
     lead: "Chaque cuvée est vinifiée séparément, et les choix faits sur chacune sont publiés sur sa fiche.",
-    figure: { src: "/images/p-cuverie-foudres-2.webp", alt: "Foudres de chêne et cuves inox sous les voûtes de pierre du chai", caption: "Le chai, sous les voûtes." },
+    figure: { src: "/images/cuverie-52.webp", alt: "Foudres de chêne et pièces de Bourgogne sous les voûtes de pierre du chai", caption: "Le chai, sous les voûtes." },
     sections: [
       { title: "Les rouges", paras: ["Vendange égrappée, macération en cuve, puis élevage. Le Champs Martin 2023 a été égrappé à 100 % et élevé en cuve béton."] },
       { title: "Les blancs", paras: ["Pressurage direct et fermentation lente."], todo: "contenants et durées à compléter" },
@@ -46,7 +47,7 @@ export const pages: Record<string, EditorialPageData> = {
     ],
     pair: [
       { src: "/images/p-cuverie-amphores.webp", alt: "Amphores en terre cuite alignées dans la cave voûtée" },
-      { src: "/images/p-cuve-inox.webp", alt: "Cuves inox thermo-régulées de la cuverie" }
+      { src: "/images/p-cuve-inox.webp", alt: "Pièces de Bourgogne pour l'élevage du vin" }
     ]
   },
   metairie: {
@@ -91,12 +92,12 @@ export const pages: Record<string, EditorialPageData> = {
   visiter: {
     eyebrow: "Visiter", title: "Visiter le", titleItalic: "domaine", back: "← Accueil", backHref: "/",
     lead: "Les visites se font sur rendez-vous, au domaine, à Aluze.",
-    figure: { src: "/images/q-nature-106.webp", alt: "Le vallon et les vignes du domaine en fin de journée", caption: "Les coteaux du domaine, en fin de journée." },
+    figure: { src: "/videos/vue-aerienne-drone.mp4", alt: "Vue aérienne du domaine en drone - aucun dialogue", caption: "Les coteaux du domaine, vus du ciel.", fallback: "/images/q-nature-106.webp" },
     sections: [
-      { title: "Comment ça se passe", paras: ["Une visite des vignes et du chai, puis une dégustation des cuvées disponibles. Comptez environ une heure et demie."], todo: "jours, horaires, tarif et taille des groupes à compléter" },
-      { title: "Où", paras: ["Domaine d'Aubigny, 71510 Aluze, Côte Chalonnaise. À une quinzaine de minutes de Chalon-sur-Saône."] }
-    ],
-    card: { title: "Demander un rendez-vous", text: "Dites-nous la date souhaitée et le nombre de personnes.", cta: "Nous écrire", ctaHref: "/contact/" }
+      { title: "Comment ça se passe", paras: ["Une visite des vignes et du chai, puis une dégustation des cuvées disponibles. Comptez environ une heure et demie. Visite sur rendez-vous toute l'année."] },
+      { title: "Où", paras: ["Domaine d'Aubigny, 71510 Aluze, Côte Chalonnaise. À une quinzaine de minutes de Chalon-sur-Saône."] },
+      { title: "Réserver", paras: ["Appelez-nous au +33 (0)3 85 44 76 76 ou écrivez à contact@aubigny.wine pour fixer un rendez-vous. Dites-nous la date souhaitée et le nombre de personnes."] }
+    ]
   },
   archives: {
     eyebrow: "Histoire", title: "Histoire et", titleItalic: "archives", back: "← Accueil", backHref: "/",

@@ -16,7 +16,7 @@ const { page, title, description, lang = "fr" } = Astro.props;
     </div>
   </section>
 
-  {page.figure && <Figure src={page.figure.src} alt={page.figure.alt} caption={page.figure.caption} eager />}
+  {page.figure && <Figure src={page.figure.src} alt={page.figure.alt} caption={page.figure.caption} fallback={page.figure.fallback} eager />}
 
   <article class="article">
     <a class="back" href={page.backHref}>{page.back}</a>
@@ -32,6 +32,17 @@ const { page, title, description, lang = "fr" } = Astro.props;
     {page.pair && (
       <div class="pair">
         {page.pair.map((im) => <img src={im.src} alt={im.alt} width="1200" height="900" loading="lazy" decoding="async" />)}
+      </div>
+    )}
+
+    {page.videos && (
+      <div class="videos">
+        {page.videos.map((v) => (
+          <video width="400" height="300" controls playsinline>
+            <source src={v.src} type="video/mp4" />
+            {v.title}
+          </video>
+        ))}
       </div>
     )}
 

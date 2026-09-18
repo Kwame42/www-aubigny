@@ -6,19 +6,57 @@ interface Props {
   width?: number;
   height?: number;
   eager?: boolean;
+  fallback?: string;
 }
-const { src, alt, caption, width = 1600, height = 1000, eager = false } = Astro.props;
+const { src, alt, caption, width = 1600, height = 1000, eager = false, fallback } = Astro.props;
+const isVideo = src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.mov');
 ---
 
 <figure class="figure-full">
-  <img
-    src={src}
-    alt={alt}
-    width={width}
-    height={height}
-    loading={eager ? "eager" : "lazy"}
-    decoding="async"
-    fetchpriority={eager ? "high" : undefined}
-  />
+  {isVideo ? (
+    <video
+      width={width}
+      height={height}
+      autoplay
+      muted
+      loop
+      playsinline
+      style={{
+        width: '100%',
+        height: 'auto',
+        maxHeight: '68vh',
+        objectFit: 'cover',
+        display: 'block'
+      }}
+      aria-label={alt}
+    >
+      <source src={src} type={src.endsWith('.webm') ? 'video/webm' : 'video/mp4'} />
+      {fallback && (
+        <img
+          src={fallback}
+          alt={alt}
+          width={width}
+          height={height}
+          style={{
+            width: '100%',
+            height: 'auto',
+            maxHeight: '68vh',
+            objectFit: 'cover',
+            display: 'block'
+          }}
+        />
+      )}
+    </video>
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={eager ? "eager" : "lazy"}
+      decoding="async"
+      fetchpriority={eager ? "high" : undefined}
+    />
+  )}
   {caption && <figcaption>{caption}</figcaption>}
 </figure>
