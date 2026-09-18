@@ -1,16 +1,28 @@
 ---
 import Base from "../../layouts/Base.astro";
 import SpecTable from "../../components/SpecTable.astro";
+import ProductSchema from "../../components/ProductSchema.astro";
 import { bourgogneBlanc2025, euro, catalogue } from "../../data/wines";
 
 const { price, stock, tech } = bourgogneBlanc2025;
 ---
 
 <Base
-  title="Bourgogne Blanc 2025 — Maison d'Aubigny"
+  title="Bourgogne Blanc 2025 — Domaine d'Aubigny"
   description="Bourgogne Blanc 2025, année chaude et généreuse. Vin puissant et large en bouche avec fleurs blanches et pêche. Vente directe du domaine d'Aubigny."
   image="/images/hero-parcelle.jpg"
 >
+  <ProductSchema
+    name="Bourgogne Blanc 2025"
+    description="Année chaude et généreuse. Vin puissant et large en bouche avec fleurs blanches et pêche."
+    price={price}
+    image="/images/hero-parcelle.jpg"
+    vintage="2025"
+    appellation="Bourgogne"
+    varietal="Chardonnay"
+    inStock={stock}
+    productUrl="https://shop.aubigny.wine/en/shop/bb-2025-bourgogne-blanc-2025-2"
+  />
   <section class="fiche-hero">
     <img src="/images/hero-parcelle.jpg" alt="Parcelle de Bourgogne Blanc à Aluze" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
     <div class="fiche-hero__veil"></div>

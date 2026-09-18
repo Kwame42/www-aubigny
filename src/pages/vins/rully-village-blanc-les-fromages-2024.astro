@@ -1,16 +1,28 @@
 ---
 import Base from "../../layouts/Base.astro";
 import SpecTable from "../../components/SpecTable.astro";
+import ProductSchema from "../../components/ProductSchema.astro";
 import { rullyBlanc2024, euro, catalogue } from "../../data/wines";
 
 const { price, stock, tech } = rullyBlanc2024;
 ---
 
 <Base
-  title="Rully Village Blanc Les Fromages 2024 — Maison d'Aubigny"
+  title="Rully Village Blanc Les Fromages 2024 — Domaine d'Aubigny"
   description="Rully Village Blanc Les Fromages 2024, coup de cœur de la Grande Épicerie. Belle attaque et vivacité, élevé 12 mois en pièce de 3e et 4e vin."
   image="/images/hero-parcelle.jpg"
 >
+  <ProductSchema
+    name="Rully Village Blanc Les Fromages 2024"
+    description="Coup de cœur de la Grande Épicerie. Belle attaque et vivacité, élevé 12 mois en pièces de 3e et 4e vin."
+    price={price}
+    image="/images/hero-parcelle.jpg"
+    vintage="2024"
+    appellation="Rully Village"
+    varietal="Chardonnay"
+    inStock={stock}
+    productUrl="https://shop.aubigny.wine/en/shop/rb-2024-rully-blanc-2024-8"
+  />
   <section class="fiche-hero">
     <img src="/images/hero-parcelle.jpg" alt="Parcelle de Rully Village Blanc à Rully" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
     <div class="fiche-hero__veil"></div>

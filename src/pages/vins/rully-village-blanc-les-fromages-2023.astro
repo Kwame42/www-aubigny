@@ -1,16 +1,28 @@
 ---
 import Base from "../../layouts/Base.astro";
 import SpecTable from "../../components/SpecTable.astro";
+import ProductSchema from "../../components/ProductSchema.astro";
 import { rullyBlanc2023, euro, catalogue } from "../../data/wines";
 
 const { price, stock, tech } = rullyBlanc2023;
 ---
 
 <Base
-  title="Rully Village Blanc Les Fromages 2023 — Maison d'Aubigny"
+  title="Rully Village Blanc Les Fromages 2023 — Domaine d'Aubigny"
   description="Rully Village Blanc Les Fromages 2023, millésime de grêle. Élevé 12 mois en futs de 2e et 3e vin. Beau milieu de bouche et très belle finale."
   image="/images/hero-parcelle.jpg"
 >
+  <ProductSchema
+    name="Rully Village Blanc Les Fromages 2023"
+    description="Millésime de grêle. Élevé 12 mois en futs de 2e et 3e vin. Beau milieu de bouche et très belle finale."
+    price={price}
+    image="/images/hero-parcelle.jpg"
+    vintage="2023"
+    appellation="Rully Village"
+    varietal="Chardonnay"
+    inStock={stock}
+    productUrl="https://shop.aubigny.wine/en/shop/rb-2023-rully-blanc-2023-9"
+  />
   <section class="fiche-hero">
     <img src="/images/hero-parcelle.jpg" alt="Parcelle de Rully Village Blanc à Rully" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
     <div class="fiche-hero__veil"></div>

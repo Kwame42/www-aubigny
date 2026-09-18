@@ -1,0 +1,74 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  vintage: string;
+  appellation: string;
+  varietal: string;
+  inStock: boolean;
+  productUrl?: string;
+}
+
+const { name, description, price, image, vintage, appellation, varietal, inStock, productUrl } = Astro.props;
+
+const schema = {
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": name,
+  "description": description,
+  "image": image,
+  "brand": {
+    "@type": "Brand",
+    "name": "Domaine d'Aubigny"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": productUrl || Astro.url.href,
+    "priceCurrency": "EUR",
+    "price": price.toString(),
+    "availability": inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+    "shippingDetails": {
+      "@type": "ShippingDeliveryTime",
+      "shippingDestination": [
+        {
+          "@type": "ShippingDestination",
+          "addressCountry": "FR"
+        },
+        {
+          "@type": "ShippingDestination",
+          "addressCountry": "DE"
+        },
+        {
+          "@type": "ShippingDestination",
+          "addressCountry": "BE"
+        },
+        {
+          "@type": "ShippingDestination",
+          "addressCountry": "LU"
+        }
+      ],
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "businessDays": "3-7"
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": ["FR", "DE", "BE", "LU"],
+      "returnPolicyCategory": "MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": "ReturnMailIn",
+      "returnFees": "FreeReturn"
+    }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "23"
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,16 +1,28 @@
 ---
 import Base from "../../layouts/Base.astro";
 import SpecTable from "../../components/SpecTable.astro";
+import ProductSchema from "../../components/ProductSchema.astro";
 import { champsMartin2023, euro, catalogue } from "../../data/wines";
 
 const { price, stock, tech } = champsMartin2023;
 ---
 
 <Base
-  title="Mercurey 1er Cru Les Champs Martin 2023 — Maison d'Aubigny"
+  title="Mercurey 1er Cru Les Champs Martin 2023 — Domaine d'Aubigny"
   description="Mercurey Premier Cru Les Champs Martin 2023, pinot noir sur 1,5 hectare argilo-calcaire à 324 mètres. Fiche technique complète et vente directe."
   image="/images/hero-parcelle.jpg"
 >
+  <ProductSchema
+    name="Mercurey 1er Cru Champs Martin 2023"
+    description="Pinot noir, 1,5 hectare, argilo-calcaire, 324 mètres. Premier cru du meilleur climat de Mercurey à rouge. Vin fin et puissant."
+    price={price}
+    image="/images/hero-parcelle.jpg"
+    vintage="2023"
+    appellation="Mercurey 1er Cru"
+    varietal="Pinot Noir"
+    inStock={stock}
+    productUrl="https://shop.aubigny.wine/en/shop/mcm-2023-mercurey-1er-cru-champs-martin-rouge-2023-11"
+  />
   <section class="fiche-hero">
     <img src="/images/hero-parcelle.jpg" alt="La parcelle de Champs Martin, rangs en coteau bordés d'un mur de pierre sèche" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
     <div class="fiche-hero__veil"></div>

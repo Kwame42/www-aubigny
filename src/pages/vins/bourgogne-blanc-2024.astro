@@ -1,16 +1,28 @@
 ---
 import Base from "../../layouts/Base.astro";
 import SpecTable from "../../components/SpecTable.astro";
+import ProductSchema from "../../components/ProductSchema.astro";
 import { bourgogneBlanc2024, euro, catalogue } from "../../data/wines";
 
 const { price, stock, tech } = bourgogneBlanc2024;
 ---
 
 <Base
-  title="Bourgogne Blanc 2024 — Maison d'Aubigny"
+  title="Bourgogne Blanc 2024 — Domaine d'Aubigny"
   description="Bourgogne Blanc 2024, élevé 100% en Amphores de 17 HL. Chardonnay droit et vif, notes de fleur blanche. Vente directe du domaine d'Aubigny."
   image="/images/hero-parcelle.jpg"
 >
+  <ProductSchema
+    name="Bourgogne Blanc 2024"
+    description="Vin droit et vif, avec des notes de fleur blanche. Élevé 100% en Amphores de 17 HL pour préserver sa fraîcheur et sa minéralité."
+    price={price}
+    image="/images/hero-parcelle.jpg"
+    vintage="2024"
+    appellation="Bourgogne"
+    varietal="Chardonnay"
+    inStock={stock}
+    productUrl="https://shop.aubigny.wine/en/shop/bb-2024-bourgogne-blanc-2024-3"
+  />
   <section class="fiche-hero">
     <img src="/images/hero-parcelle.jpg" alt="Parcelle de Bourgogne Blanc à Aluze" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
     <div class="fiche-hero__veil"></div>

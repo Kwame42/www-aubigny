@@ -1,16 +1,28 @@
 ---
 import Base from "../../layouts/Base.astro";
 import SpecTable from "../../components/SpecTable.astro";
+import ProductSchema from "../../components/ProductSchema.astro";
 import { bourgogneBlanc2022, euro, catalogue } from "../../data/wines";
 
 const { price, stock, tech } = bourgogneBlanc2022;
 ---
 
 <Base
-  title="Bourgogne Blanc 2022 — Maison d'Aubigny"
+  title="Bourgogne Blanc 2022 — Domaine d'Aubigny"
   description="Bourgogne Blanc 2022, notre premier vin. Chardonnay sur 3,3 hectares, élevé 24 mois en foudre neuf. Vin droit et vivifiant avec notes de pierre à fusil."
   image="/images/hero-parcelle.jpg"
 >
+  <ProductSchema
+    name="Bourgogne Blanc 2022"
+    description="Notre premier vin, élevé 24 mois en foudre de 50 HL (peu de bois). Foudre neuf, donc notes de bois peut-être un peu plus prononcées. Vin très droit et vivifiant qui avec l'âge peut développer des notes de pierre à fusil."
+    price={price}
+    image="/images/hero-parcelle.jpg"
+    vintage="2022"
+    appellation="Bourgogne"
+    varietal="Chardonnay"
+    inStock={stock}
+    productUrl="https://shop.aubigny.wine/en/shop/bb-2022-bourgogne-blanc-2022-4"
+  />
   <section class="fiche-hero">
     <img src="/images/hero-parcelle.jpg" alt="Parcelle de Bourgogne Blanc à Aluze" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
     <div class="fiche-hero__veil"></div>
