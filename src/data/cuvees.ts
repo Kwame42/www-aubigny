@@ -5,6 +5,7 @@ export interface Millésime {
   url: string;
   price: number;
   inStock: boolean;
+  odooUrl: string;
 }
 
 export interface Cuvee {
@@ -37,9 +38,9 @@ export const cuvees: Cuvee[] = [
     color: "blanc",
     region: "aluze",
     millesimes: [
-      { year: 2022, url: "/vins/bourgogne-blanc-2022/", price: 27, inStock: true },
-      { year: 2024, url: "/vins/bourgogne-blanc-2024/", price: 27, inStock: true },
-      { year: 2025, url: "/vins/bourgogne-blanc-2025/", price: 27, inStock: true },
+      { year: 2022, url: "/vins/bourgogne-blanc-2022/", price: 27, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/bb-2022-bourgogne-blanc-2022-4" },
+      { year: 2024, url: "/vins/bourgogne-blanc-2024/", price: 27, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/bb-2024-bourgogne-blanc-2024-3" },
+      { year: 2025, url: "/vins/bourgogne-blanc-2025/", price: 27, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/bb-2025-bourgogne-blanc-2025-2" },
     ],
   },
   {
@@ -52,7 +53,7 @@ export const cuvees: Cuvee[] = [
     color: "rouge",
     region: "aluze",
     millesimes: [
-      { year: 2025, url: "/vins/bourgogne-rouge-ouche-2025/", price: 27, inStock: true },
+      { year: 2025, url: "/vins/bourgogne-rouge-ouche-2025/", price: 27, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/omr-2025-bourgogne-rouge-louche-de-la-maison-rouge-2025-monopole-5" },
     ],
   },
   {
@@ -65,7 +66,7 @@ export const cuvees: Cuvee[] = [
     color: "blanc",
     region: "aluze",
     millesimes: [
-      { year: 2025, url: "/vins/bourgogne-blanc-grand-pres-d-aubigny-monopole-2025/", price: 27, inStock: true },
+      { year: 2025, url: "/vins/bourgogne-blanc-grand-pres-d-aubigny-monopole-2025/", price: 27, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/gpa-2025-bourgogne-blanc-grand-pres-daubigny-2025-monopole-6" },
     ],
   },
   {
@@ -78,8 +79,8 @@ export const cuvees: Cuvee[] = [
     color: "blanc",
     region: "rully",
     millesimes: [
-      { year: 2023, url: "/vins/rully-village-blanc-les-fromages-2023/", price: 36, inStock: true },
-      { year: 2024, url: "/vins/rully-village-blanc-les-fromages-2024/", price: 36, inStock: true },
+      { year: 2023, url: "/vins/rully-village-blanc-les-fromages-2023/", price: 36, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/rb-2023-rully-blanc-2023-9" },
+      { year: 2024, url: "/vins/rully-village-blanc-les-fromages-2024/", price: 36, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/rb-2024-rully-blanc-2024-8" },
     ],
   },
   {
@@ -92,8 +93,8 @@ export const cuvees: Cuvee[] = [
     color: "rouge",
     region: "mercurey",
     millesimes: [
-      { year: 2023, url: "/vins/mercurey-champs-martin-2023/", price: 51, inStock: true },
-      { year: 2024, url: "/vins/mercurey-champs-martin-2024/", price: 51, inStock: true },
+      { year: 2023, url: "/vins/mercurey-champs-martin-2023/", price: 51, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/mcm-2023-mercurey-1er-cru-champs-martin-rouge-2023-11" },
+      { year: 2024, url: "/vins/mercurey-champs-martin-2024/", price: 51, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/mcm-2024-mercurey-1er-cru-champs-martin-rouge-2024-10" },
     ],
   },
 ];
