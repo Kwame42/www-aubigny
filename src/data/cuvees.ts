@@ -1,5 +1,12 @@
 // Cuvées du Domaine d'Aubigny — données intemporelles
 
+export interface Millésime {
+  year: number;
+  url: string;
+  price: number;
+  inStock: boolean;
+}
+
 export interface Cuvee {
   id: string;
   name: string;
@@ -16,6 +23,7 @@ export interface Cuvee {
   altitude?: string;
   vines?: string;
   image?: string;
+  millesimes?: Millésime[];
 }
 
 export const cuvees: Cuvee[] = [
@@ -28,6 +36,11 @@ export const cuvees: Cuvee[] = [
     slug: "bourgogne-blanc",
     color: "blanc",
     region: "aluze",
+    millesimes: [
+      { year: 2022, url: "/vins/bourgogne-blanc-2022/", price: 27, inStock: true },
+      { year: 2024, url: "/vins/bourgogne-blanc-2024/", price: 27, inStock: true },
+      { year: 2025, url: "/vins/bourgogne-blanc-2025/", price: 27, inStock: true },
+    ],
   },
   {
     id: "bourgogne-rouge-ouche",
@@ -38,6 +51,9 @@ export const cuvees: Cuvee[] = [
     slug: "bourgogne-rouge-ouche-de-la-maison-monopole",
     color: "rouge",
     region: "aluze",
+    millesimes: [
+      { year: 2025, url: "/vins/bourgogne-rouge-ouche-2025/", price: 27, inStock: true },
+    ],
   },
   {
     id: "bourgogne-blanc-grand-pres",
@@ -48,6 +64,9 @@ export const cuvees: Cuvee[] = [
     slug: "bourgogne-blanc-grand-pres-d-aubigny-monopole",
     color: "blanc",
     region: "aluze",
+    millesimes: [
+      { year: 2025, url: "/vins/bourgogne-blanc-grand-pres-d-aubigny-monopole-2025/", price: 27, inStock: true },
+    ],
   },
   {
     id: "rully-village-blanc",
@@ -58,6 +77,10 @@ export const cuvees: Cuvee[] = [
     slug: "rully-village-blanc-les-fromanges",
     color: "blanc",
     region: "rully",
+    millesimes: [
+      { year: 2023, url: "/vins/rully-village-blanc-les-fromages-2023/", price: 36, inStock: true },
+      { year: 2024, url: "/vins/rully-village-blanc-les-fromages-2024/", price: 36, inStock: true },
+    ],
   },
   {
     id: "mercurey-champs-martin",
@@ -68,6 +91,10 @@ export const cuvees: Cuvee[] = [
     slug: "mercurey-1er-cru-rouge-champs-martin",
     color: "rouge",
     region: "mercurey",
+    millesimes: [
+      { year: 2023, url: "/vins/mercurey-champs-martin-2023/", price: 51, inStock: true },
+      { year: 2024, url: "/vins/mercurey-champs-martin-2024/", price: 51, inStock: true },
+    ],
   },
 ];
 

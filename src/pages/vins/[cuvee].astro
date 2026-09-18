@@ -73,9 +73,29 @@ const breadcrumb = getBreadcrumbSchema([
           </div>
         </div>
 
-        <div class="cuvee__cta">
-          <a href="/vins/" class="btn btn--sm">Voir tous les millésimes</a>
-        </div>
+        {cuvee.millesimes && cuvee.millesimes.length > 0 && (
+          <div class="cuvee__millesimes">
+            <h2>Millésimes disponibles</h2>
+            <div class="millesimes__list">
+              {cuvee.millesimes.map((mil) => (
+                <a href={mil.url} class="millesime__item">
+                  <div class="millesime__header">
+                    <span class="millesime__year">{mil.year}</span>
+                    <span class="millesime__price">{mil.price.toLocaleString("fr-FR")} €</span>
+                  </div>
+                  <div class="millesime__status">
+                    {mil.inStock ? (
+                      <span class="millesime__stock">En stock</span>
+                    ) : (
+                      <span class="millesime__out">Épuisé</span>
+                    )}
+                  </div>
+                  <span class="millesime__cta">Voir la fiche →</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       <aside class="cuvee__sidebar">
@@ -245,5 +265,79 @@ const breadcrumb = getBreadcrumbSchema([
 
   .cuvee__links a:hover {
     color: var(--gold);
+  }
+
+  .cuvee__millesimes {
+    margin-top: 40px;
+  }
+
+  .cuvee__millesimes h2 {
+    margin: 0 0 20px;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+  }
+
+  .millesimes__list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .millesime__item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 16px;
+    background: var(--navy-bg);
+    border-left: 3px solid var(--gold);
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.2s;
+  }
+
+  .millesime__item:hover {
+    background: var(--navy-bg-soft);
+  }
+
+  .millesime__header {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .millesime__year {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .millesime__price {
+    font-size: 14px;
+    color: var(--gold-ink);
+    font-weight: 500;
+  }
+
+  .millesime__status {
+    display: flex;
+  }
+
+  .millesime__stock {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00c853;
+  }
+
+  .millesime__out {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .millesime__cta {
+    font-size: 12px;
+    color: var(--gold-ink);
   }
 </style>
