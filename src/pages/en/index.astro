@@ -1,54 +1,55 @@
 ---
-import Base from "../layouts/Base.astro";
-import StatList from "../components/StatList.astro";
-import UniversGrid from "../components/UniversGrid.astro";
-import SchemaOrg from "../components/SchemaOrg.astro";
-import { domainStats, terroirStats, vessels } from "../data/pages";
-import { featured, euro } from "../data/wines";
-import { organization, getBreadcrumbSchema } from "../data/schema";
+import Base from "../../layouts/Base.astro";
+import StatList from "../../components/StatList.astro";
+import UniversGrid from "../../components/UniversGrid.astro";
+import SchemaOrg from "../../components/SchemaOrg.astro";
+import { domainStats, terroirStats, vessels } from "../../data/pages-en";
+import { featured, euro } from "../../data/wines-en";
+import { organization, getBreadcrumbSchema } from "../../data/schema";
 
 const breadcrumb = getBreadcrumbSchema([
-  { name: "Accueil", url: "https://aubigny.wine/" }
+  { name: "Home", url: "https://aubigny.wine/en/" }
 ]);
 ---
 
 <Base
-  title="Domaine d'Aubigny — Grand Vin de Bourgogne, Aluze"
-  description="Cellier de l'Abbaye de Maizière depuis 1132. 206 hectares en agriculture biologique. Vente directe à la propriété et par expédition."
+  title="Domaine d'Aubigny — Fine Burgundy Wine, Aluze"
+  description="The Metairie of Aubigny, cellier of Maizière Abbey since 1132. 206 hectares under organic cultivation. Direct sales from the estate and by mail."
+  lang="en"
 >
   <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
   <section class="hero">
-    <img src="/images/hero-aubigny.webp" alt="Domaine d'Aubigny - Grand Vin de Bourgogne" width="1400" height="830" loading="eager" decoding="async" fetchpriority="high" />
+    <img src="/images/hero-aubigny.webp" alt="Domaine d'Aubigny - Fine Burgundy Wine" width="1400" height="830" loading="eager" decoding="async" fetchpriority="high" />
     <div class="hero__veil"></div>
     <div class="hero__in">
       <img class="hero__blason" src="/images/logo.webp" width="268" height="264" alt="" />
-      <p class="eyebrow eyebrow--center eyebrow--light hero__kicker">Grand Vin de Bourgogne</p>
+      <p class="eyebrow eyebrow--center eyebrow--light hero__kicker">Fine Burgundy Wine</p>
       <h1 class="hero__title"><span>Domaine</span><span class="hero__italic">d'Aubigny</span></h1>
-      <p class="hero__meta">Côte Chalonnaise · Rully · Mercurey · Agriculture Biologique</p>
+      <p class="hero__meta">Côte Chalonnaise · Rully · Mercurey · Organic Farming</p>
       <div class="hero__actions">
-        <a class="btn" href="/vins/">Découvrir nos vins</a>
-        <a class="btn btn--outline-light" href="/domaine/">Le domaine</a>
+        <a class="btn" href="/en/wines/">Discover our wines</a>
+        <a class="btn btn--outline-light" href="/en/domain/">The estate</a>
       </div>
     </div>
   </section>
 
   <section class="split">
     <div class="split__text split__text--navy">
-      <p class="eyebrow eyebrow--light">L'héritage des Cisterciens</p>
-      <h2>Comme le Clos Vougeot, <em>cellier de l'Abbaye de Cîteaux</em></h2>
-      <p>La Métairie d'Aubigny, cellier de l'Abbaye de Maizière depuis 1132, est un clos de 20 kilomètres de murs protégeant 206 hectares de vignes, prés et bois en agriculture biologique.</p>
-      <p>Vente directe à la propriété et par expédition. Cinq cuvées, dont deux monopoles.</p>
+      <p class="eyebrow eyebrow--light">The Cistercian Heritage</p>
+      <h2>Like Clos Vougeot, <em>the cellier of Cîteaux Abbey</em></h2>
+      <p>The Metairie of Aubigny served as the cellier for Maizière Abbey since 1132 — an enclosed vineyard of 20 kilometres of walls protecting 206 hectares of vines, meadows and woods under organic cultivation.</p>
+      <p>Direct sales from the estate and by mail. Five cuvées, including two monopolies.</p>
       <StatList stats={domainStats} light />
     </div>
-    <img class="split__img" src="/images/p-vignes.webp" alt="Vignes et hameau d'Aluze au petit matin, coteaux boisés à l'arrière-plan" width="1400" height="1000" loading="lazy" decoding="async" />
+    <img class="split__img" src="/images/p-vignes.webp" alt="Vines and Aluze hamlet at dawn, wooded hillsides in the background" width="1400" height="1000" loading="lazy" decoding="async" />
   </section>
 
   <section class="cuvees">
     <div class="cuvees__head">
-      <p class="eyebrow eyebrow--center eyebrow--light">Nos Cuvées</p>
-      <h2>La <em>quintessence</em> de Bourgogne</h2>
-      <p class="cuvees__sub">Récoltés à la main, élevés dans les caves voûtées du domaine</p>
-      <a class="btn btn--sm" href="/vins/">Notre sélection</a>
+      <p class="eyebrow eyebrow--center eyebrow--light">Our Cuvées</p>
+      <h2>The <em>quintessence</em> of Burgundy</h2>
+      <p class="cuvees__sub">Hand-harvested, aged in the estate's stone cellars</p>
+      <a class="btn btn--sm" href="/en/wines/">Our selection</a>
     </div>
     <div class="cuvees__grid">
       {featured.map((wine) => (
@@ -59,19 +60,19 @@ const breadcrumb = getBreadcrumbSchema([
           <span class="tile__rule"></span>
           <span class="tile__note">{wine.note}</span>
           <span class="tile__price">{euro(wine.price)}<span>ttc</span></span>
-          <span class="tile__cta">Commander</span>
+          <span class="tile__cta">Order</span>
         </a>
       ))}
     </div>
   </section>
 
   <section class="split split--reverse">
-    <img class="split__img" src="/images/cuverie-4.webp" alt="Amphores en terre cuite et foudres de chêne sous les voûtes de pierre" width="1400" height="1000" loading="lazy" decoding="async" />
+    <img class="split__img" src="/images/cuverie-4.webp" alt="Terracotta amphorae and oak foudres under the stone vaults" width="1400" height="1000" loading="lazy" decoding="async" />
     <div class="split__text split__text--navy">
-      <p class="eyebrow eyebrow--light">La Cave</p>
-      <h2>L'art de <em>l'élevage</em></h2>
-      <p>Sous les voûtes de pierre, trois vaisseaux de vinification dialoguent pour exprimer le meilleur de chaque terroir et de chaque millésime.</p>
-      <p>Amphores en terre cuite pour la minéralité, foudres de chêne pour la complexité, pièces de Bourgogne pour la profondeur.</p>
+      <p class="eyebrow eyebrow--light">The Cellar</p>
+      <h2>The art of <em>aging</em></h2>
+      <p>Under stone vaults, three vessels of vinification dialogue to express the best of each terroir and each vintage.</p>
+      <p>Terracotta amphorae for minerality, oak foudres for complexity, Burgundy barrels for depth.</p>
       <div class="vessels">
         {vessels.map((v) => (
           <div>
@@ -80,32 +81,32 @@ const breadcrumb = getBreadcrumbSchema([
           </div>
         ))}
       </div>
-      <p class="split__cta"><a class="btn btn--gold-dim btn--sm" href="/domaine/vinification/">Visiter le chai</a></p>
+      <p class="split__cta"><a class="btn btn--gold-dim btn--sm" href="/en/domain/vinification/">Visit the cellar</a></p>
     </div>
   </section>
 
   <section class="split split--light">
-    <img class="split__img" src="/images/q-nature-104.webp" alt="Chemin bordé de vignes descendant vers le village, lumière du matin" width="1400" height="1000" loading="lazy" decoding="async" />
+    <img class="split__img" src="/images/q-nature-104.webp" alt="Path bordered by vines descending to the village, morning light" width="1400" height="1000" loading="lazy" decoding="async" />
     <div class="split__text">
-      <p class="eyebrow">Le Terroir</p>
-      <h2>Une terre qui sourit à la <em>vie</em></h2>
-      <p>Les sols sont argilo-calcaires sur l'ensemble du vignoble, entre 250 et 330 mètres d'altitude. Les 20 hectares sont certifiés en agriculture biologique, et la fertilisation vient du compost fabriqué sur le domaine.</p>
+      <p class="eyebrow">The Terroir</p>
+      <h2>Land that <em>flourishes</em></h2>
+      <p>The soils are clay-limestone across the entire vineyard, between 250 and 330 meters altitude. All 20 hectares are certified organic, with fertilization from compost made on the estate.</p>
       <StatList stats={terroirStats} />
     </div>
   </section>
 
   <section class="quote">
     <blockquote>
-      <p>« Ici, dans un cadre enchanteur au cœur de la Bourgogne, nous façonnons un lieu unique où se mêlent tourisme, agriculture et gastronomie. »</p>
+      <p>"Here, in an enchanting setting in the heart of Burgundy, we craft a unique place where tourism, agriculture and gastronomy intertwine."</p>
       <footer>— Domaine d'Aubigny</footer>
     </blockquote>
   </section>
 
   <section>
     <div class="univers__head">
-      <p class="eyebrow eyebrow--center">Le Domaine</p>
-      <h2>Six <em>univers</em> à découvrir</h2>
-      <p>Un lieu de vie complet au cœur de la Côte Chalonnaise</p>
+      <p class="eyebrow eyebrow--center">The Estate</p>
+      <h2>Six <em>worlds</em> to explore</h2>
+      <p>A complete living place in the heart of the Côte Chalonnaise</p>
     </div>
     <UniversGrid />
   </section>
@@ -122,7 +123,6 @@ const breadcrumb = getBreadcrumbSchema([
   .hero__title { font-size: clamp(42px, 13vw, 104px); line-height: 0.96; letter-spacing: -0.01em; }
   .hero__title span { display: block; }
   .hero__italic { font-style: italic; color: var(--cream-hi); }
-  .hero__motto { margin: 18px 0 0; font-size: clamp(17px, 4.6vw, 24px); font-style: italic; color: var(--cream); }
   .hero__meta { margin: 20px 0 0; font-size: clamp(10px, 2.6vw, 12px); letter-spacing: 0.2em; text-transform: uppercase; color: #D6CFC2; line-height: 2.1; }
   .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 34px; }
   .hero__actions .btn { flex: 0 1 260px; min-height: 54px; }

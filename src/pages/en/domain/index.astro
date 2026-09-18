@@ -1,0 +1,11 @@
+---
+import EditorialPage from "../../../components/EditorialPage.astro";
+import { pages } from "../../../data/pages-en";
+---
+
+<EditorialPage
+  page={{ ...pages.vinification, title: "The", titleItalic: "Estate", back: "← Home", backHref: "/en/" }}
+  title="The Estate — Domaine d'Aubigny"
+  description="Twenty hectares of organic vineyard, three terroirs, four vessels of vinification. A complete living place in the Côte Chalonnaise."
+  lang="en"
+/>

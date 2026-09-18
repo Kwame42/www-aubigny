@@ -1,0 +1,36 @@
+---
+import Base from "../../../layouts/Base.astro";
+---
+
+<Base
+  title="Compost — Domaine d'Aubigny"
+  description="Made on-site from farmstead manures. The cycle that feeds the vines."
+  lang="en"
+>
+  <style>
+    .compost { max-width: 900px; margin: 0 auto; padding: clamp(56px, 12vw, 96px) var(--pad-x); }
+    .compost__title { font-size: clamp(36px, 8vw, 52px); font-weight: 400; margin-bottom: 48px; }
+    .compost__section { margin-bottom: 48px; }
+    .compost__section h2 { font-size: 24px; font-weight: 400; margin-bottom: 16px; }
+    .compost__section p { font-size: 15px; line-height: 1.8; color: var(--body); margin-bottom: 12px; }
+  </style>
+
+  <section class="compost">
+    <h1 class="compost__title">Compost</h1>
+
+    <div class="compost__section">
+      <h2>Made on Site</h2>
+      <p>Compost is manufactured on the estate from horse and cattle manures, straw, and organic matter. No external inputs. The cycle is closed.</p>
+    </div>
+
+    <div class="compost__section">
+      <h2>Back to the Soil</h2>
+      <p>This compost is returned to the vineyard, enriching the soil, feeding the microbes, building fertility. Organic farming is not the absence of amendment—it is the right kind of amendment, made here, from here.</p>
+    </div>
+
+    <div class="compost__section">
+      <h2>Soil as Foundation</h2>
+      <p>The best wines begin in the soil. A living soil—full of biology, carbon, structure—is the foundation of vitality in the vine and elegance in the glass.</p>
+    </div>
+  </section>
+</Base>

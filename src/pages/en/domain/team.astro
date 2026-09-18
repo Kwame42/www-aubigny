@@ -1,0 +1,21 @@
+---
+import Base from "../../../layouts/Base.astro";
+---
+
+<Base
+  title="Team — Domaine d'Aubigny"
+  description="The people who make the wines: terroir knowledge, craftsmanship, care."
+  lang="en"
+>
+  <style>
+    .team { max-width: 900px; margin: 0 auto; padding: clamp(56px, 12vw, 96px) var(--pad-x); }
+    .team__title { font-size: clamp(36px, 8vw, 52px); font-weight: 400; margin-bottom: 48px; }
+    .team__desc { font-size: 15px; line-height: 1.8; color: var(--body); margin-bottom: 48px; }
+  </style>
+
+  <section class="team">
+    <h1 class="team__title">The Team</h1>
+    <p class="team__desc">The vineyard and cellar are tended by people who know this terroir intimately. Their hands are in the soil, their eyes on the vines, their ears listening to what each vintage asks for.</p>
+    <p class="team__desc">E-E-A-T: Experience, Expertise, Authoritativeness, Trustworthiness. These are not abstractions here—they are the foundation of twenty years of organic farming and continuous improvement.</p>
+  </section>
+</Base>

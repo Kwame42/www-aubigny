@@ -4,7 +4,7 @@ import { site } from "../data/site";
 ---
 
 <Base
-  title="Nous écrire — Maison d'Aubigny"
+  title="Nous écrire — Domaine d'Aubigny"
   description="Commande, visite, demande professionnelle ou question sur un millésime : écrivez au domaine d'Aubigny, à Aluze."
 >
   <section class="page-head">
@@ -18,36 +18,82 @@ import { site } from "../data/site";
   <article class="article">
     <a class="back" href="/">← Accueil</a>
 
-    <form class="form" method="post" action={site.formEndpoint || undefined}>
-      <div class="form__grid">
-        <label class="field">Nom
-          <input type="text" name="nom" autocomplete="name" required />
-        </label>
-        <label class="field">Courriel
-          <input type="email" name="courriel" autocomplete="email" required />
-        </label>
-        <label class="field">Message
-          <textarea name="message" rows="5" required></textarea>
-        </label>
-        <button class="btn btn--navy" type="submit">Envoyer</button>
+    <section class="section">
+      <h2>Nous contacter</h2>
+      <p>Pour une commande, une visite, une question ou une demande professionnelle.</p>
+
+      <div class="contact-methods">
+        <div class="contact-method">
+          <h3>Téléphone</h3>
+          <p>
+            <a href="tel:+33385447676" class="btn btn--navy">
+              +33 (0)3 85 44 76 76
+            </a>
+          </p>
+        </div>
+
+        <div class="contact-method">
+          <h3>Courriel</h3>
+          <p>
+            <a href="mailto:contact@aubigny.wine" class="btn btn--navy">
+              contact@aubigny.wine
+            </a>
+          </p>
+        </div>
       </div>
-      {!site.formEndpoint && <p class="todo form__todo">adresse de réception du formulaire à renseigner (site.formEndpoint)</p>}
-    </form>
+    </section>
 
     <section class="section">
       <h2>Adresse</h2>
-      <p>Domaine d'Aubigny, 71510 Aluze, Côte Chalonnaise, Bourgogne.</p>
-      <p class="todo">téléphone et courriel à compléter</p>
+      <p>Domaine d'Aubigny<br />71510 Aluze<br />Côte Chalonnaise, Bourgogne<br />France</p>
     </section>
 
     <section class="section">
       <h2>Expéditions</h2>
       <p>France et Union européenne, en cartons de 6 ou 12 bouteilles.</p>
-      <p class="todo">frais de port et délais à compléter</p>
+      <p>Pour les tarifs de port et les délais, nous contacter directement.</p>
     </section>
   </article>
 </Base>
 
 <style>
-  .form__todo { margin: 16px 0 0; }
+  .contact-methods {
+    display: grid;
+    gap: 24px;
+    margin: 32px 0;
+  }
+
+  .contact-method {
+    padding: 20px;
+    background: #fef9f5;
+    border-radius: 4px;
+  }
+
+  .contact-method h3 {
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .contact-method p {
+    margin: 0;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .btn--navy {
+    background: #1a2838;
+    color: white;
+  }
+
+  .btn--navy:hover {
+    background: #0f1825;
+  }
 </style>

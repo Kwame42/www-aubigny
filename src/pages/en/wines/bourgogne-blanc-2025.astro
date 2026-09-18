@@ -1,0 +1,38 @@
+---
+import Base from "../../../layouts/Base.astro";
+const title = "Bourgogne Blanc 2025 — Domaine d'Aubigny";
+const description = "Aluze. Chardonnay. Powerful and broad.";
+const price = 27;
+---
+<Base {title} {description} lang="en">
+  <style>
+    .fiche { max-width: 900px; margin: 0 auto; padding: clamp(56px, 12vw, 96px) var(--pad-x); }
+    .fiche__title { font-size: clamp(32px, 8vw, 48px); font-weight: 400; margin-bottom: 32px; }
+    .fiche__section { margin-bottom: 48px; }
+    .fiche__section h2 { font-size: 24px; font-weight: 400; margin-bottom: 16px; }
+    .fiche__section p { font-size: 15px; line-height: 1.8; color: var(--body); margin-bottom: 12px; }
+    .fiche__section ul { margin-left: 20px; list-style: none; }
+    .fiche__price { font-size: 32px; font-weight: 400; margin: 24px 0; }
+    .fiche__cta { display: inline-block; background: var(--navy); color: var(--cream); padding: 14px 32px; text-decoration: none; margin-top: 20px; }
+  </style>
+  <section class="fiche">
+    <h1 class="fiche__title">Bourgogne Blanc 2025</h1>
+    <div class="fiche__section">
+      <h2>The Wine</h2>
+      <p>Powerful and broad. White flower and peach notes. Rich, elegant.</p>
+    </div>
+    <div class="fiche__section">
+      <h2>Technical Details</h2>
+      <ul style="list-style: none;">
+        <li><strong>Appellation:</strong> Bourgogne</li>
+        <li><strong>Cépage:</strong> Chardonnay 100%</li>
+        <li><strong>Harvest:</strong> August 30, 2025</li>
+        <li><strong>Alcohol:</strong> 13.5%</li>
+      </ul>
+    </div>
+    <div class="fiche__section">
+      <div class="fiche__price">{price} €</div>
+      <a class="fiche__cta" href="https://shop.aubigny.wine" target="_blank">Order</a>
+    </div>
+  </section>
+</Base>

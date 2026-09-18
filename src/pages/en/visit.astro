@@ -1,0 +1,43 @@
+---
+import Base from "../../layouts/Base.astro";
+---
+
+<Base
+  title="Visit — Domaine d'Aubigny"
+  description="Cellar visits and tastings by appointment. Come discover our wines on site."
+  lang="en"
+>
+  <style>
+    .visit { max-width: 900px; margin: 0 auto; padding: clamp(56px, 12vw, 96px) var(--pad-x); }
+    .visit__title { font-size: clamp(36px, 8vw, 52px); font-weight: 400; margin-bottom: 48px; }
+    .visit__section { margin-bottom: 48px; }
+    .visit__section h2 { font-size: 28px; font-weight: 400; margin-bottom: 16px; }
+    .visit__section p { font-size: 15px; line-height: 1.8; color: var(--body); margin-bottom: 12px; }
+    .btn { display: inline-block; background: #1a2838; color: #f5f1ed; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: 500; font-size: 14px; }
+    .btn:hover { background: #0f1825; }
+  </style>
+
+  <section class="visit">
+    <h1 class="visit__title">Visit the Estate</h1>
+    
+    <div class="visit__section">
+      <h2>Cellar Visits & Tastings</h2>
+      <p>Discover our cellars, our wines, and our terroir by appointment. We welcome groups and individuals.</p>
+      <p><strong>Booking:</strong> Call us at <a href="tel:+33385447676" class="btn">+33 (0)3 85 44 76 76</a> or email <a href="mailto:contact@aubigny.wine" class="btn">contact@aubigny.wine</a></p>
+    </div>
+
+    <div class="visit__section">
+      <h2>Getting Here</h2>
+      <p><strong>Address:</strong> Domaine d'Aubigny, Aluze, 71510 — Côte Chalonnaise, Burgundy</p>
+      <p><strong>GPS:</strong> 46.8612° N, 4.7234° E</p>
+      <p><strong>From Chalon-sur-Saône:</strong> 35 km south via D981</p>
+      <p><strong>From Beaune:</strong> 50 km south via N6 + D981</p>
+    </div>
+
+    <div class="visit__section">
+      <h2>Professional Visits</h2>
+      <p>For importers, restaurateurs and wine merchants: contact us for professional tastings and wholesale terms.</p>
+      <p><a href="/en/trade/">Trade access →</a></p>
+    </div>
+  </section>
+</Base>

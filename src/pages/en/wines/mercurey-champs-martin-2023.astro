@@ -1,0 +1,43 @@
+---
+import Base from "../../../layouts/Base.astro";
+const title = "Mercurey 1er Cru Champs Martin 2023 — Domaine d'Aubigny";
+const description = "Mercurey. Pinot Noir. Mercurey's finest red terroir, refined and powerful.";
+const price = 51;
+---
+<Base {title} {description} lang="en">
+  <style>
+    .fiche { max-width: 900px; margin: 0 auto; padding: clamp(56px, 12vw, 96px) var(--pad-x); }
+    .fiche__title { font-size: clamp(32px, 8vw, 48px); font-weight: 400; margin-bottom: 32px; }
+    .fiche__section { margin-bottom: 48px; }
+    .fiche__section h2 { font-size: 24px; font-weight: 400; margin-bottom: 16px; }
+    .fiche__section p { font-size: 15px; line-height: 1.8; color: var(--body); margin-bottom: 12px; }
+    .fiche__section ul { margin-left: 20px; list-style: none; }
+    .fiche__section li { font-size: 15px; line-height: 1.8; margin-bottom: 8px; }
+    .fiche__price { font-size: 32px; font-weight: 400; margin: 24px 0; }
+    .fiche__cta { display: inline-block; background: var(--navy); color: var(--cream); padding: 14px 32px; text-decoration: none; margin-top: 20px; }
+  </style>
+  <section class="fiche">
+    <h1 class="fiche__title">Mercurey 1er Cru Champs Martin 2023</h1>
+    <div class="fiche__section">
+      <h2>The Wine</h2>
+      <p>Refined and powerful. Mercurey's finest red terroir. 20-year-old vines, full expression.</p>
+    </div>
+    <div class="fiche__section">
+      <h2>Technical Details</h2>
+      <ul>
+        <li><strong>Appellation:</strong> Mercurey 1er Cru</li>
+        <li><strong>Cépage:</strong> Pinot Noir</li>
+        <li><strong>Surface:</strong> 1.5 ha</li>
+        <li><strong>Vine age:</strong> 20 years</li>
+        <li><strong>Harvest:</strong> Early September 2023</li>
+        <li><strong>Aging:</strong> Concrete vat</li>
+        <li><strong>Alcohol:</strong> 13%</li>
+        <li><strong>Production:</strong> 1,800 bottles</li>
+      </ul>
+    </div>
+    <div class="fiche__section">
+      <div class="fiche__price">{price} €</div>
+      <a class="fiche__cta" href="https://shop.aubigny.wine" target="_blank">Order</a>
+    </div>
+  </section>
+</Base>

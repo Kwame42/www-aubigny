@@ -6,52 +6,75 @@ const path = Astro.url.pathname;
 <header class="site-header">
   <div class="site-header__bar">
     <a class="brand" href="/">
-      <img src="/images/blason.png" width="268" height="264" alt="" />
+      <img src="/images/logo.webp" width="268" height="264" alt="" />
       <span class="brand__text">
         <span class="brand__name">{site.name}</span>
         <span class="brand__tag">{site.tagline}</span>
       </span>
     </a>
-    <a class="btn btn--gold-dim btn--sm shop" href="/vins/">
-      Boutique<span class="shop__count" data-cart-count hidden></span>
-    </a>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
 
-  <nav id="nav-principal" class="site-nav" aria-label="Navigation principale" hidden>
-    <div class="site-nav__cols">
-      {nav.map((group) => (
-        <div class="site-nav__col">
+    <nav id="nav-principal" class="site-nav" aria-label="Navigation principale" hidden>
+      <div class="site-nav__cols">
+        {nav.map((group) => (
           <a class="site-nav__head" href={group.href} aria-current={path === group.href ? "page" : undefined}>{group.label}</a>
-          {group.children.map((item) => (
-            <a class="site-nav__item" href={item.href} aria-current={path === item.href ? "page" : undefined}>{item.label}</a>
-          ))}
-        </div>
-      ))}
+        ))}
+      </div>
+    </nav>
+
+    <div class="site-header__right">
+      <div class="lang-selector">
+        <a href="/" class={path === "/" || path.startsWith("/vins") || path.startsWith("/domaine") || path.startsWith("/histoire") || path.startsWith("/contact") || path.startsWith("/visiter") ? "lang-link active" : "lang-link"}>FR</a>
+        <a href="/en/" class={path.startsWith("/en") ? "lang-link active" : "lang-link"}>EN</a>
+        <a href="/zh/" class={path.startsWith("/zh") ? "lang-link active" : "lang-link"}>中文</a>
+      </div>
+      <a class="btn btn--gold-dim btn--sm shop" href="https://shop.aubigny.wine" target="_blank" rel="noopener noreferrer">
+        Boutique<span class="shop__count" data-cart-count hidden></span>
+      </a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-principal" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </nav>
+  </div>
 </header>
 
 <style>
-  .site-header { position: sticky; top: 0; z-index: 20; background: var(--navy); color: var(--cream); border-bottom: 1px solid var(--navy-line); }
-  .site-header__bar { max-width: var(--w-wide); margin: 0 auto; padding: 12px var(--pad-x); display: flex; align-items: center; gap: 12px; }
+  .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 20; background: transparent; color: var(--cream); border-bottom: 1px solid transparent; transition: background 0.3s ease, border-color 0.3s ease; }
+  .site-header.scrolled { background: var(--navy); border-bottom: 1px solid var(--navy-line); }
+  .site-header__bar { max-width: var(--w-wide); margin: 0 auto; padding: 12px var(--pad-x); display: flex; align-items: center; gap: 12px; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
   .brand { flex: 1; display: flex; align-items: center; gap: 11px; text-decoration: none; color: inherit; min-height: 44px; }
   .brand:hover { color: inherit; }
   .brand img { width: 30px; height: auto; }
   .brand__text { display: flex; flex-direction: column; gap: 4px; }
   .brand__name { font-size: clamp(13px, 3.8vw, 16px); letter-spacing: 0.24em; text-transform: uppercase; line-height: 1; }
-  .brand__tag { font-size: clamp(10px, 2.8vw, 12px); font-style: italic; color: var(--gold); }
+  .brand__tag { font-size: clamp(10px, 2.8vw, 12px); font-style: italic; color: var(--gold); text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
+  .site-header__right { display: flex; align-items: center; gap: 16px; }
+  .lang-selector { display: flex; gap: 8px; }
+  .lang-link { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--cream); opacity: 0.7; transition: opacity 0.2s; padding: 4px 8px; }
+  .lang-link:hover { opacity: 1; }
+  .lang-link.active { color: var(--gold); opacity: 1; font-weight: 600; }
   .shop { gap: 8px; }
   .shop__count { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 5px; background: var(--gold); color: var(--navy); font-size: 11px; letter-spacing: 0; }
   .burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; min-height: 44px; padding: 0 11px; background: none; border: 1px solid var(--navy-line); cursor: pointer; }
   .burger span { display: block; height: 1px; background: var(--cream); }
-  .site-nav { border-top: 1px solid var(--navy-line); background: var(--navy); }
-  .site-nav__cols { max-width: var(--w-wide); margin: 0 auto; padding: 8px var(--pad-x) 28px; display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
-  .site-nav__col { display: flex; flex-direction: column; border-top: 1px solid var(--navy-line); padding-top: 12px; }
-  .site-nav__head { padding: 12px 0; min-height: 44px; display: flex; align-items: center; font-size: 21px; color: var(--cream); text-decoration: none; }
-  .site-nav__item { padding: 8px 0; min-height: 44px; display: flex; align-items: center; font-size: 15px; color: var(--nav-item); text-decoration: none; }
+  .site-nav { display: none; }
+  .site-nav:not([hidden]) { display: block; }
+  @media (min-width: 1024px) {
+    .burger { display: none; }
+    .site-nav { display: flex !important; position: static; border: none; background: transparent; }
+    .site-nav__cols { display: flex; gap: 28px; padding: 0; margin: 0; }
+  }
+  @media (max-width: 1023px) {
+    .site-nav:not([hidden]) { position: absolute; top: 100%; left: 0; right: 0; border-top: 1px solid var(--navy-line); background: var(--navy); z-index: 10; }
+    .site-nav__cols { max-width: var(--w-wide); margin: 0 auto; padding: 8px var(--pad-x) 28px; display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+  }
+  .site-nav__head { padding: 12px 0; min-height: 44px; display: flex; align-items: center; font-size: 21px; color: var(--cream); text-decoration: none; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
+  @media (min-width: 1024px) {
+    .site-nav__head { padding: 0; min-height: auto; font-size: 14px; }
+  }
+  .site-nav__item { padding: 8px 0; min-height: 44px; display: flex; align-items: center; font-size: 15px; color: var(--nav-item); text-decoration: none; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+  @media (min-width: 1024px) {
+    .site-nav__item { display: none; }
+  }
   .site-nav__head:hover, .site-nav__item:hover { color: var(--gold); }
   [aria-current="page"] { color: var(--gold); }
 </style>
@@ -59,9 +82,19 @@ const path = Astro.url.pathname;
 <script>
   const burger = document.querySelector(".burger");
   const menu = document.getElementById("nav-principal");
+  const header = document.querySelector(".site-header");
+
   burger?.addEventListener("click", () => {
     const open = burger.getAttribute("aria-expanded") === "true";
     burger.setAttribute("aria-expanded", String(!open));
     if (menu) menu.hidden = open;
+  });
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header?.classList.add("scrolled");
+    } else {
+      header?.classList.remove("scrolled");
+    }
   });
 </script>

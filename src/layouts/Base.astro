@@ -29,7 +29,7 @@ const enUrl = Astro.site ? new URL(`/en${pathWithoutLang}`, Astro.site).href : `
     {lang === 'fr' && <link rel="alternate" hreflang="en" href={enUrl} />}
     {lang === 'en' && <link rel="alternate" hreflang="fr" href={frUrl} />}
     <link rel="alternate" hreflang="x-default" href={frUrl} />
-    <link rel="icon" href="/images/blason.png" />
+    <link rel="icon" href="/images/logo.webp" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}

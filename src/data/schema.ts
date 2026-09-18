@@ -23,7 +23,7 @@ export const organization = {
     }
   ],
   "url": "https://aubigny.wine",
-  "logo": "https://aubigny.wine/images/blason.png",
+  "logo": "https://aubigny.wine/images/logo.webp",
   "image": "https://aubigny.wine/images/q-nature-1.webp",
   "description": "Domaine viticole biologique en Côte Chalonnaise depuis 1132. 20 hectares de vignes certifiées bio sur des terres cultrivées depuis deux mille ans.",
   "sameAs": [
@@ -115,7 +115,7 @@ export function getArticleSchema(article: {
       "name": "Domaine d'Aubigny",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://aubigny.wine/images/blason.png"
+        "url": "https://aubigny.wine/images/logo.webp"
       }
     }
   };
