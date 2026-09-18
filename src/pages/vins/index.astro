@@ -49,9 +49,7 @@ const mercureyCuvees = cuvees.filter((c) => c.region === "mercurey");
                       <div class="millesime-row">
                         <span class="millesime-row__year">{mil.year}</span>
                         <span class="millesime-row__price">{mil.price}€</span>
-                        <span class="millesime-row__status">
-                          {mil.inStock ? "En stock" : "Épuisé"}
-                        </span>
+                        <a href={mil.url} class="millesime-row__link">Voir la fiche</a>
                         <a href={mil.odooUrl} target="_blank" rel="noopener noreferrer" class="btn btn--sm">
                           Ajouter au panier
                         </a>
