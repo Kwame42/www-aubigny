@@ -1,0 +1,138 @@
+---
+import Base from "../../layouts/Base.astro";
+import SpecTable from "../../components/SpecTable.astro";
+import ProductSchema from "../../components/ProductSchema.astro";
+import { oucheRouge2025, euro, catalogue } from "../../data/wines";
+
+const { price, stock, tech } = oucheRouge2025;
+---
+
+<Base
+  title="Bourgogne Rouge L'Ouche de la Maison 2025 — Domaine d'Aubigny"
+  description="L'Ouche de la Maison 2025, monopole du domaine. Parcelle difficile mais bien maîtrisée, douceur et profondeur exceptionnelle. Pinot noir élevé en pièce et en jarre."
+  image="/images/hero-parcelle.jpg"
+>
+  <ProductSchema
+    name="Bourgogne Rouge L'Ouche de la Maison 2025"
+    description="Monopole du domaine exposé nord, à proximité des bois. Parcelle maîtrisée qui livre ce millésime un vin d'une grande douceur et d'une profondeur inattendue. Partiellement égrappé, élevage en pièce et en jarre."
+    price={price}
+    image="/images/hero-parcelle.jpg"
+    vintage="2025"
+    appellation="Bourgogne"
+    varietal="Pinot noir"
+    inStock={stock}
+    productUrl="https://shop.aubigny.wine/en/shop/omr-2025-bourgogne-rouge-louche-de-la-maison-rouge-2025-monopole-5"
+  />
+  <section class="fiche-hero">
+    <img src="/images/hero-parcelle.jpg" alt="Parcelle de L'Ouche de la Maison à Aluze" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
+    <div class="fiche-hero__veil"></div>
+    <div class="fiche-hero__in">
+      <p class="eyebrow eyebrow--center eyebrow--light">Bourgogne Rouge</p>
+      <h1>L'Ouche de la<br /><em>Maison</em></h1>
+      <p class="fiche-hero__meta">2025 · Pinot noir · Monopole</p>
+    </div>
+  </section>
+
+  <article class="article">
+    <a class="back" href="/vins/">← Les vins</a>
+
+    <p class="fiche-lead">Parcelle difficile, à proximité des bois, qui nous livre enfin un vin d'une grande douceur et d'une profondeur que nous n'avions pas anticipée. Partiellement égrappé, élevé en pièce et en jarre.</p>
+
+    <section class="section">
+      <h2>Le lieu</h2>
+      <p>L'Ouche de la Maison est une parcelle monopole du domaine, exposée nord à Aluze, très proche de bois. Cette proximité lui donne une biodiversité remarquable — mais aussi des défis : la parcelle attire les animaux sauvages (cerf, sanglier) qui apprécient les bons raisins. Avec le temps, nous avons mieux maîtrisé cette parcelle difficile.</p>
+      <p>Ce premier millésime révèle un vin d'une douceur et d'une profondeur rares, qui redéfinit ce que cette parcelle peut offrir.</p>
+    </section>
+
+    <section class="achat">
+      <p class="eyebrow eyebrow--light">Achat</p>
+      <p class="achat__price">{euro(price)}<span>ttc la bouteille</span></p>
+      <p class="achat__fine">Bouteille 75 cl · carton de 6 ou 12 · expédition France et UE</p>
+      {stock ? (
+        <div class="achat__buy">
+          <div class="stepper" data-stepper="oucheRouge2025" data-step-size="6" data-start="6">
+            <button type="button" data-step="-1" aria-label="Retirer six bouteilles">−</button>
+            <span data-qty-out aria-live="polite">6</span>
+            <button type="button" data-step="1" aria-label="Ajouter six bouteilles">+</button>
+          </div>
+          <button class="btn achat__add" type="button" data-add="oucheRouge2025">Ajouter au panier</button>
+        </div>
+      ) : (
+        <p class="achat__out">Épuisé</p>
+      )}
+    </section>
+
+    <section class="section">
+      <h2>Fiche technique</h2>
+      <SpecTable rows={tech} />
+      <p class="fiche-pdf">
+        <a href="#fiche-pdf">Fiche technique en PDF</a>
+        <span>156 ko</span>
+      </p>
+    </section>
+
+    <section class="section other">
+      <div>
+        <p class="other__title">Autres monopoles</p>
+        <div class="other__links">
+          <a href="/vins/bourgogne-blanc-grand-pres-d-aubigny-monopole/">Grand Prés d'Aubigny</a>
+          <a href="/vins/bourgogne-blanc-grand-pres-d-aubigny-monopole-2025/">Grand Prés Blanc 2025</a>
+        </div>
+      </div>
+      <div>
+        <p class="other__title">Le millésime 2025</p>
+        <p class="other__note">Saison variable, opportunités pour les parcelles bien travaillées.</p>
+        <a href="#compte-rendu-2025">Compte rendu du millésime</a>
+      </div>
+    </section>
+
+    <aside class="pro">
+      <div>
+        <h2>Tarifs et disponibilité pro</h2>
+        <p>Cavistes, restaurants, importateurs.</p>
+      </div>
+      <a class="btn" href="/en/trade/">Créer un compte</a>
+    </aside>
+  </article>
+
+  <script type="application/json" id="panier-catalogue" set:html={JSON.stringify(catalogue)}></script>
+</Base>
+
+<style>
+  .fiche-hero { position: relative; min-height: 52vh; display: flex; align-items: flex-end; overflow: hidden; background: var(--navy); }
+  .fiche-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .fiche-hero__veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,32,47,0.42) 0%, rgba(20,32,47,0.28) 40%, rgba(20,32,47,0.88) 100%); }
+  .fiche-hero__in { position: relative; width: 100%; max-width: 900px; margin: 0 auto; padding: clamp(44px, 10vw, 88px) var(--pad-x) clamp(32px, 7vw, 56px); text-align: center; color: #FFFFFF; }
+  .fiche-hero__in h1 { font-size: clamp(31px, 8.6vw, 60px); line-height: 1.08; }
+  .fiche-hero__in h1 em { font-style: italic; color: var(--cream-hi); }
+  .fiche-hero__meta { margin: 18px 0 0; font-size: clamp(11px, 3vw, 13px); letter-spacing: 0.2em; text-transform: uppercase; color: #D6CFC2; }
+  .fiche-hero .eyebrow { color: var(--gold-pale); }
+  .fiche-hero .eyebrow::before, .fiche-hero .eyebrow::after { background: rgba(228,216,184,0.6); }
+
+  .fiche-lead { margin: 0; font-size: clamp(17px, 4.6vw, 21px); line-height: 1.72; }
+
+  .achat { margin-top: clamp(32px, 7vw, 52px); background: var(--navy); color: var(--cream); padding: clamp(26px, 6vw, 38px); }
+  .achat .eyebrow { margin-bottom: 22px; }
+  .achat__price { margin: 0; font-size: clamp(34px, 9vw, 48px); line-height: 1; }
+  .achat__price span { margin-left: 8px; font-size: 0.28em; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .achat__fine { margin: 14px 0 24px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-navy-muted); line-height: 1.9; }
+  .achat__buy { display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch; }
+  .achat__add { flex: 1 1 220px; }
+  .achat__out { margin: 0; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-navy-muted); }
+  .stepper { display: flex; border: 1px solid var(--navy-line); }
+  .stepper button { width: 48px; min-height: 52px; background: none; border: 0; font-size: 20px; color: var(--cream); cursor: pointer; }
+  .stepper span { min-width: 44px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+
+  .fiche-pdf { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; font-size: 15px; }
+  .fiche-pdf span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+  .other { display: grid; gap: 26px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .other__title { margin: 0 0 14px; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-ink); }
+  .other__links { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; font-size: 16px; }
+  .other__note { margin: 0 0 12px; font-size: 15px; line-height: 1.75; color: var(--body); }
+
+  .pro { margin-top: clamp(32px, 7vw, 52px); background: var(--navy); color: var(--cream); padding: clamp(26px, 6vw, 38px); display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+  .pro > div { flex: 1 1 260px; }
+  .pro h2 { margin: 0 0 8px; font-size: clamp(19px, 5vw, 23px); font-weight: 400; }
+  .pro p { margin: 0; font-size: 14px; line-height: 1.7; color: var(--nav-item); }
+</style>

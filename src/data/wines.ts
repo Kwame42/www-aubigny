@@ -195,3 +195,82 @@ export const champsMartin2023 = {
     { k: "Production", v: "1 800 cols" }
   ] as { k: string; v: string | null }[]
 };
+
+/** Bourgogne Rouge L'Ouche de la Maison 2025 — Monopole */
+export const oucheRouge2025 = {
+  price: 27,
+  stock: true,
+  tech: [
+    { k: "Appellation", v: "Bourgogne" },
+    { k: "Cépage", v: "Pinot noir 100 %" },
+    { k: "Surface de la parcelle", v: null },
+    { k: "Âge des vignes", v: null },
+    { k: "Sol", v: null },
+    { k: "Exposition", v: null },
+    { k: "Altitude", v: null },
+    { k: "Certification", v: "Agriculture biologique" },
+    { k: "Rendement", v: null },
+    { k: "Date de vendange", v: "5 septembre 2025" },
+    { k: "Vinification", v: "Partiellement égrappé" },
+    { k: "Élevage", v: "Pièce et jarre" },
+    { k: "Degré", v: "12,5 %" },
+    { k: "pH", v: null },
+    { k: "Acidité totale", v: null },
+    { k: "SO2 total", v: null },
+    { k: "Collage", v: null },
+    { k: "Filtration", v: null }
+  ] as { k: string; v: string | null }[]
+};
+
+/** Bourgogne Blanc Grand Prés d'Aubigny 2025 — Monopole */
+export const grandPresBlanc2025 = {
+  price: 27,
+  stock: true,
+  tech: [
+    { k: "Appellation", v: "Bourgogne" },
+    { k: "Cépage", v: "Chardonnay 100 %" },
+    { k: "Surface de la parcelle", v: null },
+    { k: "Âge des vignes", v: null },
+    { k: "Sol", v: null },
+    { k: "Exposition", v: null },
+    { k: "Altitude", v: null },
+    { k: "Certification", v: "Agriculture biologique" },
+    { k: "Rendement", v: null },
+    { k: "Date de vendange", v: "6 septembre 2025" },
+    { k: "Vinification", v: "Pressurage direct" },
+    { k: "Élevage", v: "Jarre et pièce Bourgogne 2e/3e vin (2-3 ans)" },
+    { k: "Degré", v: "13 %" },
+    { k: "pH", v: null },
+    { k: "Acidité totale", v: null },
+    { k: "SO2 total", v: null },
+    { k: "Collage", v: null },
+    { k: "Filtration", v: null }
+  ] as { k: string; v: string | null }[]
+};
+
+/** Mercurey 1er Cru Champs Martin 2024 */
+export const champsMartin2024 = {
+  price: 51,
+  stock: true,
+  tech: [
+    { k: "Appellation", v: "Mercurey 1er Cru" },
+    { k: "Cépage", v: "Pinot noir" },
+    { k: "Surface de la parcelle", v: "1,5 ha" },
+    { k: "Âge des vignes", v: "20 ans" },
+    { k: "Sol", v: "Argilo-calcaire" },
+    { k: "Exposition", v: "Sud – sud-est" },
+    { k: "Pente", v: "Jusqu'à 25 %" },
+    { k: "Altitude", v: "324 m" },
+    { k: "Certification", v: "Agriculture biologique" },
+    { k: "Rendement", v: null },
+    { k: "Date de vendange", v: "5 septembre 2024" },
+    { k: "Vinification", v: "50 % égrappé" },
+    { k: "Élevage", v: "Pièce 228 L (2-4 vins)" },
+    { k: "Degré", v: "13 %" },
+    { k: "pH", v: null },
+    { k: "Acidité totale", v: null },
+    { k: "SO2 total", v: null },
+    { k: "Collage", v: null },
+    { k: "Filtration", v: null }
+  ] as { k: string; v: string | null }[]
+};
