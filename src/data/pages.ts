@@ -96,12 +96,19 @@ export const pages: Record<string, EditorialPageData> = {
     sections: [
       { title: "Comment ça se passe", paras: ["Une visite des vignes et du chai, puis une dégustation des cuvées disponibles. Comptez environ une heure et demie. Visite sur rendez-vous toute l'année."] },
       { title: "Où", paras: ["Domaine d'Aubigny, 71510 Aluze, Côte Chalonnaise. À une quinzaine de minutes de Chalon-sur-Saône."] },
-      { title: "Réserver", paras: ["Appelez-nous au +33 (0)3 85 44 76 76 ou écrivez à contact@aubigny.wine pour fixer un rendez-vous. Dites-nous la date souhaitée et le nombre de personnes."] }
+      { title: "Réserver", paras: ["Appelez-nous au +33 (0)3 85 44 76 76 ou écrivez à contact@aubigny.wine pour fixer un rendez-vous. Dites-nous la date souhaitée et le nombre de personnes."] },
+      { title: "Où dormir", paras: ["Pour un séjour plus long, découvrez La Rose Pourpre, notre maison d'hôtes à proximité. Chambres d'exception, table gastronomique, et vue sur les vignobles de Bourgogne.", "Visite Aubigny le jour, séjour à La Rose Pourpre la nuit — le meilleur des deux mondes."] }
     ],
     videos: [
       { src: "/videos/vue-champs.mp4", title: "Les champs du domaine" },
       { src: "/videos/vue-cuverie.mp4", title: "Le chai et la cuverie" }
-    ]
+    ],
+    card: {
+      title: "La Rose Pourpre",
+      text: "Notre maison d'hôtes et table gastronomique. Chambres d'exception avec vue sur les vignobles, et gastronomie d'exception.",
+      cta: "Découvrir",
+      ctaHref: "https://www.rosepourpre.fr"
+    }
   },
   archives: {
     eyebrow: "Histoire", title: "Histoire et", titleItalic: "archives", back: "← Accueil", backHref: "/",
