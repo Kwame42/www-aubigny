@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/carnet/septembre-2026-vendanges/",
+      "destination": "/carnet/coup-de-coeur/",
+      "permanent": true
+    }
+  ]
+}

@@ -97,7 +97,7 @@ export const pages: Record<string, EditorialPageData> = {
       { title: "Comment ça se passe", paras: ["Une visite des vignes et du chai, puis une dégustation des cuvées disponibles. Comptez environ une heure et demie. Visite sur rendez-vous toute l'année."] },
       { title: "Où", paras: ["Domaine d'Aubigny, 71510 Aluze, Côte Chalonnaise. À une quinzaine de minutes de Chalon-sur-Saône."] },
       { title: "Réserver", paras: ["Appelez-nous au +33 (0)3 85 44 76 76 ou écrivez à contact@aubigny.wine pour fixer un rendez-vous. Dites-nous la date souhaitée et le nombre de personnes."] },
-      { title: "Où dormir", paras: ["Pour un séjour plus long, découvrez La Rose Pourpre, notre maison d'hôtes à proximité. Chambres d'exception et vue sur les vignobles de Bourgogne.", "Visite Aubigny le jour, séjour à La Rose Pourpre la nuit — le meilleur des deux mondes."] }
+      { title: "Pour quelques jours : La Rose Pourpre", paras: ["Vous souhaitez visiter le domaine et passer quelques jours en Côte Chalonnaise ? Installez-vous à La Rose Pourpre, notre maison d'hôtes à quelques kilomètres d'Aubigny. Chambres d'exception, Table d'hôte, et vue sur les vignobles.", "C'est moi qui vous ferai visiter les vignes. Vous resterez sur place quelques jours, et nous verrons le domaine ensemble — la vigne, le chai, et tout ce qui s'y fait. Les repas à La Rose Pourpre vous permettront de découvrir les vins du domaine dans une ambiance intime."] }
     ],
     videos: [
       { src: "/videos/vue-champs.mp4", title: "Les champs du domaine" },
@@ -105,8 +105,8 @@ export const pages: Record<string, EditorialPageData> = {
     ],
     card: {
       title: "La Rose Pourpre",
-      text: "Notre maison d'hôtes. Chambres d'exception avec vue sur les vignobles de Bourgogne.",
-      cta: "Découvrir",
+      text: "Maison d'hôtes tenue par le propriétaire d'Aubigny. Séjour complet : visite des vignes, Table d'hôte, et ambiance intime.",
+      cta: "Réserver",
       ctaHref: "https://www.rosepourpre.fr"
     }
   },

@@ -1,0 +1,239 @@
+---
+import Base from "../../layouts/Base.astro";
+import SchemaOrg from "../../components/SchemaOrg.astro";
+import { organization, getBreadcrumbSchema } from "../../data/schema";
+
+const title = "Coup de cœur — L'histoire de nos débuts";
+const description = "Comment nous avons transformé un chai en ruine en un domaine reconnu par la Grande Épicerie de Paris en quatre ans, sans experience viticole, un foudre de 50HL et beaucoup d'audace.";
+
+const breadcrumb = getBreadcrumbSchema([
+  { name: "Accueil", url: "https://aubigny.wine/" },
+  { name: "Carnet", url: "https://aubigny.wine/carnet/" },
+  { name: "Coup de cœur", url: "https://aubigny.wine/carnet/coup-de-coeur/" },
+]);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": "2026-09-19",
+  "author": {
+    "@type": "Person",
+    "name": "Kwame Yamgnane"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Domaine d'Aubigny"
+  }
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  image="/images/hero-parcelle.jpg"
+>
+  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <article class="article carnet">
+    <a class="back" href="/">← Accueil</a>
+
+    <header class="carnet__header">
+      <p class="eyebrow eyebrow--center eyebrow--light">Carnet de Vigne</p>
+      <h1>Coup de cœur — L'histoire de nos débuts</h1>
+      <p class="carnet__subtitle">Quatre ans. Un foudre solitaire. Quelques bouteilles devenues une reconnaissance.</p>
+      <p class="carnet__meta">19 septembre 2026 · Kwame Yamgnane</p>
+    </header>
+
+    <section class="section carnet__intro">
+      <p>
+        Depuis des années, j'étais tombé amoureux des vins de Bourgogne. Cette idée me titillait : un jour, comprendre comment on en fait, vraiment. Mais en 2022, je ne connaissais rien à la pratique viticole. J'avais passé ma vie dans les champs, la terre, les plantes — mais pas dans le vignoble. Pas un proche en Bourgogne pour me montrer la route, pas de réseau, pas même un oncle vigneron pour me dire « attention, ça se fait pas comme ça ». Juste une passion de longtemps, et l'audace d'essayer.
+      </p>
+
+      <p>
+        Nous avons acheté Aubigny.
+      </p>
+
+      <p>
+        Le chai ? Magnifique. Et complètement dévasté.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Les fantômes des moines</h2>
+
+      <p>
+        Terre battue. Pas une cuve à l'horizon. Des vestiges — des murs, des traces, des coins d'ombre où vous sentez passer les moines qui vinifiaient ici au XIIe siècle. Le toit menace de s'écrouler à tout moment. C'est beau et terrifiant à la fois.
+      </p>
+
+      <p>
+        Dans ce chai qui parle à peine, nous avons mis en place un seul équipement : un foudre de 50 hectolitres. Pas dix, pas cinq. Un.
+      </p>
+
+      <p>
+        Pourquoi 50 HL ? C'est de la stratégie naïve, mais elle m'a semblé bonne sur le papier. Si nous produisons 50 hectolitres par hectare — ce qui n'était qu'un espoir à ce moment-là — nous pourrions remplir 10 ou 12 foudres de ce volume pour les Rully. Le ratio bois par litre y est inférieur à celui des pièces de 228 litres. Moins de bois, c'est un peu plus de fraîcheur, un peu plus de minéralité. Je n'aime pas les vins surboîtés. Je voulais du milieu de bouche sans sécheresse. Voilà.
+      </p>
+
+      <p class="carnet__call">
+        Un foudre solitaire au milieu d'un chai fantôme. C'était notre promesse.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>L'appel de la Grande Épicerie</h2>
+
+      <p>
+        Automne 2023. Hospices de Beaune. Je ne sais pas comment ça fonctionne, ces choses-là. Je ne connais personne. Et puis, un coup de téléphone.
+      </p>
+
+      <p>
+        « Bonjour, je suis Hughes Forget, directeur de la cave de la Grande Épicerie de Paris. J'aimerais déguster vos vins. »
+      </p>
+
+      <p>
+        J'ai dit oui. Je me souviens avoir pensé : « Il va voir le chai presque vide. Ça va être la visite la plus rapide de Bourgogne. On va rigoler poliment, et voilà. »
+      </p>
+
+      <p>
+        Il est venu. Il a goûté. Et puis :
+      </p>
+
+      <p>
+        « Votre pointe d'acidité devrait devenir de la fraîcheur dans quelques années. Le vin est excellent. Je vous en prends 1200 bouteilles. »
+      </p>
+
+      <p>
+        Ce moment-là. Je ne savais même pas comment transférer un foudre de 50 hectolitres dans des bouteilles. Et j'en venais de vendre 1200.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Quatre ans plus tard</h2>
+
+      <p>
+        Septembre 2026. Ce matin, j'ai reçu la revue de la Grande Épicerie de Paris. Notre Rully y figure en « coup de cœur ».
+      </p>
+
+      <p class="carnet__highlight">
+        « Le jeune Domaine d'Aubigny signe un Rully bio au fruité intense et à la minéralité ciselée, qui confirme d'emblée que ce domaine est l'une des belles découvertes de l'année. » — 92/100
+      </p>
+
+      <p>
+        C'est difficile à décrire. Quand on débute sans connaître personne, sans expérience, avec un chai qui tombe en ruine et un seul foudre — quand on n'est pas sûr de ses choix d'acidité, de ses timing de vendanges — on ne pense pas à ça. On pense à faire le moins de dégâts possible. À apprendre.
+      </p>
+
+      <p>
+        Et puis, les fantômes des moines vous remercient. Les chiffres parlent. Les gens reviennent.
+      </p>
+    </section>
+
+    <section class="section carnet__conclusion">
+      <h2>Ce qu'on a appris</h2>
+
+      <p>
+        Que l'audace compte plus que l'expérience, parfois. Que les mauvaises décisions prises avec sincérité valent mieux que l'indécision éternelle. Que le chai décrépi qui raconte 900 ans d'histoire vous porte plus loin que vous ne le pensez.
+      </p>
+
+      <p class="carnet__final">
+        On a refait le toit. On s'est équipé — jarres en terre cuite, un deuxième foudre, pièces de Bourgogne, tout le matériel pour vraiment travailler. Le chai n'est plus en ruine, c'est maintenant un lieu exceptionnel pour produire les vins. Et ce que j'aime le plus ? C'est que nous apprenons ensemble — nous, le chai restauré, et les gens qui découvrent nos vins.
+      </p>
+    </section>
+
+    <footer class="carnet__footer">
+      <p>
+        <strong>Domaine d'Aubigny</strong> — viticulture biologique en Côte Chalonnaise depuis 1132<br />
+        Aluze, 71510
+      </p>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .carnet {
+    max-width: 900px;
+  }
+
+  .carnet__header {
+    text-align: center;
+    margin-bottom: clamp(40px, 9vw, 60px);
+  }
+
+  .carnet__header h1 {
+    margin: 0 0 16px;
+    font-size: clamp(28px, 7vw, 48px);
+    line-height: 1.2;
+  }
+
+  .carnet__subtitle {
+    margin: 0 0 12px;
+    font-size: clamp(16px, 4vw, 20px);
+    font-style: italic;
+    color: var(--body);
+  }
+
+  .carnet__meta {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .carnet__intro {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.9;
+  }
+
+  .carnet__intro p {
+    margin-bottom: 24px;
+  }
+
+  .carnet__call {
+    font-style: italic;
+    color: var(--gold-ink);
+    margin: 32px 0 16px;
+  }
+
+  .carnet__highlight {
+    font-size: clamp(16px, 2vw, 18px);
+    font-style: italic;
+    color: var(--gold-ink);
+    margin: 24px 0;
+  }
+
+  .carnet__final {
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: 500;
+  }
+
+  .carnet__conclusion {
+    margin-top: clamp(50px, 10vw, 80px);
+  }
+
+  .carnet__footer {
+    margin-top: clamp(40px, 9vw, 60px);
+    padding-top: 20px;
+    border-top: 1px solid var(--navy-line);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .section {
+    margin-bottom: clamp(40px, 9vw, 60px);
+  }
+
+  .section h2 {
+    margin: 0 0 24px;
+    font-size: clamp(24px, 6vw, 32px);
+    font-weight: 400;
+  }
+
+  .section p {
+    margin: 0 0 20px;
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.85;
+    color: var(--body);
+  }
+</style>
