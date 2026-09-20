@@ -19,10 +19,15 @@ const path = Astro.url.pathname;
           <a class="site-nav__head" href={group.href} aria-current={path === group.href ? "page" : undefined}>{group.label}</a>
         ))}
       </div>
+      <div class="lang-selector lang-selector--mobile">
+        <a href="/" class={path === "/" || path.startsWith("/vins") || path.startsWith("/domaine") || path.startsWith("/histoire") || path.startsWith("/contact") || path.startsWith("/visiter") ? "lang-link active" : "lang-link"}>FR</a>
+        <a href="/en/" class={path.startsWith("/en") ? "lang-link active" : "lang-link"}>EN</a>
+        <a href="/zh/" class={path.startsWith("/zh") ? "lang-link active" : "lang-link"}>中文</a>
+      </div>
     </nav>
 
     <div class="site-header__right">
-      <div class="lang-selector">
+      <div class="lang-selector lang-selector--desktop">
         <a href="/" class={path === "/" || path.startsWith("/vins") || path.startsWith("/domaine") || path.startsWith("/histoire") || path.startsWith("/contact") || path.startsWith("/visiter") ? "lang-link active" : "lang-link"}>FR</a>
         <a href="/en/" class={path.startsWith("/en") ? "lang-link active" : "lang-link"}>EN</a>
         <a href="/zh/" class={path.startsWith("/zh") ? "lang-link active" : "lang-link"}>中文</a>
@@ -49,6 +54,8 @@ const path = Astro.url.pathname;
   .brand__tag { font-size: clamp(10px, 2.8vw, 12px); font-style: italic; color: var(--gold); text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
   .site-header__right { display: flex; align-items: center; gap: 16px; }
   .lang-selector { display: flex; gap: 8px; }
+  .lang-selector--desktop { display: flex; }
+  .lang-selector--mobile { display: none; }
   .lang-link { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--cream); opacity: 0.7; transition: opacity 0.2s; padding: 4px 8px; }
   .lang-link:hover { opacity: 1; }
   .lang-link.active { color: var(--gold); opacity: 1; font-weight: 600; }
@@ -60,12 +67,17 @@ const path = Astro.url.pathname;
   .site-nav:not([hidden]) { display: block; }
   @media (min-width: 1024px) {
     .burger { display: none; }
+    .lang-selector--mobile { display: none; }
     .site-nav { display: flex !important; position: static; border: none; background: transparent; }
     .site-nav__cols { display: flex; gap: 28px; padding: 0; margin: 0; }
   }
   @media (max-width: 1023px) {
+    .lang-selector--desktop { display: none; }
+    .lang-selector--mobile { display: flex; }
     .site-nav:not([hidden]) { position: absolute; top: 100%; left: 0; right: 0; border-top: 1px solid var(--navy-line); background: var(--navy); z-index: 10; }
     .site-nav__cols { max-width: var(--w-wide); margin: 0 auto; padding: 8px var(--pad-x) 28px; display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+    .lang-selector--mobile { padding-top: 20px; border-top: 1px solid var(--navy-line); margin-top: 20px; flex-direction: column; gap: 12px; }
+    .lang-selector--mobile .lang-link { padding: 12px 0; font-size: 14px; }
   }
   .site-nav__head { padding: 12px 0; min-height: 44px; display: flex; align-items: center; font-size: 21px; color: var(--cream); text-decoration: none; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
   @media (min-width: 1024px) {
