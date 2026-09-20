@@ -81,8 +81,8 @@ const path = Astro.url.pathname;
     .lang-selector--desktop { display: none; }
     .lang-selector--mobile { display: flex; }
     .site-nav:not([hidden]) { position: absolute; top: 100%; left: 0; right: 0; border-top: 1px solid var(--navy-line); background: var(--navy); z-index: 10; }
-    .site-nav__cols { max-width: var(--w-wide); margin: 0 auto; padding: 8px var(--pad-x) 28px; display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
-    .lang-selector--mobile { padding-top: 20px; border-top: 1px solid var(--navy-line); margin-top: 20px; flex-direction: column; gap: 12px; }
+    .site-nav__cols { max-width: var(--w-wide); margin: 0 auto; padding: 8px var(--pad-x) 28px; display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%), 1fr)); }
+    .lang-selector--mobile { padding: 20px var(--pad-x) 0; border-top: 1px solid var(--navy-line); margin-top: 20px; flex-direction: column; gap: 12px; }
     .lang-selector--mobile .lang-link { padding: 12px 0; font-size: 14px; }
   }
   .site-nav__head { padding: 12px 0; min-height: 44px; display: flex; align-items: center; font-size: 21px; color: var(--cream); text-decoration: none; text-shadow: 0 2px 6px rgba(0,0,0,0.5); }
