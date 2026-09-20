@@ -64,6 +64,9 @@ const path = Astro.url.pathname;
   .lang-link.active { color: var(--gold); opacity: 1; font-weight: 600; }
   .shop { gap: 8px; }
   .shop__count { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 5px; background: var(--gold); color: var(--navy); font-size: 11px; letter-spacing: 0; }
+  @media (max-width: 1023px) {
+    .shop__count { display: none !important; }
+  }
   .burger { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; min-height: 44px; padding: 0 11px; background: none; border: 1px solid var(--navy-line); cursor: pointer; }
   .burger span { display: block; height: 1px; background: var(--cream); }
   .site-nav { display: none; }
