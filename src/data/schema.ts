@@ -26,6 +26,7 @@ export const organization = {
   "logo": "https://aubigny.wine/images/logo.webp",
   "image": "https://aubigny.wine/images/q-nature-1.webp",
   "description": "Domaine viticole biologique en Côte Chalonnaise depuis 1132. 20 hectares de vignes certifiées bio sur des terres cultrivées depuis deux mille ans.",
+  "priceRange": "$$$",
   "sameAs": [
     "https://www.instagram.com/aubignyestate/",
     // "https://www.wikidata.org/wiki/...", // TODO: Add after Wikidata creation

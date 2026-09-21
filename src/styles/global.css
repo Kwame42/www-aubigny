@@ -28,7 +28,7 @@ a:hover { color: var(--ink); }
 .eyebrow::before { content: ""; width: 44px; height: 1px; background: var(--gold); flex: none; }
 .eyebrow--center { justify-content: center; gap: 16px; text-align: center; }
 .eyebrow--center::before, .eyebrow--center::after { content: ""; width: clamp(20px, 7vw, 60px); height: 1px; background: var(--gold); flex: none; }
-.eyebrow--light { color: var(--gold); }
+.eyebrow--light { color: #6D5519; font-weight: 500; }
 .eyebrow--light::before, .eyebrow--light::after { background: var(--gold-dim); }
 
 h1 {
@@ -117,7 +117,7 @@ p { text-wrap: pretty; }
 .spec { margin: 0; background: var(--card); padding: 4px clamp(18px, 4vw, 28px); }
 .spec__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--rule-soft); }
 .spec__row:last-child { border-bottom: 0; }
-.spec dt { margin: 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
+.spec dt { margin: 0; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--body); font-weight: 500; line-height: 1.6; }
 .spec dd { margin: 0; font-size: 15px; line-height: 1.5; }
 .spec dd em { font-style: italic; color: var(--faint); }
 
