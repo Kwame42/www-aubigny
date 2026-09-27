@@ -1,0 +1,321 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const title = "Rully Village Blanc Les Fromages 2025 — En cours d'élevage";
+const description = "Le millésime 2025 du Rully Village Blanc est en cours d'élevage de 24 mois et sortira en 2027. Dégustez les millésimes 2023 et 2024 disponibles maintenant.";
+---
+
+<Base
+  title={title}
+  description={description}
+  image="/images/hero-parcelle.jpg"
+>
+  <section class="fiche-hero">
+    <img src="/images/hero-parcelle.jpg" alt="Parcelle de Rully Village" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
+    <div class="fiche-hero__veil"></div>
+    <div class="fiche-hero__in">
+      <p class="eyebrow eyebrow--center eyebrow--light">Rully Village Blanc</p>
+      <h1>Les Fromages<br /><em>2025</em></h1>
+      <p class="fiche-hero__meta">En cours d'élevage</p>
+    </div>
+  </section>
+
+  <article class="article">
+    <a class="back" href="/vins/">← Les vins</a>
+
+    <section class="coming-soon">
+      <div class="coming-soon__content">
+        <h2>Millésime en cours d'élevage</h2>
+        <p class="coming-soon__lead">
+          Le Rully Village Blanc Les Fromages 2025 est actuellement en cours d'élevage de 24 mois en fûts. Il sortira de la cave à la fin de l'année <strong>2027</strong>.
+        </p>
+
+        <div class="coming-soon__info">
+          <div class="info-block">
+            <p class="info-block__title">Pourquoi attendre ?</p>
+            <p>
+              Ce terroir exceptionnel demande du temps pour s'exprimer pleinement. L'élevage long en fûts de 2e et 3e vin lui permet de développer sa complexité et son équilibre tout en préservant la fraîcheur caractéristique de Rully.
+            </p>
+          </div>
+
+          <div class="info-block">
+            <p class="info-block__title">En attendant…</p>
+            <p>
+              Découvrez nos millésimes actuellement disponibles : le <strong>2024</strong> (coup de cœur de la Grande Épicerie) et le <strong>2023</strong>. Tous deux révèlent l'âme de ce terroir avec des profils légèrement différents selon leur année.
+            </p>
+          </div>
+        </div>
+
+        <div class="wines-available">
+          <h3>Millésimes disponibles maintenant</h3>
+          <div class="wines-list">
+            <a href="/vins/rully-village-blanc-les-fromages-2024/" class="wine-card">
+              <span class="wine-card__year">2024</span>
+              <span class="wine-card__title">Rully Village Blanc 2024</span>
+              <span class="wine-card__note">Coup de cœur Grande Épicerie · Belle attaque et vivacité</span>
+              <span class="wine-card__cta">Voir la fiche →</span>
+            </a>
+            <a href="/vins/rully-village-blanc-les-fromages-2023/" class="wine-card">
+              <span class="wine-card__year">2023</span>
+              <span class="wine-card__title">Rully Village Blanc 2023</span>
+              <span class="wine-card__note">Beau milieu de bouche et très belle finale</span>
+              <span class="wine-card__cta">Voir la fiche →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-block">
+          <p class="contact-block__title">Intéressé par le 2025 ?</p>
+          <p>
+            Vous pouvez <a href="/contact/">nous contacter</a> pour exprimer votre intérêt. Nous vous tiendrons informé dès que le millésime sera disponible.
+          </p>
+        </div>
+      </div>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .fiche-hero {
+    position: relative;
+    min-height: 52vh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  .fiche-hero > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .fiche-hero__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #14202f6b, #14202f47 40%, #14202fe0);
+  }
+
+  .fiche-hero__in {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: clamp(44px, 10vw, 88px) var(--pad-x) clamp(32px, 7vw, 56px);
+    text-align: center;
+    color: #fff;
+  }
+
+  .fiche-hero__in h1 {
+    font-size: clamp(31px, 8.6vw, 60px);
+    line-height: 1.08;
+    margin: 0;
+  }
+
+  .fiche-hero__in h1 em {
+    font-style: italic;
+    color: var(--cream-hi);
+  }
+
+  .fiche-hero__meta {
+    margin: 18px 0 0;
+    font-size: clamp(11px, 3vw, 13px);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #d6cfc2;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+  }
+
+  .eyebrow--center {
+    text-align: center;
+  }
+
+  .eyebrow--light {
+    color: var(--navy-text);
+  }
+
+  .article {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  .back {
+    font-size: 14px;
+    color: var(--gold);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 30px;
+  }
+
+  .back:hover {
+    text-decoration: underline;
+  }
+
+  .coming-soon {
+    background: var(--navy-bg);
+    padding: clamp(40px, 8vw, 60px);
+    border-radius: 2px;
+  }
+
+  .coming-soon__content {
+    max-width: 800px;
+  }
+
+  .coming-soon h2 {
+    margin: 0 0 20px;
+    font-size: clamp(28px, 6vw, 36px);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .coming-soon__lead {
+    margin: 0 0 40px;
+    font-size: clamp(17px, 4vw, 19px);
+    line-height: 1.8;
+    color: var(--body);
+  }
+
+  .coming-soon__lead strong {
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .coming-soon__info {
+    display: grid;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .info-block {
+    padding: 24px;
+    background: #ffffff;
+    border-left: 3px solid var(--gold);
+  }
+
+  .info-block__title {
+    margin: 0 0 12px;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+    font-weight: 500;
+  }
+
+  .info-block p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--body);
+  }
+
+  .info-block strong {
+    font-weight: 600;
+  }
+
+  .wines-available {
+    margin-bottom: 40px;
+  }
+
+  .wines-available h3 {
+    margin: 0 0 20px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: var(--text);
+  }
+
+  .wines-list {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+
+  .wine-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid var(--navy-line);
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+
+  .wine-card:hover {
+    background: #f9f7f4;
+    border-color: var(--gold-dim);
+  }
+
+  .wine-card__year {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+    margin-bottom: 8px;
+  }
+
+  .wine-card__title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .wine-card__note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: auto;
+    margin-bottom: 16px;
+  }
+
+  .wine-card__cta {
+    font-size: 12px;
+    color: var(--gold-ink);
+    font-weight: 500;
+  }
+
+  .contact-block {
+    padding: 24px;
+    background: var(--navy);
+    color: var(--cream);
+    border-radius: 2px;
+  }
+
+  .contact-block__title {
+    margin: 0 0 12px;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-pale);
+    font-weight: 500;
+  }
+
+  .contact-block p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .contact-block a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .contact-block a:hover {
+    text-decoration: underline;
+  }
+</style>

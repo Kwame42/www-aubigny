@@ -113,6 +113,7 @@ const translatedPages = new Set([
   '/vins/rully-village-blanc-les-fromages/',
   '/vins/rully-village-blanc-les-fromages-2023/',
   '/vins/rully-village-blanc-les-fromages-2024/',
+  '/vins/rully-village-blanc-les-fromages-2025/',
   '/vins/mercurey-1er-cru-rouge-champs-martin/',
   '/vins/mercurey-champs-martin-2023/',
   '/vins/mercurey-champs-martin-2024/',
