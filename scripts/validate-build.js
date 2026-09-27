@@ -262,6 +262,45 @@ function validateInternalLinks() {
   }
 }
 
+// Validation 6: Check meta description length
+function validateMetaDescriptions() {
+  console.log('🔍 Validating meta description length...');
+
+  const htmlFiles = getAllHtmlFiles();
+  const MIN_LENGTH = 110;
+  const MAX_LENGTH = 160;
+  const shortDescriptions = [];
+  const longDescriptions = [];
+
+  for (const filePath of htmlFiles) {
+    const html = fs.readFileSync(filePath, 'utf-8');
+    const urlPath = getUrlPath(filePath);
+
+    // Extract meta description
+    const match = html.match(/<meta name="description" content="([^"]*)"/);
+    if (!match) {
+      continue; // No description found
+    }
+
+    const description = match[1];
+    const length = description.length;
+
+    if (length < MIN_LENGTH) {
+      shortDescriptions.push(`${urlPath} — ${length} chars (min ${MIN_LENGTH})`);
+    } else if (length > MAX_LENGTH) {
+      longDescriptions.push(`${urlPath} — ${length} chars (max ${MAX_LENGTH})`);
+    }
+  }
+
+  // Report warnings (not errors)
+  if (shortDescriptions.length > 0) {
+    shortDescriptions.forEach(desc => WARNINGS.push(`Meta too short: ${desc}`));
+  }
+  if (longDescriptions.length > 0) {
+    longDescriptions.forEach(desc => WARNINGS.push(`Meta too long: ${desc}`));
+  }
+}
+
 // Main validation runner
 function runValidations() {
   console.log('\n📋 Starting aubigny.wine build validation...\n');
@@ -272,6 +311,7 @@ function runValidations() {
     validateXDefaultConsistency();
     validateNoOrphanedPages();
     validateInternalLinks();
+    validateMetaDescriptions();
   } catch (error) {
     ERRORS.push(`Validation script error: ${error.message}`);
   }
