@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { frToEn, enToFr } from "../utils/langPaths";
+import { frToEn, enToFr, hasEnTranslation } from "../utils/langPaths";
 
 interface Props {
   title: string;
@@ -14,24 +14,31 @@ const { title, description = "", lang = "fr", image = "/images/q-nature-1.webp" 
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.pathname;
 
 // hreflang links for FR/EN mirrors with proper path mapping
+// Only generate hreflang if the page has a translation
 let frUrl: string;
-let enUrl: string;
+let enUrl: string | null = null;
 
 if (lang === 'fr') {
   frUrl = canonical;
-  const enPath = frToEn(Astro.url.pathname);
-  if (Astro.site && enPath) {
-    enUrl = new URL(enPath, Astro.site).href;
-  } else {
-    enUrl = enPath || canonical;
+  if (hasEnTranslation(Astro.url.pathname)) {
+    const enPath = frToEn(Astro.url.pathname);
+    if (Astro.site && enPath) {
+      enUrl = new URL(enPath, Astro.site).href;
+    } else {
+      enUrl = enPath || null;
+    }
   }
 } else {
   enUrl = canonical;
-  const frPath = enToFr(Astro.url.pathname);
-  if (Astro.site && frPath) {
-    frUrl = new URL(frPath, Astro.site).href;
+  if (hasEnTranslation(Astro.url.pathname)) {
+    const frPath = enToFr(Astro.url.pathname);
+    if (Astro.site && frPath) {
+      frUrl = new URL(frPath, Astro.site).href;
+    } else {
+      frUrl = frPath || canonical;
+    }
   } else {
-    frUrl = frPath || canonical;
+    frUrl = canonical;
   }
 }
 ---
@@ -44,7 +51,7 @@ if (lang === 'fr') {
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
-    {lang === 'fr' && <link rel="alternate" hreflang="en" href={enUrl} />}
+    {lang === 'fr' && enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
     {lang === 'en' && <link rel="alternate" hreflang="fr" href={frUrl} />}
     <link rel="alternate" hreflang="x-default" href={frUrl} />
     <link rel="icon" href="/images/logo.webp" />

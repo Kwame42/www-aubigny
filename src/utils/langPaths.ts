@@ -96,18 +96,60 @@ export function enToFr(enPath: string): string {
 }
 
 /**
+ * Pages that have been translated to English
+ * Only these paths should generate hreflang tags
+ */
+const translatedPages = new Set([
+  '/',
+  '/vins/',
+  '/vins/bourgogne-blanc-2022/',
+  '/vins/bourgogne-blanc-2024/',
+  '/vins/bourgogne-blanc-2025/',
+  '/vins/rully-village-blanc-les-fromages-2023/',
+  '/vins/rully-village-blanc-les-fromages-2024/',
+  '/vins/mercurey-champs-martin-2023/',
+  '/vins/monopoles/',
+  '/domaine/',
+  '/domaine/vignoble/',
+  '/domaine/vinification/',
+  '/domaine/metairie/',
+  '/domaine/compost/',
+  '/domaine/equipe/',
+  '/histoire/',
+  '/visiter/',
+  '/contact/',
+  '/cgv/',
+  '/mentions-legales/',
+  '/carnet/',
+  '/carnet/coup-de-coeur/',
+]);
+
+/**
+ * Check if a page has an English translation
+ * @param pathname - The pathname to check
+ * @returns true if the page has an EN equivalent
+ */
+export function hasEnTranslation(pathname: string): boolean {
+  // Normalize the path
+  const normalized = pathname.endsWith('/') ? pathname : pathname + '/';
+  return translatedPages.has(normalized);
+}
+
+/**
  * Get the alternate language URL for a given path
  * @param pathname - Current pathname
  * @param currentLang - Current language ('fr' or 'en')
- * @returns Alternate language URL
+ * @returns Alternate language URL, or null if no translation exists
  */
 export function getAlternatePath(
   pathname: string,
   currentLang: 'fr' | 'en'
-): string {
+): string | null {
   if (currentLang === 'fr') {
+    if (!hasEnTranslation(pathname)) return null;
     return frToEn(pathname);
   } else {
+    if (!hasEnTranslation(pathname)) return null;
     return enToFr(pathname);
   }
 }
