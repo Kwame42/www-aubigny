@@ -46,16 +46,16 @@ export const cueesEN: Cuvee[] = [
   },
   {
     id: "rully-village-blanc",
-    name: "Rully Village Blanc Les Fromages",
+    name: "Rully Village Blanc Les Fromanges",
     appellation: "Rully Village",
     type: "village",
     description: "A terroir producing fresh, long wines with ample mid-palate and mineral precision",
-    slug: "rully-village-blanc-les-fromages",
+    slug: "rully-village-blanc-les-fromanges",
     color: "blanc",
     region: "rully",
     millesimes: [
-      { year: 2023, url: "/en/wines/rully-village-blanc-les-fromages-2023/", price: 36, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/rb-2023-rully-blanc-2023-9" },
-      { year: 2024, url: "/en/wines/rully-village-blanc-les-fromages-2024/", price: 36, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/rb-2024-rully-blanc-2024-8" },
+      { year: 2023, url: "/en/wines/rully-village-blanc-les-fromanges-2023/", price: 36, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/rb-2023-rully-blanc-2023-9" },
+      { year: 2024, url: "/en/wines/rully-village-blanc-les-fromanges-2024/", price: 36, inStock: true, odooUrl: "https://shop.aubigny.wine/en/shop/rb-2024-rully-blanc-2024-8" },
     ],
   },
   {

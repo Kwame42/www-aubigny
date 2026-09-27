@@ -16,9 +16,9 @@ export const wines: Wine[] = [
   { id: "bourgogneblanc2022", tag: "Bourgogne", name: "Bourgogne Blanc 2022", sub: "Aluze · Chardonnay", note: "Notre premier vin, droit et vivifiant.", price: 27, ground: "#DCE5D3", href: "/vins/bourgogne-blanc-2022/" },
   { id: "bourgogneblanc2024", tag: "Bourgogne", name: "Bourgogne Blanc 2024", sub: "Aluze · Chardonnay", note: "Droit et vif, notes de fleur blanche.", price: 27, ground: "#DCE5D3", href: "/vins/bourgogne-blanc-2024/" },
   { id: "bourgogneblanc2025", tag: "Bourgogne", name: "Bourgogne Blanc 2025", sub: "Aluze · Chardonnay", note: "Puissant et large, fleur blanche et pêche.", price: 27, ground: "#DCE5D3", href: "/vins/bourgogne-blanc-2025/" },
-  { id: "rully", tag: "Rully Village", name: "Rully Village Blanc Les Fromages", sub: "Rully · Chardonnay", note: "Terroir qui donne des vins frais, longs, avec un milieu de bouche ample.", price: 31, ground: "#DCE5D3", href: "/vins/rully-village-blanc-les-fromanges/" },
-  { id: "rullyblanc2023", tag: "Rully Village", name: "Rully Village Blanc Les Fromages 2023", sub: "Rully · Chardonnay", note: "Beau milieu de bouche et très belle finale.", price: 36, ground: "#DCE5D3", href: "/vins/rully-village-blanc-les-fromages-2023/" },
-  { id: "rullyblanc2024", tag: "Rully Village", name: "Rully Village Blanc Les Fromages 2024", sub: "Rully · Chardonnay", note: "Coup de cœur Grande Épicerie, belle attaque et vivacité.", price: 36, ground: "#DCE5D3", href: "/vins/rully-village-blanc-les-fromages-2024/" },
+  { id: "rully", tag: "Rully Village", name: "Rully Village Blanc Les Fromanges", sub: "Rully · Chardonnay", note: "Terroir qui donne des vins frais, longs, avec un milieu de bouche ample.", price: 31, ground: "#DCE5D3", href: "/vins/rully-village-blanc-les-fromanges/" },
+  { id: "rullyblanc2023", tag: "Rully Village", name: "Rully Village Blanc Les Fromanges 2023", sub: "Rully · Chardonnay", note: "Beau milieu de bouche et très belle finale.", price: 36, ground: "#DCE5D3", href: "/vins/rully-village-blanc-les-fromanges-2023/" },
+  { id: "rullyblanc2024", tag: "Rully Village", name: "Rully Village Blanc Les Fromanges 2024", sub: "Rully · Chardonnay", note: "Coup de cœur Grande Épicerie, belle attaque et vivacité.", price: 36, ground: "#DCE5D3", href: "/vins/rully-village-blanc-les-fromanges-2024/" },
   { id: "champsmartin", tag: "Mercurey 1er Cru", name: "Mercurey 1er Cru Champs Martin", sub: "2023 · Pinot noir", note: "Le meilleur terroir à rouge de Mercurey, des vins fins et puissants.", price: 51, ground: "#2A1622", href: "/vins/mercurey-1er-cru-rouge-champs-martin/" }
 ];
 
@@ -115,7 +115,7 @@ export const bourgogneBlanc2025 = {
   ] as { k: string; v: string | null }[]
 };
 
-/** Rully Village Blanc Les Fromages 2023 */
+/** Rully Village Blanc Les Fromanges 2023 */
 export const rullyBlanc2023 = {
   price: 36,
   stock: true,
@@ -141,7 +141,7 @@ export const rullyBlanc2023 = {
   ] as { k: string; v: string | null }[]
 };
 
-/** Rully Village Blanc Les Fromages 2024 */
+/** Rully Village Blanc Les Fromanges 2024 */
 export const rullyBlanc2024 = {
   price: 36,
   stock: true,

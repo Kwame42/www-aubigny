@@ -2,26 +2,26 @@
 import Base from "../../layouts/Base.astro";
 import SpecTable from "../../components/SpecTable.astro";
 import ProductSchema from "../../components/ProductSchema.astro";
-import { rullyBlanc2024, euro, catalogue } from "../../data/wines";
+import { rullyBlanc2023, euro, catalogue } from "../../data/wines";
 
-const { price, stock, tech } = rullyBlanc2024;
+const { price, stock, tech } = rullyBlanc2023;
 ---
 
 <Base
-  title="Rully Village Blanc Les Fromages 2024 — Domaine d'Aubigny"
-  description="Rully Village Blanc Les Fromages 2024, coup de cœur de la Grande Épicerie. Belle attaque et vivacité, élevé 12 mois en pièce de 3e et 4e vin."
+  title="Rully Village Blanc Les Fromages 2023 — Domaine d'Aubigny"
+  description="Rully Village Blanc Les Fromages 2023, millésime de grêle. Élevé 12 mois en futs de 2e et 3e vin. Beau milieu de bouche et très belle finale."
   image="/images/hero-parcelle.jpg"
 >
   <ProductSchema
-    name="Rully Village Blanc Les Fromages 2024"
-    description="Coup de cœur de la Grande Épicerie. Belle attaque et vivacité, élevé 12 mois en pièces de 3e et 4e vin."
+    name="Rully Village Blanc Les Fromages 2023"
+    description="Millésime de grêle. Élevé 12 mois en futs de 2e et 3e vin. Beau milieu de bouche et très belle finale."
     price={price}
     image="/images/hero-parcelle.jpg"
-    vintage="2024"
+    vintage="2023"
     appellation="Rully Village"
     varietal="Chardonnay"
     inStock={stock}
-    productUrl="https://shop.aubigny.wine/en/shop/rb-2024-rully-blanc-2024-8"
+    productUrl="https://shop.aubigny.wine/en/shop/rb-2023-rully-blanc-2023-9"
   />
   <section class="fiche-hero">
     <img src="/images/hero-parcelle.jpg" alt="Parcelle de Rully Village Blanc à Rully" width="1600" height="940" loading="eager" decoding="async" fetchpriority="high" />
@@ -29,14 +29,14 @@ const { price, stock, tech } = rullyBlanc2024;
     <div class="fiche-hero__in">
       <p class="eyebrow eyebrow--center eyebrow--light">Rully Village</p>
       <h1>Rully Village<br /><em>Les Fromages</em></h1>
-      <p class="fiche-hero__meta">2024 · Chardonnay</p>
+      <p class="fiche-hero__meta">2023 · Chardonnay</p>
     </div>
   </section>
 
   <article class="article">
     <a class="back" href="/vins/">← Les vins</a>
 
-    <p class="fiche-lead">Coup de cœur de la Grande Épicerie, ce 2024 séduit d'emblée par sa très belle attaque et sa vivacité. Élevé 12 mois en pièce de 3e et 4e vin, il conserve toute la fraîcheur du terroir.</p>
+    <p class="fiche-lead">2023 restera une année d'exception pour nous : la grêle a frappé l'essentiel du domaine, mais ces quelques Rully ont échappé au sinistre. Élevé 12 mois en futs de 2e et 3e vin, ce 2023 offre un beau milieu de bouche suivi d'une très belle finale.</p>
 
     <section class="section">
       <h2>Le lieu</h2>
@@ -50,7 +50,7 @@ const { price, stock, tech } = rullyBlanc2024;
       <p class="achat__fine">Bouteille 75 cl · carton de 6 ou 12 · expédition France et UE</p>
       {stock ? (
         <div class="achat__buy">
-          <button class="btn achat__add" type="button" data-add="rullyblanc2024">Ajouter au panier</button>
+          <button class="btn achat__add" type="button" data-add="rullyblanc2023">Ajouter au panier</button>
         </div>
       ) : (
         <p class="achat__out">Épuisé</p>
@@ -70,14 +70,14 @@ const { price, stock, tech } = rullyBlanc2024;
       <div>
         <p class="other__title">Autres millésimes</p>
         <div class="other__links">
-          <a href="/vins/rully-village-blanc-les-fromages-2023/">Rully Blanc Les Fromages 2023</a>
-          <a href="/vins/rully-village-blanc-les-fromages-2025/">Rully Blanc Les Fromages 2025</a>
+          <a href="/vins/rully-village-blanc-les-fromanges-2024/">Rully Blanc Les Fromages 2024</a>
+          <a href="/vins/rully-village-blanc-les-fromanges-2025/">Rully Blanc Les Fromages 2025</a>
         </div>
       </div>
       <div>
-        <p class="other__title">Le millésime 2024</p>
-        <p class="other__note">Belle attaque, vivacité préservée par l'élevage mesuré.</p>
-        <a href="#compte-rendu-2024">Compte rendu du millésime</a>
+        <p class="other__title">Le millésime 2023</p>
+        <p class="other__note">Année d'exception — grêle sur le domaine, récoltes limitées.</p>
+        <a href="#compte-rendu-2023">Compte rendu du millésime</a>
       </div>
     </section>
 
