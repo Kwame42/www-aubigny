@@ -15,6 +15,7 @@ const frToEnMapping: Record<string, string> = {
   '/mentions-legales/': '/en/privacy/',
   '/carnet/': '/en/notebook/',
   '/pro/': '/en/trade/',
+  '/mentions-legales/': '/en/legal-notices/',
   '/confidentialite/': '/en/privacy/',
 };
 
@@ -129,6 +130,7 @@ const translatedPages = new Set([
   '/mentions-legales/',
   '/carnet/',
   '/carnet/coup-de-coeur/',
+  '/confidentialite/',
 ]);
 
 /**
