@@ -1,0 +1,356 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { cueesEN, getCueesENBySlug } from "../../../data/cuvees-en";
+import SchemaOrg from "../../../components/SchemaOrg.astro";
+import { organization, getBreadcrumbSchema } from "../../../data/schema";
+
+export function getStaticPaths() {
+  return cueesEN.map((cuvee) => ({
+    params: { cuvee: cuvee.slug },
+    props: { cuvee },
+  }));
+}
+
+const { cuvee } = Astro.props;
+
+const breadcrumb = getBreadcrumbSchema([
+  { name: "Home", url: "https://aubigny.wine/en/" },
+  { name: "Our Wines", url: "https://aubigny.wine/en/wines/" },
+  { name: cuvee.name, url: `https://aubigny.wine/en/wines/${cuvee.slug}/` },
+]);
+---
+
+<Base
+  title={`${cuvee.name} — ${cuvee.appellation} | Domaine d'Aubigny`}
+  description={cuvee.description}
+  lang="en"
+>
+  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+
+  <article class="cuvee">
+    <header class="cuvee__header">
+      <div class="cuvee__nav">
+        <a href="/en/wines/" class="link-back">← Our Wines</a>
+      </div>
+      <div class="cuvee__intro">
+        <p class="eyebrow">{cuvee.appellation}</p>
+        <h1>{cuvee.name}</h1>
+        <p class="cuvee__tagline">{cuvee.type === "monopole" && "Estate Monopoly"}</p>
+      </div>
+    </header>
+
+    <section class="cuvee__body">
+      <div class="cuvee__main">
+        <p class="cuvee__description">{cuvee.description}</p>
+
+        {
+          cuvee.type === "monopole" && (
+            <div class="cuvee__badge">
+              <span>Estate Monopoly</span>
+            </div>
+          )
+        }
+
+        <div class="cuvee__specs">
+          <div class="spec">
+            <span class="spec__label">Appellation</span>
+            <span class="spec__value">{cuvee.appellation}</span>
+          </div>
+          <div class="spec">
+            <span class="spec__label">Color</span>
+            <span class="spec__value">
+              {cuvee.color === "rouge" && "Red"}
+              {cuvee.color === "blanc" && "White"}
+              {cuvee.color === "rose" && "Rosé"}
+            </span>
+          </div>
+          <div class="spec">
+            <span class="spec__label">Region</span>
+            <span class="spec__value">
+              {cuvee.region === "aluze" && "Aluze"}
+              {cuvee.region === "rully" && "Rully"}
+              {cuvee.region === "mercurey" && "Mercurey"}
+            </span>
+          </div>
+        </div>
+
+        {cuvee.millesimes && cuvee.millesimes.length > 0 && (
+          <div class="cuvee__millesimes">
+            <h2>Available Vintages</h2>
+            <div class="millesimes__list">
+              {cuvee.millesimes.map((mil) => (
+                <a href={mil.url} class="millesime__item">
+                  <div class="millesime__header">
+                    <span class="millesime__year">{mil.year}</span>
+                    <span class="millesime__price">{mil.price.toLocaleString("en-US")} €</span>
+                  </div>
+                  <div class="millesime__status">
+                    {mil.inStock ? (
+                      <span class="millesime__stock">In Stock</span>
+                    ) : (
+                      <span class="millesime__out">Sold Out</span>
+                    )}
+                  </div>
+                  <span class="millesime__cta">View details →</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <aside class="cuvee__sidebar">
+        <nav class="cuvee__links">
+          <p class="eyebrow eyebrow--small">Other Cuvées</p>
+          <ul>
+            {
+              cueesEN
+                .filter((c) => c.id !== cuvee.id)
+                .slice(0, 4)
+                .map((c) => (
+                  <li>
+                    <a href={`/en/wines/${c.slug}/`}>{c.name}</a>
+                  </li>
+                ))
+            }
+          </ul>
+        </nav>
+      </aside>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .cuvee {
+    background: var(--bg);
+  }
+
+  .cuvee__header {
+    background: var(--navy);
+    color: var(--cream);
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  .cuvee__nav {
+    margin-bottom: 30px;
+  }
+
+  .link-back {
+    font-size: 14px;
+    color: var(--gold);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .link-back:hover {
+    text-decoration: underline;
+  }
+
+  .cuvee__intro p {
+    margin: 0 0 12px;
+  }
+
+  .cuvee__intro h1 {
+    margin: 0 0 8px;
+    font-size: clamp(32px, 8vw, 52px);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .cuvee__tagline {
+    font-size: 14px;
+    color: var(--gold-pale);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .cuvee__body {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: clamp(30px, 6vw, 60px);
+    max-width: var(--w-wide);
+    margin: 0 auto;
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  @media (max-width: 768px) {
+    .cuvee__body {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cuvee__main {
+    max-width: 720px;
+  }
+
+  .cuvee__description {
+    font-size: clamp(17px, 4.2vw, 19px);
+    line-height: 1.8;
+    margin: 0 0 30px;
+    color: var(--body);
+  }
+
+  .cuvee__badge {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: var(--navy);
+    padding: 8px 16px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  .cuvee__specs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 30px;
+    padding: 30px 0;
+    border-top: 1px solid var(--navy-line);
+    border-bottom: 1px solid var(--navy-line);
+    margin: 30px 0;
+  }
+
+  .spec {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .spec__label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .spec__value {
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .cuvee__cta {
+    margin-top: 40px;
+  }
+
+  .cuvee__sidebar {
+    padding-top: clamp(20px, 3vw, 40px);
+  }
+
+  .cuvee__links {
+    background: var(--navy-bg);
+    padding: clamp(20px, 4vw, 30px);
+    border-radius: 2px;
+  }
+
+  .cuvee__links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cuvee__links li {
+    margin: 12px 0;
+  }
+
+  .cuvee__links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .cuvee__links a:hover {
+    color: var(--gold);
+  }
+
+  .cuvee__millesimes {
+    margin-top: 40px;
+  }
+
+  .cuvee__millesimes h2 {
+    margin: 0 0 20px;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+  }
+
+  .millesimes__list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .millesime__item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 14px 16px;
+    background: var(--navy-bg);
+    border-left: 3px solid var(--gold);
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.2s;
+  }
+
+  .millesime__item:hover {
+    background: var(--navy-bg-soft);
+  }
+
+  .millesime__header {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .millesime__year {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .millesime__price {
+    font-size: 14px;
+    color: var(--gold-ink);
+    font-weight: 500;
+  }
+
+  .millesime__status {
+    display: flex;
+  }
+
+  .millesime__stock {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #00c853;
+  }
+
+  .millesime__out {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .millesime__cta {
+    font-size: 12px;
+    color: var(--gold-ink);
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+    margin: 0 0 12px;
+  }
+
+  .eyebrow--small {
+    font-size: 10px;
+  }
+</style>
