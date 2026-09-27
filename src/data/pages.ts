@@ -113,7 +113,7 @@ export const pages: Record<string, EditorialPageData> = {
   archives: {
     eyebrow: "Histoire", title: "Histoire et", titleItalic: "archives", back: "← Accueil", backHref: "/",
     lead: "Les terres d'Aubigny sont cultivées depuis 1132. Le domaine conserve les documents qui le racontent.",
-    figure: { src: "/images/q-nature-45.webp", alt: "Le village d'Aluze et ses coteaux depuis les vignes hautes", caption: "Aluze, depuis les vignes hautes." },
+    figure: { src: "/images/blason-abbaye-maiziere.webp", alt: "Blason de l'Abbaye de Maizière", caption: "L'Abbaye de Maizière, dont Aubigny était le cellier." },
     sections: [
       { title: "Avant les moines", paras: ["Occupation ancienne du coteau, attestée par des vestiges retrouvés sur la commune."], todo: "sources et datations à compléter" },
       { title: "1132 — les cisterciens", paras: ["La date de 1132 marque le début de l'exploitation continue des terres par les cisterciens. Le parcellaire actuel en garde la trace."] },
