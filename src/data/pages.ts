@@ -61,7 +61,7 @@ export const pages: Record<string, EditorialPageData> = {
     ],
     pair: [
       { src: "/images/p-chevaux-6.webp", alt: "Portrait rapproché d'un cheval blanc à crinière claire" },
-      { src: "/images/p-vaches-8.webp", alt: "Vaches au pâturage dans un pré du domaine" }
+      { src: "/images/p-vaches-27.webp", alt: "Vaches au pâturage dans un pré du domaine" }
     ]
   },
   compost: {
