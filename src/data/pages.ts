@@ -158,7 +158,7 @@ export const vessels = [
 
 export const univers = [
   { cat: "Viticulture", name: "Le vignoble", href: "/domaine/vignoble/", img: "/images/p-vignes-2.webp", alt: "Rangs de vigne du domaine en été" },
-  { cat: "Vinification", name: "Le chai", href: "/domaine/vinification/", img: "/images/p-cuverie-foudres-2.webp", alt: "Foudres de chêne alignés dans le chai voûté" },
+  { cat: "Vinification", name: "Le chai", href: "/domaine/vinification/", img: "/images/metairie-chevaux-galop.webp", alt: "Chevaux au galop dans les prés du domaine" },
   { cat: "Agro-écologie", name: "La métairie", href: "/domaine/metairie/", img: "/images/p-chevaux-30.webp", alt: "Chevaux blancs au pré sur les hauteurs du domaine" },
   { cat: "Fertilité", name: "Le compost", href: "/domaine/compost/", img: "/images/p-ferme-nature-1.webp", alt: "Bâtiments de la ferme et prés du domaine" },
   { cat: "Histoire", name: "Les archives", href: "/histoire/", img: "/images/q-nature-45.webp", alt: "Le village d'Aluze et ses coteaux" },
