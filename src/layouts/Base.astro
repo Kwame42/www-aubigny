@@ -15,31 +15,37 @@ const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : As
 
 // hreflang links for FR/EN mirrors with proper path mapping
 // Only generate hreflang if the page has a translation
+// Skip hreflang for error pages (404, etc.)
 let frUrl: string;
 let enUrl: string | null = null;
+const isErrorPage = Astro.url.pathname === '/404/';
 
-if (lang === 'fr') {
-  frUrl = canonical;
-  if (hasEnTranslation(Astro.url.pathname)) {
-    const enPath = frToEn(Astro.url.pathname);
-    if (Astro.site && enPath) {
-      enUrl = new URL(enPath, Astro.site).href;
+if (!isErrorPage) {
+  if (lang === 'fr') {
+    frUrl = canonical;
+    if (hasEnTranslation(Astro.url.pathname)) {
+      const enPath = frToEn(Astro.url.pathname);
+      if (Astro.site && enPath) {
+        enUrl = new URL(enPath, Astro.site).href;
+      } else {
+        enUrl = enPath || null;
+      }
+    }
+  } else {
+    enUrl = canonical;
+    if (hasEnTranslation(Astro.url.pathname)) {
+      const frPath = enToFr(Astro.url.pathname);
+      if (Astro.site && frPath) {
+        frUrl = new URL(frPath, Astro.site).href;
+      } else {
+        frUrl = frPath || canonical;
+      }
     } else {
-      enUrl = enPath || null;
+      frUrl = canonical;
     }
   }
 } else {
-  enUrl = canonical;
-  if (hasEnTranslation(Astro.url.pathname)) {
-    const frPath = enToFr(Astro.url.pathname);
-    if (Astro.site && frPath) {
-      frUrl = new URL(frPath, Astro.site).href;
-    } else {
-      frUrl = frPath || canonical;
-    }
-  } else {
-    frUrl = canonical;
-  }
+  frUrl = canonical;
 }
 ---
 
@@ -51,9 +57,9 @@ if (lang === 'fr') {
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonical} />
-    {lang === 'fr' && enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
-    {lang === 'en' && <link rel="alternate" hreflang="fr" href={frUrl} />}
-    <link rel="alternate" hreflang="x-default" href={frUrl} />
+    {!isErrorPage && lang === 'fr' && enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
+    {!isErrorPage && lang === 'en' && <link rel="alternate" hreflang="fr" href={frUrl} />}
+    {!isErrorPage && <link rel="alternate" hreflang="x-default" href={frUrl} />}
     <link rel="icon" href="/images/logo.webp" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
