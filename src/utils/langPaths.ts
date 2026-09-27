@@ -14,9 +14,7 @@ const frToEnMapping: Record<string, string> = {
   '/cgv/': '/en/cgv/',
   '/mentions-legales/': '/en/privacy/',
   '/carnet/': '/en/notebook/',
-  '/millesimes/': '/en/vintages/',
   '/pro/': '/en/trade/',
-  '/ou-nous-trouver/': '/en/find-us/',
   '/confidentialite/': '/en/privacy/',
 };
 
