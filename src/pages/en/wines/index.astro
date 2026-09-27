@@ -37,14 +37,18 @@ const description = "Nine cuvées: Bourgogne, Rully Village, Mercurey 1er Cru, a
         <p class="wines__group-desc">{group.note}</p>
         <div class="wines__grid">
           {group.wines.map((wine) => (
-            <a class="wine-tile" href="https://shop.aubigny.wine" target="_blank" rel="noopener noreferrer">
+            <a
+              class="wine-tile"
+              href={wine.href || "/"}
+              {...(wine.href?.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
               <span class="wine-tile__tag">{wine.tag}</span>
               <span class="wine-tile__name">{wine.name}</span>
               <span class="wine-tile__sub">{wine.sub}</span>
               <span class="wine-tile__rule"></span>
               <span class="wine-tile__note">{wine.note}</span>
               <span class="wine-tile__price">{euro(wine.price)}<span>ttc</span></span>
-              <span class="wine-tile__cta">Order</span>
+              <span class="wine-tile__cta">{wine.href?.startsWith('http') ? 'Order' : 'Learn more'}</span>
             </a>
           ))}
         </div>
