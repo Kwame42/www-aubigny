@@ -133,13 +133,21 @@ const translatedPages = new Set([
 
 /**
  * Check if a page has an English translation
- * @param pathname - The pathname to check
+ * @param pathname - The pathname to check (can be FR or EN path)
  * @returns true if the page has an EN equivalent
  */
 export function hasEnTranslation(pathname: string): boolean {
   // Normalize the path
   const normalized = pathname.endsWith('/') ? pathname : pathname + '/';
-  return translatedPages.has(normalized);
+
+  // If it's a French path, check directly
+  if (!normalized.startsWith('/en/')) {
+    return translatedPages.has(normalized);
+  }
+
+  // If it's an English path, convert to French and check
+  const frPath = enToFr(normalized);
+  return translatedPages.has(frPath);
 }
 
 /**
