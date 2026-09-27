@@ -134,8 +134,30 @@ function validateHreflangReciprocal() {
     hreflangMap.set(urlPath, processedHreflangs);
   }
 
-  // Second pass: validate reciprocal links (skip - hreflang validation is self-reference check)
-  // Pages generate self-references via Base.astro - no need for complex cross-checks here
+  // Second pass: validate reciprocal links (FR ↔ EN pairs)
+  for (const [urlPath, hreflangs] of hreflangMap) {
+    // Only check FR and EN alternates (not x-default or self-links)
+    for (const href of hreflangs) {
+      if (href.lang === 'x-default' || href.lang === 'zh') continue;
+
+      // Skip self-links (not alternates)
+      if (href.path === urlPath) continue;
+
+      const referencedPage = hreflangMap.get(href.path);
+      if (!referencedPage) {
+        continue; // Already checked in lang consistency
+      }
+
+      // Determine expected return language
+      const returnLang = href.lang === 'en' ? 'fr' : 'en';
+
+      // Check if referenced page points back with opposite language
+      const hasReturn = referencedPage.find(h => h.lang === returnLang && h.path === urlPath);
+      if (!hasReturn) {
+        ERRORS.push(`${urlPath} → ${href.path} (${href.lang}) — Missing reciprocal ${returnLang} link back`);
+      }
+    }
+  }
 }
 
 // Validation 3: x-default consistency
