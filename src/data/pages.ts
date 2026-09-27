@@ -161,6 +161,6 @@ export const univers = [
   { cat: "Vinification", name: "Le chai", href: "/domaine/vinification/", img: "/images/p-cuverie-4.webp", alt: "Amphores en terre cuite et foudres de chêne sous les voûtes de pierre" },
   { cat: "Agro-écologie", name: "La métairie", href: "/domaine/metairie/", img: "/images/metairie-chevaux-galop.webp", alt: "Chevaux au galop dans les prés du domaine" },
   { cat: "Fertilité", name: "Le compost", href: "/domaine/compost/", img: "/images/p-ferme-nature-1.webp", alt: "Bâtiments de la ferme et prés du domaine" },
-  { cat: "Histoire", name: "Les archives", href: "/histoire/", img: "/images/q-nature-45.webp", alt: "Le village d'Aluze et ses coteaux" },
+  { cat: "Histoire", name: "Les archives", href: "/histoire/", img: "/images/blason-abbaye-maiziere.webp", alt: "Blason de l'Abbaye de Maizière" },
   { cat: "Accueil", name: "Visiter", href: "/visiter/", img: "/images/q-nature-63.webp", alt: "Chemin de vignes menant au domaine" }
 ];
