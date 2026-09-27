@@ -1,0 +1,165 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { organization, getBreadcrumbSchema } from "../../../data/schema";
+
+const title = "Vineyard Notebook — Domaine d'Aubigny";
+const description = "Journal of the cellar and vineyard. Seasonal observations, harvest, fermentation, and estate life throughout the year.";
+
+const breadcrumb = getBreadcrumbSchema([
+  { name: "Home", url: "https://aubigny.wine/en/" },
+  { name: "Notebook", url: "https://aubigny.wine/en/notebook/" },
+]);
+
+// Articles du carnet (en ordre décroissant de date)
+const articles = [
+  {
+    date: "2026-09-19",
+    title: "Favorite Vintage — A Story of Beginnings",
+    excerpt: "How we transformed a dilapidated cellar into an estate recognized by Paris's Grande Épicerie in four years, without prior wine experience, one 50-hl barrel, and considerable courage.",
+    href: "/en/notebook/coup-de-coeur/",
+    season: "Discovery"
+  }
+];
+---
+
+<Base title={title} description={description} lang="en">
+  <div slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+  </div>
+
+  <article class="catalog">
+    <header class="catalog__header">
+      <h1>Vineyard Notebook</h1>
+      <p>Journal of the cellar and vineyard. Seasonal observations, harvest, fermentation, and estate life throughout the year.</p>
+    </header>
+
+    <section class="catalog__body">
+      <div class="carnet-list">
+        {articles.map((article) => (
+          <article class="carnet-item">
+            <div class="carnet-item__header">
+              <time class="carnet-item__date" datetime={article.date}>
+                {new Date(article.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              <span class="carnet-item__season">{article.season}</span>
+            </div>
+            <h2 class="carnet-item__title">{article.title}</h2>
+            <p class="carnet-item__excerpt">{article.excerpt}</p>
+            <a href={article.href} class="carnet-item__link">Read article →</a>
+          </article>
+        ))}
+      </div>
+
+      {articles.length === 0 && (
+        <div class="carnet-empty">
+          <p>No articles yet. Check back soon for the first vineyard notebook entries.</p>
+        </div>
+      )}
+    </section>
+  </article>
+</Base>
+
+<style>
+  .catalog {
+    background: var(--bg);
+  }
+
+  .catalog__header {
+    background: var(--navy);
+    color: var(--cream);
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  .catalog__header h1 {
+    margin: 0 0 16px;
+    font-size: clamp(32px, 8vw, 52px);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .catalog__header p {
+    margin: 0;
+    font-size: clamp(15px, 4vw, 17px);
+    line-height: 1.8;
+    color: var(--navy-text);
+    max-width: 70ch;
+  }
+
+  .catalog__body {
+    max-width: var(--w-wide);
+    margin: 0 auto;
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  .carnet-list {
+    display: grid;
+    gap: 40px;
+  }
+
+  .carnet-item {
+    padding: clamp(24px, 5vw, 40px);
+    background: #FFFFFF;
+    border: 1px solid var(--navy-line);
+  }
+
+  .carnet-item:hover {
+    background: #F9F7F4;
+  }
+
+  .carnet-item__header {
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+
+  .carnet-item__date {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .carnet-item__season {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+  }
+
+  .carnet-item__title {
+    margin: 0 0 12px;
+    font-size: clamp(20px, 5.5vw, 28px);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .carnet-item__excerpt {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--body);
+  }
+
+  .carnet-item__link {
+    font-size: 12px;
+    color: var(--gold-ink);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .carnet-item__link:hover {
+    text-decoration: underline;
+  }
+
+  .carnet-empty {
+    text-align: center;
+    padding: clamp(60px, 12vw, 100px) 0;
+    color: var(--muted);
+  }
+</style>

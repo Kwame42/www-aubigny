@@ -1,0 +1,228 @@
+---
+import Base from "../../../layouts/Base.astro";
+import SchemaOrg from "../../../components/SchemaOrg.astro";
+import { organization, getBreadcrumbSchema } from "../../../data/schema";
+
+const title = "Favorite Vintage — A Story of Beginnings";
+const description = "How we transformed a dilapidated cellar into an estate recognized by Paris's Grande Épicerie in four years, without prior wine experience, one 50-hl barrel, and considerable courage.";
+
+const breadcrumb = getBreadcrumbSchema([
+  { name: "Home", url: "https://aubigny.wine/en/" },
+  { name: "Notebook", url: "https://aubigny.wine/en/notebook/" },
+  { name: "Favorite Vintage", url: "https://aubigny.wine/en/notebook/coup-de-coeur/" },
+]);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": "2026-09-19",
+  "author": {
+    "@type": "Person",
+    "name": "Kwame Yamgnane"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Domaine d'Aubigny"
+  }
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  lang="en"
+  image="/images/hero-parcelle.jpg"
+>
+  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <article class="article carnet">
+    <a class="back" href="/en/">← Home</a>
+
+    <header class="carnet__header">
+      <p class="eyebrow eyebrow--center eyebrow--light">Vineyard Notebook</p>
+      <h1>Favorite Vintage — A Story of Beginnings</h1>
+      <p class="carnet__subtitle">Four years. One solitary barrel. A few bottles that became recognition.</p>
+      <p class="carnet__meta">September 19, 2026 · Kwame Yamgnane</p>
+    </header>
+
+    <section class="section carnet__intro">
+      <p>
+        I came from the United States, where I had spent several years in the technology industry—far from vineyards, far from France. But for a long time, I had been in love with the wines of Burgundy. A passion that nagged at me: one day, I would understand how they are truly made.
+      </p>
+
+      <p>
+        When we decided to take over Aubigny in 2021, I left all that behind and returned to France. To learn seriously—not by reading blogs, but by doing it—I enrolled in the Beaune school of viticulture for two years in an apprenticeship program. No one nearby to guide me through Burgundy, no wine network, not even an uncle who was a vintner to warn me "that's not how it's done." Just a school, the audacity to try, and a cellar falling to ruin that awaited us.
+      </p>
+
+      <p>
+        We bought Aubigny.
+      </p>
+
+      <p>
+        The cellar? Magnificent. And completely devastated.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>The Ghosts of the Monks</h2>
+
+      <p>
+        Packed earth. Not a vat in sight. Vestiges—walls, traces, shadowed corners where you sense the monks who made wine here in the twelfth century passing through. The roof threatens to collapse at any moment. It is beautiful and terrifying at once.
+      </p>
+
+      <p>
+        In this cellar that barely speaks, we installed a single piece of equipment: one 50-hectoliter barrel. Not ten, not five. One.
+      </p>
+
+      <p>
+        Why 50 HL? Naïve strategy, but it seemed sound on paper. If we produced 50 hectoliters per hectare—merely a hope at that time—we could fill 10 or 12 barrels of this volume for the Rully wines. The ratio of oak to liquid is lower than in the traditional 228-liter pièces. Less oak means a bit more freshness, a bit more minerality. I don't like over-oaked wines. I wanted mid-palate without drying. That was the idea.
+      </p>
+
+      <p class="carnet__call">
+        One solitary barrel in the middle of a ghost cellar. That was our promise.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>The Call from Grande Épicerie</h2>
+
+      <p>
+        Autumn 2023. Hospices de Beaune. I didn't know how these things worked. I knew no one. Then, a phone call.
+      </p>
+
+      <p>
+        "Hello, I'm Hughes Forget, wine director at Grande Épicerie de Paris. I'd like to taste your wines."
+      </p>
+
+      <p>
+        I said yes. I remember thinking: "He'll see the nearly empty cellar. It's going to be the fastest visit in Burgundy. We'll laugh politely, and that will be that."
+      </p>
+
+      <p>
+        But Hughes Forget came. And in April 2024, after tasting the Rully Les Fromages 2023, he chose us. Our wine is now on the shelves of Paris's most demanding fine foods store.
+      </p>
+
+      <p>
+        Four years from nothing to Grande Épicerie. A single barrel that held enough of our dream that someone recognized it.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Why This Story Matters</h2>
+
+      <p>
+        This isn't about bragging. It's about what happens when you are foolish enough to try something you have no right attempting, and honest enough to do the work.
+      </p>
+
+      <p>
+        We didn't have a family name. We didn't have connections. We had one barrel, two hectares of vines, and a cellar built by monks eight centuries ago. What we had was the willingness to learn, to fail in front of everyone, and to keep going.
+      </p>
+
+      <p>
+        Grande Épicerie recognized that. Not the pedigree. The wine.
+      </p>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .article {
+    background: var(--bg);
+    padding: clamp(40px, 9vw, 88px) var(--pad-x);
+  }
+
+  .back {
+    max-width: var(--w-wide);
+    margin: 0 auto 30px;
+    display: inline-flex;
+    font-size: 14px;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .back:hover {
+    text-decoration: underline;
+  }
+
+  .carnet {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .carnet__header {
+    margin-bottom: clamp(40px, 9vw, 60px);
+    text-align: center;
+  }
+
+  .carnet__header h1 {
+    margin: 0;
+    font-size: clamp(28px, 7vw, 48px);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .carnet__subtitle {
+    margin: 12px 0 0;
+    font-size: clamp(16px, 4vw, 18px);
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .carnet__meta {
+    margin: 20px 0 0;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .section {
+    margin-bottom: clamp(40px, 8vw, 60px);
+  }
+
+  .section h2 {
+    margin: 0 0 20px;
+    font-size: clamp(22px, 5vw, 28px);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .section p {
+    margin: 0 0 16px;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--body);
+  }
+
+  .section p:last-child {
+    margin-bottom: 0;
+  }
+
+  .carnet__call {
+    padding: 20px;
+    background: var(--navy-bg);
+    border-left: 3px solid var(--gold);
+    font-size: 17px;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-ink);
+    margin: 0 0 12px;
+  }
+
+  .eyebrow--center {
+    text-align: center;
+  }
+
+  .eyebrow--light {
+    color: var(--navy-text);
+  }
+</style>
