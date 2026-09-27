@@ -59,6 +59,8 @@ if (!isErrorPage) {
     <link rel="canonical" href={canonical} />
     {!isErrorPage && lang === 'fr' && <link rel="alternate" hreflang="fr" href={canonical} />}
     {!isErrorPage && lang === 'en' && <link rel="alternate" hreflang="en" href={canonical} />}
+    {!isErrorPage && lang === 'zh' && <link rel="alternate" hreflang="zh" href={canonical} />}
+    {!isErrorPage && (lang !== 'fr' && lang !== 'en' && lang !== 'zh') && <link rel="alternate" hreflang={lang} href={canonical} />}
     {!isErrorPage && lang === 'fr' && enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
     {!isErrorPage && lang === 'en' && <link rel="alternate" hreflang="fr" href={frUrl} />}
     {!isErrorPage && <link rel="alternate" hreflang="x-default" href={frUrl} />}

@@ -82,6 +82,12 @@ function validateLangConsistency() {
   for (const filePath of htmlFiles) {
     const html = fs.readFileSync(filePath, 'utf-8');
     const urlPath = getUrlPath(filePath);
+
+    // Skip Astro redirect pages (meta refresh + noindex)
+    if (html.includes('http-equiv="refresh"') && html.includes('noindex')) {
+      continue;
+    }
+
     const htmlLang = getHtmlLang(html);
     const hreflangs = getHreflangTags(html);
 
@@ -97,7 +103,7 @@ function validateLangConsistency() {
     }
 
     // Check all hreflang langs are valid
-    const validLangs = ['fr', 'en', 'x-default'];
+    const validLangs = ['fr', 'en', 'zh', 'x-default'];
     for (const href of hreflangs) {
       if (!validLangs.includes(href.lang)) {
         WARNINGS.push(`${urlPath} — Unknown hreflang lang="${href.lang}"`);
@@ -185,8 +191,9 @@ function validateNoOrphanedPages() {
     }
   }
 
-  // Check if 404 page exists
-  if (!allPaths.has('/404/')) {
+  // Check if 404 page exists (Astro generates /404.html at root)
+  const has404 = allPaths.has('/404/') || fs.existsSync(path.join(DIST_DIR, '404.html'));
+  if (!has404) {
     WARNINGS.push('Missing /404/ page');
   }
 }
