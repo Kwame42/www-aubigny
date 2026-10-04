@@ -6,7 +6,7 @@ export const site = {
    *  Laisser vide expose le formulaire sans envoi. Voir README. */
   formEndpoint: "",
   legal: "L'abus d'alcool est dangereux pour la santé. À consommer avec modération.",
-  legalSmall: "EARL Domaine d'Aubigny · SIRET 000 000 000 00000 · Vente d'alcool interdite aux mineurs de moins de 18 ans."
+  legalSmall: "EARL Domaine d'Aubigny · SIRET 841 534 803 00033 · Vente d'alcool interdite aux mineurs de moins de 18 ans."
 };
 
 /** Navigation principale. Ajouter / retirer des entrées ici. */
