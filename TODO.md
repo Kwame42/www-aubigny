@@ -96,7 +96,7 @@
 
 ### Domaine d'Aubigny (non "Maison") ✅
 - [x] Tous les textes remplacés (43 occurrences)
-- [x] Rully Blanc "Les Fromages" — nom correct
+- [x] Rully Blanc "Les Fromanges" — nom correct
 - [x] "Ouche de la Maison" — nom historique gardé (cuvée)
 
 ### Viticole — Corrections ✅
