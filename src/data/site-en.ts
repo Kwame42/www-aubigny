@@ -4,7 +4,7 @@ export const site = {
   address: { line1: "Domaine d'Aubigny", zip: "71510", city: "Aluze", region: "Côte Chalonnaise, Burgundy" },
   formEndpoint: "",
   legal: "The abuse of alcohol is dangerous to health. Consume in moderation.",
-  legalSmall: "EARL Domaine d'Aubigny · SIRET 841 534 803 00033 · Sale of alcohol prohibited to minors under 18 years of age."
+  legalSmall: "SAS Domaine d'Aubigny · SIRET 841 534 803 00033 · Sale of alcohol prohibited to minors under 18 years of age."
 };
 
 export const nav = [
