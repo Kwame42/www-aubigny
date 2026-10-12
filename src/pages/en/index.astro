@@ -5,11 +5,8 @@ import UniversGrid from "../../components/UniversGrid.astro";
 import SchemaOrg from "../../components/SchemaOrg.astro";
 import { domainStats, terroirStats, vessels } from "../../data/pages-en";
 import { featured, euro } from "../../data/wines-en";
-import { organization, getBreadcrumbSchema } from "../../data/schema";
+import { organization } from "../../data/schema";
 
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://aubigny.wine/en/" }
-]);
 ---
 
 <Base
@@ -17,7 +14,7 @@ const breadcrumb = getBreadcrumbSchema([
   description="The Metairie of Aubigny, cellier of Maizière Abbey since 1132. 206 hectares under organic cultivation. Direct sales from the estate and by mail."
   lang="en"
 >
-  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <SchemaOrg slot="head" schema={organization} />
   <section class="hero">
     <img src="/images/hero-aubigny.webp" alt="Domaine d'Aubigny - Fine Burgundy Wine" width="1400" height="830" loading="eager" decoding="async" fetchpriority="high" />
     <div class="hero__veil"></div>

@@ -5,18 +5,14 @@ import UniversGrid from "../components/UniversGrid.astro";
 import SchemaOrg from "../components/SchemaOrg.astro";
 import { domainStats, terroirStats, vessels } from "../data/pages";
 import { featured, euro } from "../data/wines";
-import { organization, getBreadcrumbSchema } from "../data/schema";
-
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Accueil", url: "https://aubigny.wine/" }
-]);
+import { organization } from "../data/schema";
 ---
 
 <Base
   title="Domaine d'Aubigny — Grand Vin de Bourgogne, Aluze"
   description="Cellier de l'Abbaye de Maizière depuis 1132. 206 hectares en agriculture biologique. Vente directe à la propriété et par expédition."
 >
-  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <SchemaOrg slot="head" schema={organization} />
   <section class="hero">
     <img src="/images/hero-aubigny.webp" alt="Domaine d'Aubigny - Grand Vin de Bourgogne" width="1400" height="830" loading="eager" decoding="async" fetchpriority="high" />
     <div class="hero__veil"></div>

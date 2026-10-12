@@ -1,16 +1,11 @@
 ---
 import Base from "../../../layouts/Base.astro";
 import SchemaOrg from "../../../components/SchemaOrg.astro";
-import { organization, getBreadcrumbSchema } from "../../../data/schema";
+import { organization } from "../../../data/schema";
 
 const title = "Favorite Vintage — A Story of Beginnings";
 const description = "Notebook — Favorite Vintage. How we transformed a dilapidated cellar into an estate recognized by Grande Épicerie.";
 
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://aubigny.wine/en/" },
-  { name: "Notebook", url: "https://aubigny.wine/en/notebook/" },
-  { name: "Favorite Vintage", url: "https://aubigny.wine/en/notebook/coup-de-coeur/" },
-]);
 
 const schema = {
   "@context": "https://schema.org",
@@ -35,7 +30,7 @@ const schema = {
   lang="en"
   image="/images/hero-parcelle.jpg"
 >
-  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <SchemaOrg slot="head" schema={organization} />
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <article class="article carnet">

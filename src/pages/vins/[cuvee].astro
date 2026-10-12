@@ -2,7 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import { cuvees, getCuveeBySlug } from "../../data/cuvees";
 import SchemaOrg from "../../components/SchemaOrg.astro";
-import { organization, getBreadcrumbSchema } from "../../data/schema";
+import { organization } from "../../data/schema";
 
 export function getStaticPaths() {
   return cuvees.map((cuvee) => ({
@@ -13,18 +13,13 @@ export function getStaticPaths() {
 
 const { cuvee } = Astro.props;
 
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Accueil", url: "https://aubigny.wine/" },
-  { name: "Les vins", url: "https://aubigny.wine/vins/" },
-  { name: cuvee.name, url: `https://aubigny.wine/vins/${cuvee.slug}/` },
-]);
 ---
 
 <Base
   title={`${cuvee.name} — ${cuvee.appellation} | Domaine d'Aubigny`}
   description={cuvee.description}
 >
-  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <SchemaOrg slot="head" schema={organization} />
 
   <article class="cuvee">
     <header class="cuvee__header">

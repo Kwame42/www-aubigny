@@ -2,12 +2,8 @@
 import Base from "../../layouts/Base.astro";
 import { cuvees } from "../../data/cuvees";
 import SchemaOrg from "../../components/SchemaOrg.astro";
-import { organization, getBreadcrumbSchema } from "../../data/schema";
+import { organization } from "../../data/schema";
 
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Accueil", url: "https://aubigny.wine/" },
-  { name: "Les vins", url: "https://aubigny.wine/vins/" },
-]);
 
 // Grouper par région
 const aluzeCuvees = cuvees.filter((c) => c.region === "aluze");
@@ -19,7 +15,7 @@ const mercureyCuvees = cuvees.filter((c) => c.region === "mercurey");
   title="Les Vins — Domaine d'Aubigny"
   description="Catalogue des vins — Domaine d'Aubigny. Neuf cuvées de qualité en Bourgogne: Aluze, Rully, Mercurey, vente directe."
 >
-  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <SchemaOrg slot="head" schema={organization} />
 
   <article class="catalog">
     <header class="catalog__header">

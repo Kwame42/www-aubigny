@@ -1,14 +1,10 @@
 ---
 import Base from "../../layouts/Base.astro";
-import { organization, getBreadcrumbSchema } from "../../data/schema";
+import { organization } from "../../data/schema";
 
 const title = "Carnet de Vigne — Domaine d'Aubigny";
 const description = "Journal de cave et de vigne. Observations saisonnières, vendanges, fermentations, et vie du domaine au fil des mois.";
 
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Accueil", url: "https://aubigny.wine/" },
-  { name: "Carnet", url: "https://aubigny.wine/carnet/" },
-]);
 
 // Articles du carnet (en ordre décroissant de date)
 const articles = [
@@ -23,9 +19,6 @@ const articles = [
 ---
 
 <Base title={title} description={description}>
-  <div slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
-  </div>
 
   <article class="catalog">
     <header class="catalog__header">

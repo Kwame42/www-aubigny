@@ -2,7 +2,7 @@
 import Base from "../../../layouts/Base.astro";
 import { cueesEN, getCueesENBySlug } from "../../../data/cuvees-en";
 import SchemaOrg from "../../../components/SchemaOrg.astro";
-import { organization, getBreadcrumbSchema } from "../../../data/schema";
+import { organization } from "../../../data/schema";
 
 export function getStaticPaths() {
   return cueesEN.map((cuvee) => ({
@@ -13,11 +13,6 @@ export function getStaticPaths() {
 
 const { cuvee } = Astro.props;
 
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Home", url: "https://aubigny.wine/en/" },
-  { name: "Our Wines", url: "https://aubigny.wine/en/wines/" },
-  { name: cuvee.name, url: `https://aubigny.wine/en/wines/${cuvee.slug}/` },
-]);
 ---
 
 <Base
@@ -25,7 +20,7 @@ const breadcrumb = getBreadcrumbSchema([
   description={cuvee.description}
   lang="en"
 >
-  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <SchemaOrg slot="head" schema={organization} />
 
   <article class="cuvee">
     <header class="cuvee__header">

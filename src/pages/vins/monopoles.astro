@@ -2,20 +2,15 @@
 import Base from "../../layouts/Base.astro";
 import { monopoles } from "../../data/cuvees";
 import SchemaOrg from "../../components/SchemaOrg.astro";
-import { organization, getBreadcrumbSchema } from "../../data/schema";
+import { organization } from "../../data/schema";
 
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Accueil", url: "https://aubigny.wine/" },
-  { name: "Les vins", url: "https://aubigny.wine/vins/" },
-  { name: "Les monopoles", url: "https://aubigny.wine/vins/monopoles/" },
-]);
 ---
 
 <Base
   title="Monopoles — Domaine d'Aubigny"
   description="Monopoles — Domaine d'Aubigny. Deux cuvées exclusives du domaine d'Aluze: monopoles uniques du vignoble français."
 >
-  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <SchemaOrg slot="head" schema={organization} />
 
   <article class="monopoles">
     <header class="monopoles__header">

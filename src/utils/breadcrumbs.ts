@@ -3,7 +3,7 @@ export function generateBreadcrumbs(pathname: string, lang: string = 'fr') {
   const segments = pathname.split('/').filter(Boolean);
 
   const breadcrumbs: Array<{ name: string; url: string }> = [
-    { name: lang === 'fr' ? 'Accueil' : 'Home', url: `/${lang === 'en' ? 'en/' : ''}` }
+    { name: lang === 'fr' ? 'Accueil' : 'Home', url: `/${lang === 'fr' ? '' : lang === 'en' ? 'en/' : 'zh/'}` }
   ];
 
   const labels: { [key: string]: { fr: string; en: string } } = {

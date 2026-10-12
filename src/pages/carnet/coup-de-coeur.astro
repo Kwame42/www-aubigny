@@ -1,16 +1,11 @@
 ---
 import Base from "../../layouts/Base.astro";
 import SchemaOrg from "../../components/SchemaOrg.astro";
-import { organization, getBreadcrumbSchema } from "../../data/schema";
+import { organization } from "../../data/schema";
 
 const title = "Coup de cœur — L'histoire de nos débuts";
 const description = "Coup de cœur — Carnet. Comment nous avons transformé un chai en ruine en domaine reconnu par la Grande Épicerie.";
 
-const breadcrumb = getBreadcrumbSchema([
-  { name: "Accueil", url: "https://aubigny.wine/" },
-  { name: "Carnet", url: "https://aubigny.wine/carnet/" },
-  { name: "Coup de cœur", url: "https://aubigny.wine/carnet/coup-de-coeur/" },
-]);
 
 const schema = {
   "@context": "https://schema.org",
@@ -34,7 +29,7 @@ const schema = {
   description={description}
   image="/images/hero-parcelle.jpg"
 >
-  <SchemaOrg slot="head" schema={[organization, breadcrumb]} />
+  <SchemaOrg slot="head" schema={organization} />
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <article class="article carnet">
