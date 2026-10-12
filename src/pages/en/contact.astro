@@ -3,8 +3,8 @@ import Base from "../../layouts/Base.astro";
 ---
 
 <Base
-  title="Contact — Domaine d'Aubigny"
-  description="Contact Domaine d'Aubigny. Send us your questions about our wines, estate visits or professional trade inquiries. Direct communication with the vineyard team."
+  title="Contact the Domaine d'Aubigny — Orders, visits, inquiries"
+  description="Contact Domaine d'Aubigny in Burgundy. Orders, visits, professional inquiries, vintage questions. Direct communication with the vineyard team in Aluze."
   lang="en"
 >
   <style>
@@ -12,36 +12,49 @@ import Base from "../../layouts/Base.astro";
     .contact__title { font-size: clamp(36px, 8vw, 52px); font-weight: 400; margin-bottom: 12px; }
     .contact__desc { font-size: clamp(15px, 4vw, 17px); line-height: 1.85; color: var(--muted); margin-bottom: 48px; }
     .contact__info { margin-top: 48px; display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+    .contact__section { margin-top: 64px; padding-top: 32px; border-top: 1px solid #eee; }
     .info-block h3 { margin: 0 0 12px; font-size: 16px; font-weight: 500; }
     .info-block p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--muted); }
     .btn { display: inline-block; background: #1a2838; color: #f5f1ed; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 500; font-size: 14px; }
     .btn:hover { background: #0f1825; }
+    .contact__section h2 { font-size: 20px; font-weight: 500; margin: 0 0 24px; }
+    .contact__section p { font-size: 14px; line-height: 1.8; color: var(--muted); margin-bottom: 12px; }
   </style>
 
   <section class="contact">
     <h1 class="contact__title">Contact us</h1>
-    <p class="contact__desc">Questions about our wines, the estate, or orders? Reach out directly.</p>
+    <p class="contact__desc">Questions about our wines, visits, orders, or professional trade inquiries. Several ways to reach the estate team.</p>
 
     <div class="contact__info">
       <div class="info-block">
         <h3>Phone</h3>
         <p><a href="tel:+33385447676" class="btn">+33 (0)3 85 44 76 76</a></p>
+        <p style="margin-top: 8px; font-size: 12px;">Monday to Friday, 9am–6pm</p>
       </div>
       <div class="info-block">
         <h3>Email</h3>
         <p><a href="mailto:contact@aubigny.wine" class="btn">contact@aubigny.wine</a></p>
+        <p style="margin-top: 8px; font-size: 12px;">Response within 48 hours</p>
       </div>
     </div>
 
-    <div class="contact__info">
-      <div class="info-block">
-        <h3>Address</h3>
-        <p>Domaine d'Aubigny<br />Aluze, 71510<br />Côte Chalonnaise, Burgundy<br />France</p>
-      </div>
-      <div class="info-block">
-        <h3>Shipping</h3>
-        <p>France and the European Union, cases of 6 or 12 bottles. Contact us for rates and delivery times.</p>
-      </div>
+    <div class="contact__section">
+      <h2>Address</h2>
+      <p>Domaine d'Aubigny<br />71510 Aluze<br />Côte Chalonnaise, Burgundy<br />France</p>
+      <p>The estate is located in Aluze, in the Côte Chalonnaise, about fifteen kilometers from Chalon-sur-Saône. Vineyard and cellar visits are available by appointment year-round.</p>
+    </div>
+
+    <div class="contact__section">
+      <h2>Shipping & Delivery</h2>
+      <p>We ship to metropolitan France and European Union member states, in cases of 6 or 12 bottles. Shipping costs vary by destination and weight.</p>
+      <p>For a shipping quote and delivery times, contact us directly by phone or email. Orders within France are dispatched within 3 to 5 business days of order confirmation.</p>
+      <p>Shipping costs and delivery times will be confirmed before finalizing your order.</p>
+    </div>
+
+    <div class="contact__section">
+      <h2>Professional accounts</h2>
+      <p>Wine merchants, importers, restaurateurs, and wholesalers established in France or the European Union who wish to stock Domaine d'Aubigny wines can request professional terms and pricing.</p>
+      <p>Contact us to open a professional account and access our trade pricing and availability.</p>
     </div>
   </section>
 </Base>

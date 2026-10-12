@@ -6,20 +6,38 @@ import { domainStats } from "../../data/pages";
 ---
 
 <Base
-  title="Le domaine — Domaine d'Aubigny"
-  description="Vignoble, chai, métairie, compost, archives et visites : les six univers du domaine d'Aubigny, à Aluze en Côte Chalonnaise."
+  title="Le domaine d'Aubigny en Côte Chalonnaise"
+  description="Vignoble biologique, chai voûté, métairie et forêts : explorez les six univers du domaine d'Aubigny, sur les coteaux d'Aluze depuis 1132."
 >
   <section class="page-head">
     <div class="page-head__in">
       <p class="eyebrow eyebrow--center eyebrow--light">Le domaine</p>
       <h1>Six <em>univers</em> à découvrir</h1>
-      <p class="page-head__lead">Vingt hectares de vigne, 186 hectares de prés et de bois, un chai voûté et une métairie. Un lieu de vie complet au cœur de la Côte Chalonnaise.</p>
+      <p class="page-head__lead">Vingt hectares de vigne en agriculture biologique, 186 hectares de prés et de bois, un chai voûté et une métairie complète. Un lieu de vie autonome au cœur de la Côte Chalonnaise.</p>
     </div>
   </section>
 
   <UniversGrid />
 
-  <section class="article">
+  <article class="article">
+    <section class="section">
+      <h2>Un domaine complet</h2>
+      <p>Le Domaine d'Aubigny n'est pas qu'un vignoble : c'est un écosystème fermé. Autour des vingt hectares de vigne s'étendent les prés et les bois qui nourrissent les animaux du domaine. Ces animaux produisent le fumier qui devient compost, lequel retourne dans les vignes. Le circuit est fermé : rien n'est acheté à l'extérieur pour la fertilisation.</p>
+      <p>Cette approche systémique signifie que chaque élément du domaine dépend des autres. Les chevaux pâturent les prés, les vaches produisent du lait et du fumier, les ruches assurent la pollinisation, et la truffière diversifie les ressources. Le sol s'améliore chaque année grâce à l'apport régulier de compost fabriqué sur place.</p>
+    </section>
+
+    <section class="section">
+      <h2>Agriculture biologique</h2>
+      <p>Les vingt hectares sont conduits en agriculture biologique certifiée depuis plusieurs années. Cela signifie pas de pesticide, pas d'herbicide, pas d'engrais chimique. Le sol est travaillé mécaniquement, les rangs sont enherbés, et la fertilité vient du compost fabriqué sur le domaine à partir des fumiers des animaux.</p>
+      <p>Cette certification n'est pas un label marketing : c'est le reflet du fonctionnement réel du domaine. Chaque année, la vigne devient plus autonome et plus résiliente à la sécheresse grâce à la vie du sol qui s'améliore constamment.</p>
+    </section>
+
+    <section class="section">
+      <h2>Trois appellations, neuf cuvées</h2>
+      <p>Le Domaine cultive trois appellations bourguignonnes : les Bourgogne blanc et rouge d'Aluze, le Rully Village blanc et rouge, et le Mercurey 1er Cru. Deux monopoles à Aluze complètent l'offre : L'Ouche de la Maison Rouge en rouge, et Grand Prés d'Aubigny en blanc.</p>
+      <p>Chaque cuvée est vinifiée séparément, et les choix de vinification sont détaillés sur la fiche de chaque millésime. Il n'y a ici ni secret de fabrication, ni marketing : juste la transparence sur ce qui se passe dans le chai.</p>
+    </section>
+
     <StatList stats={domainStats} />
-  </section>
+  </article>
 </Base>
