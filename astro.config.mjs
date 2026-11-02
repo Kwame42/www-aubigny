@@ -6,6 +6,10 @@ export default defineConfig({
   site: "https://aubigny.wine",
   output: "static",
   integrations: [sitemap()],
+  redirects: {
+    "/cgv": "https://shop.aubigny.wine/terms",
+    "/en/cgv": "https://shop.aubigny.wine/en/terms",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
